@@ -1,14 +1,11 @@
-1. [Personal Profile](#Personal-Profile)
-2. articles
-	1.java知识体系整理
-3. projects
+* [Personal Profile](#personal-profile)
+* articles
+	* java知识体系整理
+* projects
 
 ## Personal Profile
 java developer, learning data mining, worked for YY and VIPS , and now just be a member of a entrepreneur team
 
-You can use the [editor on GitHub](https://github.com/super-sean/super-sean.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
 
