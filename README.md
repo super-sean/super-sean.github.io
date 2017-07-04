@@ -10,7 +10,8 @@ java developer, learning data mining, worked for YY and VIPS , and now is a memb
 ## Articles
 
 ### java知识体系整理
-[java知识体系整理](/img/java知识点.png)
+[高清版查看](/img/java知识点.png)
+![java知识体系整理](/img/java知识点.jpg)
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
