@@ -4,10 +4,13 @@
 * projects
 
 ## Personal Profile
-java developer, learning data mining, worked for YY and VIPS , and now just be a member of a entrepreneur team
+java developer, learning data mining, worked for YY and VIPS , and now is a member of a entrepreneur team
 
 
-### Markdown
+## Articles
+
+	### java知识体系整理
+	![java知识体系整理](/img/java知识点.png)
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
