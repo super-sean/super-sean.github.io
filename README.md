@@ -1,4 +1,10 @@
-## Welcome to GitHub Pages
+1. [Personal Profile](#Personal-Profile)
+2. articles
+	1.java知识体系整理
+3. projects
+
+## Personal Profile
+java developer, learning data mining, worked for YY and VIPS , and now just be a member of a entrepreneur team
 
 You can use the [editor on GitHub](https://github.com/super-sean/super-sean.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
