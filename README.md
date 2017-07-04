@@ -1,6 +1,6 @@
 * [Personal Profile](#personal-profile)
-* articles
-	* java知识体系整理
+* [articles](#articles)
+	* [java知识体系整理](#java知识体系整理)
 * projects
 
 ## Personal Profile
@@ -9,8 +9,8 @@ java developer, learning data mining, worked for YY and VIPS , and now is a memb
 
 ## Articles
 
-	### java知识体系整理
-	![java知识体系整理](/img/java知识点.png)
+### java知识体系整理
+[java知识体系整理](/img/java知识点.png)
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
