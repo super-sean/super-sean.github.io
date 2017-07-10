@@ -1,0 +1,40 @@
+# jvm实践
+
+ ---
+
+# 实践点
+- jvm 启动参数
+- GC注意事项与配置
+- 常用工具
+- 远程连接虚拟机调试
+
+---
+
+# jvm 启动参数
+
+---
+
+# GC注意事项与配置
+
+---
+
+# 常用工具
+
+---
+
+# 远程连接虚拟机调试
+
+
+---
+
+ # Code Sample
+
+ Landslide supports code snippets
+
+     !python
+     def log(self, message, level='notice'):
+         if self.logger and not callable(self.logger):
+             raise ValueError(u"Invalid logger set, must be a callable")
+
+         if self.verbose and self.logger:
+             self.logger(message, level)
