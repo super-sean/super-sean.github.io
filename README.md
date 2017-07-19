@@ -23,7 +23,7 @@ java developer, learning data mining, worked for YY and VIPS , and now is a memb
 * jvm 常用工具
 * 远程连接虚拟机调试
 
-
+传送门 [点这里](file/java/ppt/jvm_p.html)
 
 
 <hr/>
