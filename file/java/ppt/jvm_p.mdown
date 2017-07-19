@@ -128,7 +128,7 @@
 
 # 理解GC日志
 
-[代码示例](file/java/code/gc/ReferenceCountingGC.java)
+[代码示例](../code/gc/ReferenceCountingGC.java)
 -XX:+PrintGCDateStamps -XX:+PrintGCDetails 
 
     !python
