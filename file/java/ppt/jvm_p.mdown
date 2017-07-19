@@ -1,8 +1,13 @@
 # jvm实践
+ 
+ ---
+
+# jvm知识点整理
+[传送门](https://super-sean.github.io/img/内存与JVM.png)
 
  ---
 
-# 实践点
+# 目录
 - jvm 启动参数
 - 常用工具
 - 内存分配与回收策略
