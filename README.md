@@ -1,6 +1,6 @@
 * [Personal Profile](#personal-profile)
 * [articles](#articles)
-    * [内存与JVM](#内存与JVM)
+    * [内存与JVM](#内存与jvm)
 	* [java知识体系整理](#java知识体系整理)
     
 * projects
