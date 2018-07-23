@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sean&#39;s Blog</title>
+  
+  <subtitle>随性随心</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://super-sean.github.io/"/>
+  <updated>2018-07-23T16:09:01.421Z</updated>
+  <id>https://super-sean.github.io/</id>
+  
+  <author>
+    <name>Sean</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>内存与JVM</title>
+    <link href="https://super-sean.github.io/2018/07/23/%E5%86%85%E5%AD%98%E4%B8%8EJVM/"/>
+    <id>https://super-sean.github.io/2018/07/23/内存与JVM/</id>
+    <published>2018-07-23T15:57:00.000Z</published>
+    <updated>2018-07-23T16:09:01.421Z</updated>
+    
+    <content type="html"><![CDATA[<p>自己一边看书一边实践一边整理下来的知识思维导向图，个人感觉能够掌握自动内存管理机制、高效并发并加以应用，理解虚拟机执行子系统、程序编译与代码优化，才可以说熟悉JVM。<br><img src="/2018/07/23/内存与JVM/内存与JVM.png" title="内存与JVM"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;自己一边看书一边实践一边整理下来的知识思维导向图，个人感觉能够掌握自动内存管理机制、高效并发并加以应用，理解虚拟机执行子系统、程序编译与代码优化，才可以说熟悉JVM。&lt;br&gt;&lt;img src=&quot;/2018/07/23/内存与JVM/内存与JVM.png&quot; title=&quot;内存
+      
+    
+    </summary>
+    
+      <category term="JAVA基础" scheme="https://super-sean.github.io/categories/JAVA%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="JVM" scheme="https://super-sean.github.io/tags/JVM/"/>
+    
+      <category term="内存" scheme="https://super-sean.github.io/tags/%E5%86%85%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zk分布式任务队列交互设计</title>
+    <link href="https://super-sean.github.io/2018/07/22/zk%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/"/>
+    <id>https://super-sean.github.io/2018/07/22/zk分布式任务队列交互设计/</id>
+    <published>2018-07-22T15:12:00.000Z</published>
+    <updated>2018-07-23T02:42:19.929Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>近来公司业务上越来越多的跨进程比较耗时计算的场景出现，想用异步通信来解决长时间资源占用及等待问题，而基于多方的探讨，不考虑采用<em>mina</em>和<em>netty</em>这种异步通信的框架，最后决定使用<strong>zookeeper</strong>来实现</p><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>异步进行耗时较长的复杂计算请求，可随时获取请求执行进度</p><h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ul><li>将这种请求的发起者当作是请求任务的生产者，每个请求其实就是一个计算任务。</li><li>后端接收请求的服务就是消费者，获得请求之后进行计算，并更新计算进度。</li><li>当任务完成时，请求发起者可以通过监听任务状态回调实现自己的逻辑。</li><li>过程中，请求发起者也可以主动获取计算讲求的进度。</li></ul><h3 id="实现设计"><a href="#实现设计" class="headerlink" title="实现设计"></a>实现设计</h3><p>基于实现思路，设计zk的path结构如下<br><img src="/2018/07/22/zk分布式任务队列交互设计/zk_path设计.png" title="zk_path设计"></p><p><em>/master</em><br>为程序高可用实现预留路径  </p><p><em>/apps</em><br>为业务连接节点，底下结构为/app/node，比如你有个业务叫a,有两个业务节点b1和b2，那就有/a/b1和/a/b2 路径。由业务节点启动时注册  </p><p><em>/workers</em><br>底下结构逻辑与/apps一致，只不过节点为服务端的节点，由服务端节点启动时注册  </p><p><em>/tasks</em><br>由业务提交注册的计算任务,以业务区分目录，以task-app-node-timestamp格式来命名taskid,每个节点拥有params,status和result三个节点  </p><ul><li>params 为请求参数，以json格式存储</li><li>status 为task状态，默认有submit,running,done三种状态，worker可以添加自定义中间过程状态，任务提交时默认为submit状态。后面添加重试机制，添加resubmit状态</li><li>result 为初始不存在，当status变更为done时添加，内容为json格式，包括type和value,目前先只支持两种，第一种为直接返回为{“type”:”content”,”value”:”something”},考虑zk单个节点的容量问题，可能返回较大数据量，使用redis作为结果缓存层，返回{“type”:”redis_key”,”value”:”one redis key”} 当然不用redis也行，当数据量更大的时候可使用其它工具，这里先选用redis</li></ul><p>history目录下为完成的任务，定时持久化清理。 </p><p><em>/assign</em><br>由系统根据业务app分配作业给worker，以node-taskid来标识作业<br>history目录下为执行完的作业，定时持久化清理</p><h3 id="模块设计"><a href="#模块设计" class="headerlink" title="模块设计"></a>模块设计</h3><ol><li>调度系统<br> 实现基于zk的路径交互，负责与业务和服务两端交互</li><li>业务端接口包封装<br> 对于业务端来说，只需要提交服务端接口标识，接口参数之后返回taskId,根据需要通过taskId进行结果回调监听，支持查询task状态，需要屏蔽底层操作，透明化复杂操作。  </li><li>服务端接口包封装<br> 对于服务端来说，只需要继承某个类，声明服务标识，实现监听task队列的方法，处理被推送过来的任务，并根据需要更新自定义task状态，处理完成后在方法选择返回的内容类型即可</li></ol><h3 id="Task分发策略"><a href="#Task分发策略" class="headerlink" title="Task分发策略"></a>Task分发策略</h3><p>worker每当被分发task，便权重添加1，处理完则减1<br>分发Task时选择权重最小的节点<br>若权重都一样，则随机一个节点</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;近来公司业务上越来越多的跨进程比较耗时计算的场景出现，想用异步通信来解决长时间资源占用及等待问题，而基于多方的探讨，不考虑采用&lt;em&gt;min
+      
+    
+    </summary>
+    
+      <category term="设计" scheme="https://super-sean.github.io/categories/%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="zookeeper" scheme="https://super-sean.github.io/tags/zookeeper/"/>
+    
+      <category term="分布式" scheme="https://super-sean.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="队列" scheme="https://super-sean.github.io/tags/%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+</feed>
