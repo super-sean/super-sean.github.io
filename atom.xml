@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://super-sean.github.io/"/>
-  <updated>2018-10-07T16:07:18.772Z</updated>
+  <updated>2018-10-18T02:09:43.539Z</updated>
   <id>https://super-sean.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>并发编程</title>
+    <link href="https://super-sean.github.io/2018/10/18/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    <id>https://super-sean.github.io/2018/10/18/并发编程/</id>
+    <published>2018-10-18T01:54:00.000Z</published>
+    <updated>2018-10-18T02:09:43.539Z</updated>
+    
+    <content type="html"><![CDATA[<p>&ensp; &ensp;&ensp; &ensp;并发编程是java的基础知识，但是也论深度，工作这些年与很多开发打过交道，有些人工作几年了也没有系统的认识，如果是做业务为主的开发，如果自己没有意识主动学习，往往就是基本使用、用封装好的工具或框架而不加思索。  </p><p>就着以前学习过的《JAVA并发编程》的知识整理了并发编程的基本知识点<br><img src="/2018/10/18/并发编程/JAVA并发编程.png" title="JAVA并发编程"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;并发编程是java的基础知识，但是也论深度，工作这些年与很多开发打过交道，有些人工作几年了也没有系统的认识，如果是做业务为主的开发，如果自己没有意识主动学习，往往就是基本使用、用封装好的工具或框架而不加思索。  &lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="JAVA" scheme="https://super-sean.github.io/categories/JAVA/"/>
+    
+    
+      <category term="JVM" scheme="https://super-sean.github.io/tags/JVM/"/>
+    
+      <category term="JAVA基础" scheme="https://super-sean.github.io/tags/JAVA%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="并发编程" scheme="https://super-sean.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA动态编译/解析文本的一种简易方法</title>
