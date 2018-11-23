@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://super-sean.github.io/"/>
-  <updated>2018-10-18T02:09:43.539Z</updated>
+  <updated>2018-11-23T05:56:43.191Z</updated>
   <id>https://super-sean.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>datax源码解析及分布式实现思路</title>
+    <link href="https://super-sean.github.io/2018/11/23/datax%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E5%8F%8A%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF/"/>
+    <id>https://super-sean.github.io/2018/11/23/datax源码解析及分布式实现思路/</id>
+    <published>2018-11-23T01:59:00.000Z</published>
+    <updated>2018-11-23T05:56:43.191Z</updated>
+    
+    <content type="html"><![CDATA[<p>&ensp; &ensp;&ensp; &ensp;相信很多人接触datax都会去了解它的分布式执行模式，很“幸运”，阿里开源出来的是阉割版，默认只支持单机模式，研发团队对外基本也不回应分布式相关的问题。故此，想让datax支持分布式功能，只能自己下些功夫。<br>&ensp; &ensp;&ensp; &ensp;在github上也有人做了分布式的支持项目，如 <a href="https://github.com/TianLangStudio/DataXServer" target="_blank" rel="noopener">TianLangStudio/DataXServer</a> 后面再聊下这个项目的情况。<br>&ensp; &ensp;&ensp; &ensp;开始之前，按官方文档的建议，了解一下以下概念:</p><ul><li>Job: Job是DataX用以描述从一个源头到一个目的端的同步作业，是DataX数据同步的最小业务单元。比如：从一张mysql的表同步到odps的一个表的特定分区。</li><li>Task: Task是为最大化而把Job拆分得到的最小执行单元。比如：读一张有1024个分表的mysql分库分表的Job，拆分成1024个读Task，用若干个并发执行。</li><li>TaskGroup: 描述的是一组Task集合。在同一个TaskGroupContainer执行下的Task集合称之为TaskGroup</li><li>JobContainer: Job执行器，负责Job全局拆分、调度、前置语句和后置语句等工作的工作单元。类似Yarn中的JobTracker</li><li>TaskGroupContainer: TaskGroup执行器，负责执行一组Task的工作单元，类似Yarn中的TaskTracker。  </li></ul><h3 id="了解源码"><a href="#了解源码" class="headerlink" title="了解源码"></a>了解源码</h3><p>&ensp; &ensp;&ensp; &ensp;我们先看下datax的源码，从datax.py入手，datax.py 收集运行机器的相关信息组装参数调用com.alibaba.datax.core.Engine类，从类入口开始看主要流程分几个部分。  </p><h4 id="容器启动前操作"><a href="#容器启动前操作" class="headerlink" title="容器启动前操作"></a>容器启动前操作</h4><img src="/2018/11/23/datax源码解析及分布式实现思路/1.png" title="容器启动前操作">  <h4 id="JOB容器启动操作"><a href="#JOB容器启动操作" class="headerlink" title="JOB容器启动操作"></a>JOB容器启动操作</h4><img src="/2018/11/23/datax源码解析及分布式实现思路/2.png" title="JOB容器启动操作">  <h4 id="TaskGroup容器启动操作"><a href="#TaskGroup容器启动操作" class="headerlink" title="TaskGroup容器启动操作"></a>TaskGroup容器启动操作</h4><img src="/2018/11/23/datax源码解析及分布式实现思路/3.png" title="TaskGroup容器启动操作">  <h4 id="Job跟Task的处理流程"><a href="#Job跟Task的处理流程" class="headerlink" title="Job跟Task的处理流程"></a>Job跟Task的处理流程</h4><img src="/2018/11/23/datax源码解析及分布式实现思路/4.png" title="Job跟Task的处理流程">  <h4 id="插件相关类关系"><a href="#插件相关类关系" class="headerlink" title="插件相关类关系"></a>插件相关类关系</h4><img src="/2018/11/23/datax源码解析及分布式实现思路/5.png" title="插件相关类关系">  <p>&ensp; &ensp;&ensp; &ensp;主要流程差不多就这样了，需要注意的是，在单个容器里，研发团队的设计理念是希望建立reader和write的1：1的管道模型来处理数据。</p><h3 id="分布式支持实现思路"><a href="#分布式支持实现思路" class="headerlink" title="分布式支持实现思路"></a>分布式支持实现思路</h3><h4 id="正派做法"><a href="#正派做法" class="headerlink" title="正派做法"></a>正派做法</h4><p>&ensp; &ensp;&ensp; &ensp;按以上的解析内容，最“正经”的方案应该是让datax 将task切分好分发给不同的TaskGroup容器执行，直接执行job文件一般都是使用的job容器，如果不指定的话。按源码调试的结果，task其实是job文件中content里的每个实例。一开始提到TianLangStudio/DataXServer其实就是基于hadoop yarn api和client包进行这个思路的实现，可惜很久没维护，文档也没写好，而且远程调用只有Thrift。<br>&ensp; &ensp;&ensp; &ensp;基于“正经”方案的思路和我们的使用的习惯（目前我们是单个task一个job文件），其实可以使用一些支持服务发现及负载平衡的框架，如spring cloud，将job内容及相关参数提交给网关接口，使用自定义流量分发规则（考虑不同节点硬件资源），分发到对应节点上的服务上，服务再调起datax engin。假如需要切分task，则只需要在分发前建一层task切分的服务即可，节点上的服务根据接收到的任务类型来组装参数调用不同的datax容器。<br>&ensp; &ensp;&ensp; &ensp;挫一点的做法就是使用azkaban，手工配置指定机器运行data job</p><h4 id="邪门歪道"><a href="#邪门歪道" class="headerlink" title="邪门歪道"></a>邪门歪道</h4><p>&ensp; &ensp;&ensp; &ensp; 单个task不能再切分我认为是不合理的，首先reader和writer支持分布式的选择不多，其次，会有单点流量问题。所以其实我想要的是能不能将datax单一数据管道的模型给改造成支持分布式，让单个task也支持分布式。<br>&ensp; &ensp;&ensp; &ensp; 了解了源码之后，我觉得可以是可以有如下切入点：</p><ul><li>从job接收的时候就切分好数据块,master负责接收job/task，切分成任务块，每场任务块由一对reader和writer完成处理，就是基本datax task更小粒度或者说基于数据粒度上的切分</li><li>reader支持分布式，比如presto</li><li>reader不切，在传输给writer的queue时切，多个writer接收。其实就是将queue做成支持分布式，比如使用kafka</li><li>writer本身支持分布式，比如presto</li></ul><p>&ensp; &ensp;&ensp; &ensp; 如果纯粹地做数仓，我觉得reader和writer使用presto或其它支持分布式读写操作的技术等，然后再结合task负载均衡分配，基本可以满足了。如果需要做数据更新情况会比较复杂，需要考虑writer是否支持分布式更新及目标数据源是否支持并发插入而不容易产生锁。<br>&ensp; &ensp;&ensp; &ensp; 目前我们的架构是基于项目的情况，选择最低成本能够实现的最优方案，就是使用spring cloud + datax，保持datax核心的完整性不修改，在上面加一层，reader和writer尽量地使用presto为主，es为辅。下个阶段才会考虑使用yarn和queue的改造。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;相信很多人接触datax都会去了解它的分布式执行模式，很“幸运”，阿里开源出来的是阉割版，默认只支持单机模式，研发团队对外基本也不回应分布式相关的问题。故此，想让datax支持分布式功能，只能自己下些功夫。&lt;br&gt;&amp;ens
+      
+    
+    </summary>
+    
+      <category term="大数据" scheme="https://super-sean.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="分布式" scheme="https://super-sean.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="数据平台" scheme="https://super-sean.github.io/tags/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/"/>
+    
+      <category term="ETL" scheme="https://super-sean.github.io/tags/ETL/"/>
+    
+  </entry>
   
   <entry>
     <title>并发编程</title>
