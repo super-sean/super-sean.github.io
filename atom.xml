@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://super-sean.github.io/"/>
-  <updated>2018-11-23T05:56:43.191Z</updated>
+  <updated>2019-02-11T02:38:03.279Z</updated>
   <id>https://super-sean.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>创业团队那些事</title>
+    <link href="https://super-sean.github.io/2019/02/09/%E8%A7%89%E5%BE%97%E7%97%9B%E8%8B%A6%E6%97%B6%E6%92%91%E8%BF%87%E5%8E%BB/"/>
+    <id>https://super-sean.github.io/2019/02/09/觉得痛苦时撑过去/</id>
+    <published>2019-02-09T14:57:00.000Z</published>
+    <updated>2019-02-11T02:38:03.279Z</updated>
+    
+    <content type="html"><![CDATA[<p>&ensp; &ensp;&ensp; &ensp;近来由于忙着换工作和春节生活杂事安排很久没更新博客，原本想着年前写一篇docker或者spring cloud gateway的相关文章也是被搁下了。昨天送走了春节最后一波来访的亲戚，今天终于有时间可以写写东西。<br>&ensp; &ensp;&ensp; &ensp;自从有换工作的念头后，其实就很想写一下自我总结，总结算上实习7年来在工作上的感想。其实每年以及每隔一段时间我都会在个人笔记上自我复盘，但这次想分享出来，权当是给看客茶余饭后打发时间杂文也行。<br>&ensp; &ensp;&ensp; &ensp;前段日子在网上看到一句话<br>&ensp; &ensp;&ensp; &ensp;<code>当你觉得痛苦时，你只有两个选择，一个是被打倒，一个是被逼着成长</code><br>&ensp; &ensp;&ensp; &ensp;类似的话语其实大家都听得不少，这句话我再次听到的时候很有感触，回想起自己从业以来每次遇到的痛苦时刻，有放弃，有坚持。</p><p>&ensp; &ensp;&ensp; &ensp;2015年8月，我从唯品会离职出来加入这家公司，当时工作3年有多，一腔热血，老板b君和当时已经加入他们且和我比较要好的同事y君过来聊了会，我毅然决定加入团队，即便是降薪过去。后来回想自己当时真的是年轻不懂事。转眼3年半过去了，公司从一开始做Pass到后来tob电商入驻平台再到后来做tob电商自营平台，期间经历过挺多苦难，但是就我个人感觉而言，当一切上了轨道，遇到的困难其实并没有一开始遇到的要难。<br>&ensp; &ensp;&ensp; &ensp;一开始老板b君经常会拉着我们几个技术负责人做培训，包括他对行业的认知，产品的规划，个人的价值观和创业的大饼想象等。后来公司越来越大，b君也不怎么拉着人培训了，直到开始做自营，经常看到b君拉着物流、市场、采购的人做狼性培训。<br>&ensp; &ensp;&ensp; &ensp;b君有些话让我感受比较深。  </p><p>&ensp; &ensp;&ensp; &ensp;“我们过往都在选择容易的路在走，而往往只有痛苦的路才是正确的，我们不能绕过去”这句话本身我并没有太大的感觉，但是结合b君自身的经历和公司一些有能力的人，我不禁反思，为什么要选择难的路走，b君期望得到的和大家期望得到的，通过这条路真的可以得到快速实现吗？也许放在tob电商这个事是正确的，但是再往大的方向上看，为什么要选择tob电商，虽然近些年都说tob电商很大机率是风口，但是很明显市场并没有大家想象中那么热烈，对比一些红火行业来看。所以这句话也许适用b君及公司，因为b君觉得他没有退路了，但是却不定适用他手下的人，很难引起共鸣。最终b君很多事情的推动都被手下的人应付着。  </p><p>&ensp; &ensp;&ensp; &ensp;“我都这么痛苦了，为什么你们不能再往前一步”后期b君对初始的核心团队成员是这样的想法，并传达给了大部分人。技术副总监办事不力，他跟技术副总监说了这话，技术的一些高层人员不愿放弃技术转纯管理岗，他对他们也说了这句话，等等。不得不承认，b君为了公司能活下去活得好，他牺牲了很多东西，全公司压力最大那个确实是他。公司越来越大，老板自然也不可能照顾到每个初创团队的成员，自然是公司需要什么，做得到就做，做不到别人顶上，大多数情况下是小公司找不到合适价位的人才。  </p><p>&ensp; &ensp;&ensp; &ensp;“只要xxx还在，他手下整个团队换掉都没关系”，“到现在这阶段，没有说缺了谁不行”b君对团队的管理还是比较侧重抓头不抓尾，其实没什么毛病，只是没做好人才储备的情况下就比较麻烦，而且不是非常优秀的小公司很难做人才储备，尤其当公司的人力资源能力水平还处于不完善阶段，更加是难上加难。 </p><p>&ensp; &ensp;&ensp; &ensp;目前这家公司发展还可以，我写b君的东西其实也思量了挺久，写不好就变成抱怨吐槽，其实没有哪家创业公司的老板是没能力的，但也没有人是十全十美的，没有问题的公司都已经挂掉了。写b君的东西是想表达在选择创业团队的时候，老板是重要考虑因素之一，不过可能很多人在求职过程中并接触不到，可以了解好公司的氛围和企业文化再做决定。  </p><p>&ensp; &ensp;&ensp; &ensp;知乎上有一小篇文章叫《别做被小公司毁掉的年轻人》，文章最后说“小公司毁不掉你，毁掉自己只是那不思进取的自己”，说的也没错，但是这里想说的其实是，能有更好的选择，就别让自己吃那么多无谓的苦，让自己能在快乐中做贡献，对公司对个人都是好事。</p><p>&ensp; &ensp;&ensp; &ensp;个人的建议是除非看得特别透彻，综合考虑好个人自身的性格，做好了准备，才可以选择创业团队，要不然还是选择能让自己术业有专攻的平台会来得更好，做好沉淀，为将来更好的机会做好准备。创业公司的大饼是一种期望，有风险，像理财一样，个人也需要给自己划定风险承受能力范围。有更好的选择还是选择更好的，大多数人往往还是看不够透彻，做不够准备的。  </p><p>&ensp; &ensp;&ensp; &ensp;创业团队有很多乱七八糟的坑，只有你想不到，没有尽头。运气特别好的上市，稍次的被收购，大多还是处于不上不下的尴尬层次，还有更多的是直接挂掉。但是我感谢在创业团队的经历，让我更加成熟。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;近来由于忙着换工作和春节生活杂事安排很久没更新博客，原本想着年前写一篇docker或者spring cloud gateway的相关文章也是被搁下了。昨天送走了春节最后一波来访的亲戚，今天终于有时间可以写写东西。&lt;br&gt;&amp;
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://super-sean.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>datax源码解析及分布式实现思路</title>
@@ -37,11 +60,11 @@
       <category term="大数据" scheme="https://super-sean.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
     
-      <category term="分布式" scheme="https://super-sean.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="数据平台" scheme="https://super-sean.github.io/tags/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/"/>
     
       <category term="ETL" scheme="https://super-sean.github.io/tags/ETL/"/>
+    
+      <category term="分布式" scheme="https://super-sean.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
@@ -125,9 +148,9 @@
       <category term="设计" scheme="https://super-sean.github.io/categories/%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="架构" scheme="https://super-sean.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
-    
       <category term="数据平台" scheme="https://super-sean.github.io/tags/%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/"/>
+    
+      <category term="架构" scheme="https://super-sean.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
@@ -136,7 +159,7 @@
     <link href="https://super-sean.github.io/2018/08/14/%E5%A4%A9%E7%84%B6%E8%8B%8F%E6%89%93%E6%B0%B4%E5%B8%82%E5%9C%BA%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%8E%E6%80%9D%E8%80%83/"/>
     <id>https://super-sean.github.io/2018/08/14/天然苏打水市场的了解与思考/</id>
     <published>2018-08-14T07:41:00.000Z</published>
-    <updated>2018-08-15T01:49:54.523Z</updated>
+    <updated>2019-02-11T02:39:21.277Z</updated>
     
     <content type="html"><![CDATA[<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>近来有个朋友找到我说拿到某品牌的天然苏打水广东省省级代理，问我得怎样开展工作及市场上的情况是怎么样的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">产品定价15元一支</span><br><span class="line">品牌方给出了一年一千万件，即八千万支的销量目标。</span><br></pre></td></tr></table></figure></p><p><style><br>  table td {text-align:center}<br>  table thead td {background:#73B1E0;color:#FFF;}<br>  table th {border:1}<br></style><br>由于个人是在TO B电商平台工作（苦逼码农一个），就着自己的资源和能力稍微进行一下分析。目标是找出工作推进的方案和尽量找出市场数据以及判断这个销量kpi是否合理。</p><h4 id="梳理步骤"><a href="#梳理步骤" class="headerlink" title="梳理步骤"></a>梳理步骤</h4><ul><li>了解市场竞品数据</li><li>了解一般水饮新品推广方法</li><li>了解行业高端专业人士对这个事件的看法</li></ul><h4 id="了解市场竞品数据"><a href="#了解市场竞品数据" class="headerlink" title="了解市场竞品数据"></a>了解市场竞品数据</h4><p>找遍关系圈并没有任何可以了解到天然苏打水相关的线下渠道，于是只能针对线上电商平台先下手。挑选了天然苏打水销量量较大的平台的销量较好的四个产品进行对比。结果如下: </p><table><thead><tr><th style="text-align:center">产品</th><th style="text-align:center">产品单价</th><th style="text-align:center">规格</th><th style="text-align:center">活动</th><th style="text-align:center">京东销量</th><th style="text-align:center">天猫销量</th><th style="text-align:center">品牌</th><th style="text-align:center">产品卖点</th><th style="text-align:center">产地</th><th style="text-align:center">公司</th><th style="text-align:center">公司旗下产品</th><th style="text-align:center">公司官网</th><th style="text-align:center">新闻备注</th><th style="text-align:center">品牌故事</th></tr></thead><tbody><tr><td style="text-align:center">舒达源克东天然苏打水</td><td style="text-align:center">9.5</td><td style="text-align:center">550ml</td><td style="text-align:center">买2送1（送6支400ml）</td><td style="text-align:center">1.9w评价</td><td style="text-align:center">2758</td><td style="text-align:center">舒达源</td><td style="text-align:center">世界三大冷矿泉之一</td><td style="text-align:center">克东</td><td style="text-align:center">黑龙江舒达饮品有限公司</td><td style="text-align:center">单一产品不同规格</td><td style="text-align:center"><a href="http://www.shudayuan.cn/index.php?a=lists&amp;catid=30" target="_blank" rel="noopener">跳转</a></td><td style="text-align:center"><a href="http://www.prnews.cn/press_release/346678.htm" target="_blank" rel="noopener">新闻1</a></td><td style="text-align:center">中国国家田径队官方用水</td></tr><tr><td style="text-align:center">活力恩克东天然苏打水</td><td style="text-align:center">3.66</td><td style="text-align:center">500ml</td><td style="text-align:center">无</td><td style="text-align:center">3.3w评价</td><td style="text-align:center">4542(单价4.5)</td><td style="text-align:center">活力恩</td><td style="text-align:center">火山岩層精淬礦泉</td><td style="text-align:center">克东</td><td style="text-align:center">海昌國際股份有限公司（彰化縣秀水鄉）</td><td style="text-align:center">主打5度C系列，销量情况一般</td><td style="text-align:center"><a href="http://www.horien.tw/webc/html/about/index.aspx" target="_blank" rel="noopener">跳转</a></td><td style="text-align:center">无</td><td style="text-align:center">无</td></tr><tr><td style="text-align:center">火山鸣泉克东天然苏打水</td><td style="text-align:center">7.3</td><td style="text-align:center">470ml</td><td style="text-align:center">无</td><td style="text-align:center">1.7w评价</td><td style="text-align:center">3578</td><td style="text-align:center">火山鸣泉</td><td style="text-align:center">火山岩層精淬礦泉</td><td style="text-align:center">克东</td><td style="text-align:center">火山鸣泉生态科技有限公司</td><td style="text-align:center">单一产品不同规格不同包装</td><td style="text-align:center"><a href="http://www.lava-spring.com/BrandCenter.html" target="_blank" rel="noopener">跳转</a></td><td style="text-align:center"><a href="http://www.sohu.com/a/168012658_479961" target="_blank" rel="noopener">新闻1</a>  <a href="http://www.ccidnet.com/2017/0707/10291070.shtml" target="_blank" rel="noopener">新闻2</a></td><td style="text-align:center">中国田径队官方饮用水</td></tr><tr><td style="text-align:center">水易方克东天然苏打水</td><td style="text-align:center">7.1</td><td style="text-align:center">500ml</td><td style="text-align:center">买5送1</td><td style="text-align:center">1.5w评价</td><td style="text-align:center">537</td><td style="text-align:center">水易方</td><td style="text-align:center">常见天然苏打水特性</td><td style="text-align:center">克东</td><td style="text-align:center">大连水易方科技发展有限公司</td><td style="text-align:center">单一产品不同规格不同包装</td><td style="text-align:center"><a href="http://www.shuiyifang.net/web/cn/qyjj/index.html" target="_blank" rel="noopener">跳转</a></td><td style="text-align:center"><a href="http://www.shuiyifang.net/web/cn/xwzx/index.html" target="_blank" rel="noopener">新闻</a></td><td style="text-align:center">无</td></tr></tbody></table><p>就这样看可以得到一些信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 京东是现在最大的销售渠道，天猫第二（其它平台几乎没有销量所以没对比）</span><br><span class="line">* 天然苏打水线上市场并不乐观,如果按这数据来看，一年100w件的销量目标都很有挑战性</span><br><span class="line">* 国内最有知名度的天然苏打水产地应该是克东，如果非克东产地的苏打水估计比较难引起消费者共鸣</span><br><span class="line">* 产品形象及品牌故事在市场竞争中影响并不大，消费者可能更看重实惠程度</span><br><span class="line">* 基本没看到哪个天然苏打水产品有打广告，更多应该是参加电商平台的促销活动</span><br></pre></td></tr></table></figure></p><p>基本上线上销售相关信息了解就到这了，但是感觉还不够，进而找了各大数据平台搜索相关报告，收集到资料如下:  </p><ul><li><p>网上评价中国十大苏打水企业<br><a href="http://www.china-10.com/china/1002sds_index.html" target="_blank" rel="noopener">http://www.china-10.com/china/1002sds_index.html</a></p></li><li><p>中国会员经济数据报告<br><a href="http://tech.qq.com/a/20170719/007724.htm#p=1" target="_blank" rel="noopener">http://tech.qq.com/a/20170719/007724.htm#p=1</a></p></li><li><p>尼尔森数据线上线下结合销售数据资讯<br><a href="http://www.nielsen.com/cn/zh/press-room/2015/Nielsen-global-survey-on-e-commerce-and-new-retailing.html" target="_blank" rel="noopener">http://www.nielsen.com/cn/zh/press-room/2015/Nielsen-global-survey-on-e-commerce-and-new-retailing.html</a></p></li><li><p>百度指数<br><a href="http://index.baidu.com/?tpl=trend&amp;word=%CB%D5%B4%F2%CB%AE" target="_blank" rel="noopener">http://index.baidu.com/?tpl=trend&amp;word=%CB%D5%B4%F2%CB%AE</a></p></li><li><p>腾讯BI<br><a href="http://tbi.tencent.com/index?word=苏打水&amp;date=1&amp;type=0" target="_blank" rel="noopener">http://tbi.tencent.com/index?word=苏打水&amp;date=1&amp;type=0</a></p></li><li><p>36kr关于高端水的观点<br><a href="http://36kr.com/p/5073894.html" target="_blank" rel="noopener">http://36kr.com/p/5073894.html</a></p></li><li><p>3mbang文库<br><a href="http://www.3mbang.com/p-171349.html" target="_blank" rel="noopener">http://www.3mbang.com/p-171349.html</a></p></li><li><p>百度文库<br><a href="https://wenku.baidu.com/view/adb970a03968011ca200911f.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/adb970a03968011ca200911f.html</a><br><a href="https://wenku.baidu.com/view/64a25f0869eae009581becfb.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/64a25f0869eae009581becfb.html</a><br><a href="http://www.chinairn.com/news/20160705/150700863.shtml" target="_blank" rel="noopener">http://www.chinairn.com/news/20160705/150700863.shtml</a></p></li></ul><p>ps:苏打水市场研究报告 很多咨询网站都有做，但是哪里都要钱的，一份就要好几k大洋，要不起，还是靠自己吧。</p><p>基于网上的资料可以看出来苏打水在中国的市场热度有上升的趋势，但是不大，天然苏打水就更小了。</p><h4 id="一般水饮新品推广方法"><a href="#一般水饮新品推广方法" class="headerlink" title="一般水饮新品推广方法"></a>一般水饮新品推广方法</h4><p>我找了我们公司运营部门副总监W君请教了一下，他原本是从宝洁出来的，至今工作多年，从开始的市场人员转为运营人员。从与他的交流上我总结了一下代理商一般水饮新品的推广方法如下:</p><h5 id="KA-大型卖场"><a href="#KA-大型卖场" class="headerlink" title="KA(大型卖场)"></a>KA(大型卖场)</h5><p>如沃尔玛、华润万家、永旺（吉之岛）等。  </p><p>KA是最容易进行新品试验的地方。每个KA都有自己招商的标准，对进场的产品会有不同的要求，KA每个点（如广州天河分店等）也各自有自己的要求。一般想谈合作可以直接到联系总部或者分点对应负责人直接谈就行了。  </p><p>这里假设能够满足要求并进场。合作的对象有两种，一种是直接找总部谈合作，这种方式会要求产品本身有足够强的优势，总公司才会考虑帮你铺点，而且一般找总部谈的整个流程比较长，但是一旦确定产品OK，能够大面积铺开，另一种是找某个KA的分点负责人谈，这种的门槛会比较低，但是产品流通只限于该门店，如果想再扩大市场只能自己重新去谈其它KA分点。</p><p>合作的方式有两种，一种是直接给钱进场，KA不管你销量，反正它有钱收，另一种是根据销量来进行利润分成，这种一般只会针对成熟的产品或者非常有潜力的产品。</p><p>走KA的公司的运营比较简单，只需要有人负责促销活动的规划，聘请对应的促销人员派到各大卖场进行促销活动就可以了。</p><p>然而KA渠道基本就是走量，利润空间比较小。</p><h5 id="城市有能力的中间商"><a href="#城市有能力的中间商" class="headerlink" title="城市有能力的中间商"></a>城市有能力的中间商</h5><p>如广州宝祺来，专门做日化渠道，能够快速铺货到各大KA卖场，合作方式得自己谈，基本是直接给钱合作的。</p><p>这个渠道会比直接找KA利润更低，因为有中间商赚差价嘛。但是铺货速度跟能力绝对是杠杠的。</p><h5 id="特殊渠道"><a href="#特殊渠道" class="headerlink" title="特殊渠道"></a>特殊渠道</h5><p>带有特殊性质的饮品，如能量饮料、苏打水，都有一些特殊的渠道可以卖，这个渠道比较看重经营方即卖饮品的公司渠道能力。比如红牛可以铺货进网吧、各大运动场所等。这个渠道我也没有资源可以继续了解，只是知道，特殊渠道是毛利可以爆发的渠道。</p><h5 id="中小超市士多"><a href="#中小超市士多" class="headerlink" title="中小超市士多"></a>中小超市士多</h5><p>基本上品牌代理商不会自己直接去铺小店，成本高，效益低。</p><h4 id="专业人士意见"><a href="#专业人士意见" class="headerlink" title="专业人士意见"></a>专业人士意见</h4><p>我找了我们公司采购部副总监请教，他是一路从恒大、沃尔玛等大公司由基层做到高层的。沟通下来我总结有以下几点：</p><ul><li>新品不能急着铺货，只要你产品OK，销售渠道是比较容易疏通的</li><li>确定好主打市场，目标人群</li><li>做好市场调研，可以采用问券调查等方式。如果真的不清晰怎么做，可以拜访其它省级代理，咨询下人家的情况与做法</li><li>商品本身的主打特性要宣传到位，假如商品本身有什么特别性质的，如真的可以治疗什么疾病或者产源稀缺，那定价高一样可以卖得火爆</li><li>特殊渠道在定位高端产品的渠道中比较重要，往往是有利可图的渠道</li><li>15元的高端水在市场很少见，至少这位哥是没见过，当时在恒大做恒大冰泉也是定价高昂，现在一样卖到跟普通差不多，正常渠道销量也一般。所以这个定价的水产品市场不好做</li></ul><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>针对销量目标来说，天然苏打水新品一年一千万件即八千箱的省级销售目标，从运营和专业人士的角度来看，都是很难达到，结合线上数据来看，也更加能说明这点。合理的有挑战性的目标大概是一百万件左右。假如有特殊渠道另说，因为特殊渠道的量就看主营公司的能力了，不好预估。<br>推广新品的方法上面已经提到，但是推广前需要确定好目标人群、商品的亮点、品牌故事与背景和渠道。如果不清楚怎么做，可以去其它省级代理了解咨询，如果有的话。</p><h4 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h4><p>基本上KA或者平台级的公司不会管你产品好不好卖，都想你投钱进场，反正不好卖也不关他们的事。包括我们公司那采购副总监，一边说着感觉市场不好做，一边想让我朋友来找我们公司合作，笑哭，哈哈</p>]]></content>
     
@@ -149,10 +172,10 @@
     
     </summary>
     
-      <category term="数据分析" scheme="https://super-sean.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+      <category term="随笔" scheme="https://super-sean.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="生意分析" scheme="https://super-sean.github.io/tags/%E7%94%9F%E6%84%8F%E5%88%86%E6%9E%90/"/>
+      <category term="数据分析" scheme="https://super-sean.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
@@ -235,9 +258,9 @@
       <category term="设计" scheme="https://super-sean.github.io/categories/%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="zookeeper" scheme="https://super-sean.github.io/tags/zookeeper/"/>
-    
       <category term="分布式" scheme="https://super-sean.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="zookeeper" scheme="https://super-sean.github.io/tags/zookeeper/"/>
     
       <category term="队列" scheme="https://super-sean.github.io/tags/%E9%98%9F%E5%88%97/"/>
     
