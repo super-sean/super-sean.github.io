@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://super-sean.github.io/"/>
-  <updated>2019-07-14T08:49:35.776Z</updated>
+  <updated>2019-07-14T08:52:15.028Z</updated>
   <id>https://super-sean.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Qcon广州站大会</title>
+    <title>Qcon广州站</title>
     <link href="https://super-sean.github.io/2019/07/14/Qcon%E5%B9%BF%E5%B7%9E%E7%AB%99%E5%A4%A7%E4%BC%9A%E4%B8%AA%E4%BA%BA%E7%BA%AA%E8%A6%81/"/>
     <id>https://super-sean.github.io/2019/07/14/Qcon广州站大会个人纪要/</id>
     <published>2019-07-14T07:25:00.000Z</published>
-    <updated>2019-07-14T08:49:35.776Z</updated>
+    <updated>2019-07-14T08:52:15.028Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://ppt.geekbang.org/list/qcongz2019?from=singlemessage" target="_blank" rel="noopener">大会ppt下载地址</a></p><p>&ensp; &ensp;&ensp; &ensp;今年5月27号在举行的qcon全球开发者大会广州站，在下有幸，公司安排参加，就着大会的内容，个人闲聊一下看法。（工作比较忙，导致拖了一个半月才回过头来聊这次大会）  </p><img src="/2019/07/14/Qcon广州站大会个人纪要/p1.jpeg" title="p1"> <img src="/2019/07/14/Qcon广州站大会个人纪要/p2.jpeg" title="p2"> <h3 id="Service-Mesh"><a href="#Service-Mesh" class="headerlink" title="Service Mesh"></a>Service Mesh</h3><p>&ensp; &ensp;&ensp; &ensp;qcon的大会安排是有不同卖场同时进行，自己优先选择了后端相关的微服务实战及高可用高性能架构专场参加。<br>有幸见到arthas的作者，阿里在专场中更多针对他们是如何在微服务这块提升研发效能进行分享，网易及唯品会对service mesh的落地踩坑改善经验进行了讲解。<br>&ensp; &ensp;&ensp; &ensp;对于service mesh，先感谢大厂和很多大牛在一些新的方向或者是旧技术点翻新上，给行业领头踩坑及推广。江南白衣说了句大实话，目前看来无论是哪里的service mesh的实践方案都还不够成熟，不适合生产环境大面积推广。<br>&ensp; &ensp;&ensp; &ensp;个人认为service mesh虽然不一定会在公司落地，但是作为架构知识，还是有必要掌握，主要是针对服务云化之后的能力支持。目前国内市场上主要是Linkerd和Istio两个方案，个人准备就着Istio进行研究。</p><h3 id="火爆的实时流"><a href="#火爆的实时流" class="headerlink" title="火爆的实时流"></a>火爆的实时流</h3><p>&ensp; &ensp;&ensp; &ensp;在大会上刚好有空档，去听了一下阿里的flink改造版本，7月份已经将合并入官方主干且发版，真的是很厉害。然而在会议上透露着一些问题依然无法很好被解决，那便是数据初始化需求、与批处理比较的稳定性和多表聚合的复杂性问题。  </p><h3 id="service-less的思考"><a href="#service-less的思考" class="headerlink" title="service less的思考"></a>service less的思考</h3><p>虽然service less与本次大会无直接关联，但是近几年我一直在研究service less及推荐落地，细想之下，其实service less的落地离不开成熟的微服务架构用于实例的管理及云函数的实现，成熟的存储方案及计算能力和数据流方案。接下来将会梳理一篇关于service less落地的文章。</p>]]></content>
     
