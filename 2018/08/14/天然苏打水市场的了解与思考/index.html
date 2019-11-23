@@ -85,11 +85,7 @@ function addCount(Counter) {
 }
 $(function() {
 	var Counter = AV.Object.extend("Counter");
-	if ($('.leancloud_visitors').length == 1) {
-		addCount(Counter);
-	} else if ($('.post-title-link').length > 1) {
-		showTime(Counter);
-	}
+	addCount(Counter);
 }); 
 </script>
 
@@ -206,6 +202,7 @@ $(function() {
     <div id="header_box" class="header-box"></div>
 </header>
 <section>
+<span style="display:none" id="/2018/08/14/天然苏打水市场的了解与思考/" class="leancloud_visitors"   data-flag-title="天然苏打水市场的了解与分析"> </span>
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">

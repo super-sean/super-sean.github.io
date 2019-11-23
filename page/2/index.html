@@ -85,11 +85,7 @@ function addCount(Counter) {
 }
 $(function() {
 	var Counter = AV.Object.extend("Counter");
-	if ($('.leancloud_visitors').length == 1) {
-		addCount(Counter);
-	} else if ($('.post-title-link').length > 1) {
-		showTime(Counter);
-	}
+	addCount(Counter);
 }); 
 </script>
 
@@ -201,6 +197,7 @@ $(function() {
 
 </style>
 
+<span style="display:none" id="/index" class="leancloud_visitors"   data-flag-title="首页"> </span>
 <div style="background: #f5f8f9;">
     <div id="main-container" class="container" style="padding-top: 20px;">
         <div class="is-flex main-content justify-center">
