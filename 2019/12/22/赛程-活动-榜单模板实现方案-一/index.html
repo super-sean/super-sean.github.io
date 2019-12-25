@@ -90,15 +90,24 @@ $(function() {
 </script>
 
   
-  <title>Sean&#39;s Blog</title>
+  <title>赛程-活动-榜单模板实现方案(一) | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="https://super-sean.github.io/page/2/index.html">
+  <meta name="description" content="前言继商业化产品架构及技术规划后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。由于身在业务部门，不可能本末倒置，在业务能够按计划发展的同时进行技术沉淀是最好的方向。个人的思路是很多事情都不是一蹴而就，模块先划分好，每个模块贴合业务迭代进行技术迭代。   背景其实无论商业化还是普通平台都比较大机率会有赛程/活动/榜单的运营需求，以往本人所在的团队有这种需求的时候有两种运作方式，一种">
+<meta name="keywords" content="架构,商业化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="赛程-活动-榜单模板实现方案(一)">
+<meta property="og:url" content="https://super-sean.github.io/2019/12/22/赛程-活动-榜单模板实现方案-一/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
+<meta property="og:description" content="前言继商业化产品架构及技术规划后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。由于身在业务部门，不可能本末倒置，在业务能够按计划发展的同时进行技术沉淀是最好的方向。个人的思路是很多事情都不是一蹴而就，模块先划分好，每个模块贴合业务迭代进行技术迭代。   背景其实无论商业化还是普通平台都比较大机率会有赛程/活动/榜单的运营需求，以往本人所在的团队有这种需求的时候有两种运作方式，一种">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://super-sean.github.io/2019/12/22/赛程-活动-榜单模板实现方案-一/实体属性抽象.png">
+<meta property="og:image" content="https://super-sean.github.io/2019/12/22/赛程-活动-榜单模板实现方案-一/pk组原型.png">
+<meta property="og:image" content="https://super-sean.github.io/2019/12/22/赛程-活动-榜单模板实现方案-一/服务层次.jpg">
+<meta property="og:updated_time" content="2019-12-25T08:12:51.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
+<meta name="twitter:title" content="赛程-活动-榜单模板实现方案(一)">
+<meta name="twitter:description" content="前言继商业化产品架构及技术规划后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。由于身在业务部门，不可能本末倒置，在业务能够按计划发展的同时进行技术沉淀是最好的方向。个人的思路是很多事情都不是一蹴而就，模块先划分好，每个模块贴合业务迭代进行技术迭代。   背景其实无论商业化还是普通平台都比较大机率会有赛程/活动/榜单的运营需求，以往本人所在的团队有这种需求的时候有两种运作方式，一种">
+<meta name="twitter:image" content="https://super-sean.github.io/2019/12/22/赛程-活动-榜单模板实现方案-一/实体属性抽象.png">
   
     <link rel="alternate" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -160,629 +169,121 @@ $(function() {
 
   <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
       <div class="main-inner-content">
-          <style>
-    .post-hover:hover {
-        box-shadow: inset 0 0 100px #000;
-        transition: box-shadow .2s;
-    }
+          <!--博文页面-->
 
-    .sub-post-container .post-hover:hover h3 {
-        text-decoration: underline gray;
-    }
-
-
-    .primary-item-main {
-        height: 330px;
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
         background-size: cover;
+        background-color: lightsteelblue;
     }
 
-    .primary-container .title,
-    .primary-container .sub-title,
-    .primary-container .post-content-text,
-    .primary-container .date {
-        color: #fff;
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
     }
 
-    .post-content-text {
-        color: #f1f1f1!important;
-    }
-
-    .primary-container .post-hover {
-        background: black;
-    }
-
-    .content-bg-mask {
-        background: rgba(0,0,0,.4);
-    }
-
-</style>
-
-<span style="display:none" id="/index" class="leancloud_visitors"   data-flag-title="首页"> </span>
-<div style="background: #f5f8f9;">
-    <div id="main-container" class="container" style="padding-top: 20px;">
-        <div class="is-flex main-content justify-center">
-            <section class="column is-9">
-                
-<div class="primary-container content-box is-flex-desktop clear-padding bottom-line" style="margin-bottom: 25px;">
-    <div class="column  is-7-desktop">
-        <a href="/2018/10/18/并发编程/">
-            <div class="full-height post-hover"
-                 style="
-                         background-image: url('/2018/10/18/并发编程/JAVA并发编程.png');
-                         height: 350px;
-                         background-size: cover;
-                         background-repeat: no-repeat;
-                         ">
-                    <div class=" is-flex flex-column center content has-text-centered full-height has-padding content-bg-mask">
-                        <h1 class="title text-shadow" style="margin-bottom: 15px;">
-                            并发编程
-                        </h1>
-                        <div>
-                        
-                            `
-                                <span class="tag is-post-tag">JVM</span>
-                            `
-                                <span class="tag is-post-tag">JAVA基础</span>
-                            `
-                                <span class="tag is-post-tag">并发编程</span>
-                            
-                        
-                        </div>
-                        <p class="post-content-text is-marginless has-padding text-shadow">
-                            &ensp; &ensp;&ensp; &ensp;并发编程是java的基础知识，但是也论深度，工作这些年与很多开发打过交道，有些人工作几年了也没有系统的认识，如果是做业务为主的开发，如果自己没有意识主动学习，往往就是基本使用、用封装好..
-                        </p>
-                        <p class="date text-shadow">2018-10-18</p>
-                        <button class="button is-info is-small">Read More</button>
-                    </div>
-            </div>
-        </a>
-    </div>
-    <div class="column is-5 is-hidden-touch" style="padding-left: 0;">
-        <div class="full-height is-flex flex-column justify-space-between" style="min-height: 350px;">
-            
-                
-<a class="post-hover" href="/2018/10/07/JAVA动态编译-解析文本的简易方法/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                JAVA动态编译/解析文本的一种简易方法
-            </h3>
-            
-            
-            <span class="tag is-post-tag">java基础</span>
-            
-            <span class="tag is-post-tag">mybatis</span>
-            
-            <span class="tag is-post-tag">动态解析</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                &ensp; &ensp; 追着国庆假期的尾巴，更新一下博客，讲一下项目上之前遇到的文本动态编译..
-            </p>
-            <p class="date text-shadow is-marginless">2018-10-07</p>
-        </div>
-    </div>
-</a>
-            
-            
-                
-<a class="post-hover" href="/2018/08/19/个人基于大数据平台的设计与思考/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2018/08/19/个人基于大数据平台的设计与思考/data-architecture1.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                个人基于大数据平台的设计与思考
-            </h3>
-            
-            
-            <span class="tag is-post-tag">架构</span>
-            
-            <span class="tag is-post-tag">数据平台</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                背景介绍&ensp; &ensp; 本人是在一家TOB电商平台的创业公司就职，目前负责整个数据部..
-            </p>
-            <p class="date text-shadow is-marginless">2018-08-19</p>
-        </div>
-    </div>
-</a>
-            
-        </div>
-    </div>
-    <div class="column is-12 is-hidden-desktop">
-        
-        
-<a class="post-hover" href="/2018/10/07/JAVA动态编译-解析文本的简易方法/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                JAVA动态编译/解析文本的一种简易方法
-            </h3>
-            
-            
-            <span class="tag is-post-tag">java基础</span>
-            
-            <span class="tag is-post-tag">mybatis</span>
-            
-            <span class="tag is-post-tag">动态解析</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                &ensp; &ensp; 追着国庆假期的尾巴，更新一下博客，讲一下项目上之前遇到的文本动态编译..
-            </p>
-            <p class="date text-shadow is-marginless">2018-10-07</p>
-        </div>
-    </div>
-</a>
-        
-        
-        
-<a class="post-hover" href="/2018/08/19/个人基于大数据平台的设计与思考/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2018/08/19/个人基于大数据平台的设计与思考/data-architecture1.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                个人基于大数据平台的设计与思考
-            </h3>
-            
-            
-            <span class="tag is-post-tag">架构</span>
-            
-            <span class="tag is-post-tag">数据平台</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                背景介绍&ensp; &ensp; 本人是在一家TOB电商平台的创业公司就职，目前负责整个数据部..
-            </p>
-            <p class="date text-shadow is-marginless">2018-08-19</p>
-        </div>
-    </div>
-</a>
-        
-    </div>
-</div>
-
-                    
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/10/07/JAVA动态编译-解析文本的简易方法/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>JAVA动态编译/解析文本的一种简易方法</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">java基础</span>
-                                            
-                                                <span class="tag is-post-tag">mybatis</span>
-                                            
-                                                <span class="tag is-post-tag">动态解析</span>
-                                            
-                                        </p>
-                                        <p>
-                                            &ensp; &ensp; 追着国庆假期的尾巴，更新一下博客，讲一下项目上之前遇到的文本动态编译/解析的问题，虽然比较简单，但是感觉适合场景还是挺多的。&ensp; &ensp; 团队自研BI系统，在数据源选择及查询的实现使用桥接模式，针对不同的数据源采用不同的查询方式，而目前我们平台支持的数据源的查询可以通过构建不同的文本请求体进行查询，例如mysql..
-                                        </p>
-                                        <p>2018-10-07</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/08/19/个人基于大数据平台的设计与思考/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/08/19/个人基于大数据平台的设计与思考/data-architecture1.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>个人基于大数据平台的设计与思考</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                                <span class="tag is-post-tag">数据平台</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景介绍&ensp; &ensp; 本人是在一家TOB电商平台的创业公司就职，目前负责整个数据部门的架构与业务跟进。之前从事过YY与唯品会的web开发工作，也有了解到一些大数据架构相关的设计。&ensp; &ensp; 目前数据部门的技术架构发展大体方向已经确定得差不多，于是在此梳理一下设计思路、历程与将要实现的内容。
-一开始都是坑&ensp; &ens..
-                                        </p>
-                                        <p>2018-08-19</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/08/14/天然苏打水市场的了解与思考/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>天然苏打水市场的了解与分析</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">数据分析</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景近来有个朋友找到我说拿到某品牌的天然苏打水广东省省级代理，问我得怎样开展工作及市场上的情况是怎么样的。12产品定价15元一支品牌方给出了一年一千万件，即八千万支的销量目标。
-  table td {text-align:center}  table thead td {background:#73B1E0;color:#FFF;}  table th..
-                                        </p>
-                                        <p>2018-08-14</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/08/11/spring-cloud-stream-基于kafka的使用简析/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>spring cloud stream 基于kafka的使用简析</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">实时流</span>
-                                            
-                                                <span class="tag is-post-tag">spring</span>
-                                            
-                                                <span class="tag is-post-tag">kafka</span>
-                                            
-                                        </p>
-                                        <p>
-                                            流式数据故名思义，即数据像开了小河里的流水般不停流动，除非水源出现问题，否则没有结束时间。流式数据在行业内已经有非常多针对不同应用量级的成熟方案，这里就不加以详述。本次主要介绍spring cloud stream 基于kafka对流式数据的基本应用。而使用spring cloud stream之前，可以先理解一下spring cloud对数据流程的几个..
-                                        </p>
-                                        <p>2018-08-11</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/07/23/内存与JVM/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/07/23/内存与JVM/内存与JVM.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>内存与JVM</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">java基础</span>
-                                            
-                                                <span class="tag is-post-tag">JVM</span>
-                                            
-                                                <span class="tag is-post-tag">内存</span>
-                                            
-                                        </p>
-                                        <p>
-                                            自己一边看书一边实践一边整理下来的知识思维导向图，个人感觉能够掌握自动内存管理机制、高效并发并加以应用，理解虚拟机执行子系统、程序编译与代码优化，才可以说熟悉JVM。
-
-                                        </p>
-                                        <p>2018-07-23</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/07/22/zk分布式任务队列交互设计/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/07/22/zk分布式任务队列交互设计/zk_path设计.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>zk分布式任务队列交互设计</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">zookeeper</span>
-                                            
-                                                <span class="tag is-post-tag">分布式</span>
-                                            
-                                                <span class="tag is-post-tag">队列</span>
-                                            
-                                        </p>
-                                        <p>
-                                            项目地址：https://github.com/super-sean/task-pipeline 
-背景近来公司业务上越来越多的跨进程比较耗时计算的场景出现，想用异步通信来解决长时间资源占用及等待问题，而基于多方的探讨，不考虑采用mina和netty这种异步通信的框架，最后决定使用zookeeper来实现
-目的异步进行耗时较长的复杂计算请求，可随时获取请..
-                                        </p>
-                                        <p>2018-07-22</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                <!--翻頁-->
-                <nav class="pagination is-flex" style="justify-content: flex-end">
-                    
-                        
-                            <a class="pagination-previous" href="/">Previous</a>
-                        
-                        
-                    
-                </nav>
-            </section>
-            
-                <style>
-    /*user info start*/
-    .user-info {
-        padding: 15px 0 0;
-    }
-
-    .user-info .avatar {
-        width: 155px;
-        height: 155px;
+    .post-avatar {
+        height: 30px;
+        width: 30px;
         border-radius: 50%;
     }
 
-    .sns-container {
-        flex-wrap: wrap;
-    }
-
-    .sns-container a{
-        color: black;
-    }
-    /*user info end*/
-
-    /*Tag start*/
-    #tag_cloud .tags-item{
-        display: inline-block;
-        color: #000;
-        border: 1px solid gray;
-
-        margin: 4px 2px;
-        padding: 0 4px;
-        border-radius: 6px;
-    }
-    /*Tag end*/
-
-    /*Site box start*/
-    .site-box {
-        height: 60px;
-    }
-    /*Site box end*/
-
-    .category-list-item,
-    .archive-list-item {
-        display: flex;
-        margin-bottom: 4px;
-        justify-content: space-between;
-    }
-    .category-list-link,
-    .archive-list-link {
-        color: black;
-    }
-
-    .category-list-count,
-    .archive-list-count {
-        width: 32px;
+    .flow-chart {
         text-align: center;
-        border-radius: 4px;
-        color: #fff;
-        background-color: gray;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
     }
 </style>
-<aside class="column is-hidden-touch is-3" style="max-width: 280px; min-width: 230px">
-    <div class="content-box user-info">
-        <div class="has-padding">
-            <header class="has-text-centered">
-                <img class="avatar" src="https://wt.sinaimg.cn/thumb300/6962f50egw1f4g40ndwlsj20ku0rsq8l.jpg?tags=%5B%5D">
-            </header>
-            <section class="has-text-centered">
-                <h3><strong>Sean</strong></h3>
-                <p class="sub-title">今天加油，明天加油</p>
-                
-                <p class="is-flex center" style=" color: gray">
-                    <i class="fa fa-map-marker" style="padding: 5px"></i>
-                    Earth
-                </p>
-                
-            </section>
-        </div>
-        <div class="top-line">
-            <ul class="sns-container justify-center is-flex has-padding">
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://github.com/Sean">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                    </a>
-                </li>
-                
-
-                
-            </ul>
-        </div>
-    </div>
-    <div class="content-box">
-        <!--post数量和tag category 数量-->
-        <div class="site-box is-flex">
-            <div class="flex-1 is-flex flex-column center full-height right-line">
-                <strong>17</strong>
-                <p>Posts</p>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+<span style="display:none" id="/2019/12/22/赛程-活动-榜单模板实现方案-一/" class="leancloud_visitors"   data-flag-title="赛程-活动-榜单模板实现方案(一)"> </span>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>赛程-活动-榜单模板实现方案(一)</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://wt.sinaimg.cn/thumb300/6962f50egw1f4g40ndwlsj20ku0rsq8l.jpg?tags=%5B%5D">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Sean</span>
+                <span class="post-date sub-title">at: 2019-12-22</span>
             </div>
-            <div class="flex-1 is-flex flex-column center full-height">
-                <strong>22</strong>
-                <p>Tags</p>
-            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/架构/">架构</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/商业化/">商业化</a>
+                    
+                </div>
+            
         </div>
-    </div>
-    <div id='tag_cloud' class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Tags</strong>
+        <div class="content" style="overflow: auto">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>继<a href="/2019/10/20/商业化产品规划与服务架构思考/">商业化产品架构及技术规划</a>后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。由于身在业务部门，不可能本末倒置，在业务能够按计划发展的同时进行技术沉淀是最好的方向。个人的思路是很多事情都不是一蹴而就，模块先划分好，每个模块贴合业务迭代进行技术迭代。  </p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>其实无论商业化还是普通平台都比较大机率会有赛程/活动/榜单的运营需求，以往本人所在的团队有这种需求的时候有两种运作方式，一种是定向开发，来一个做一个，做完就丢，一种是使用另外一个部门的公共活动模板。这其中定向开发的自然不用说有什么问题，使用公共活动模板本身没什么问题，但是问题是跨团队跨部门，当运营有超出公共活动模板本身能力需求的时候，就会满足不了，跨部门进行支持的话还会带来几个问题，主要是后期维护及责任边界问题，还有服务升级的问题对原有的功能影响，故此决定着手做适合自己部门特性的模板服务。   </p>
+<p>契机刚好是在有年底活动需求，评估需求定向开发工作量及模板开发工作量相关不会太多，决定于这个项目落地第一期的设计。  </p>
+<h2 id="实体划分"><a href="#实体划分" class="headerlink" title="实体划分"></a>实体划分</h2><p>由于个人所在公司是做媒体UGC平台，当然模板本身的设计不会受这个影响，只是举例方面我会用平台特性来讲解。<br><img src="/2019/12/22/赛程-活动-榜单模板实现方案-一/实体属性抽象.png" title="实体属性抽象">  </p>
+<p>根据特性，先抽象成赛制/活动/榜单三种实体，赛制一对多活动，活动一对多榜单，榜单可脱离赛制/活动独立存在，活动可脱离赛制。活动有模块概念，一个活动模块可以有多种类型，其中一种榜单，本次主要也是先实现榜单类型。  </p>
+<h3 id="榜单属性说明"><a href="#榜单属性说明" class="headerlink" title="榜单属性说明"></a>榜单属性说明</h3><h4 id="展示类型"><a href="#展示类型" class="headerlink" title="展示类型"></a>展示类型</h4><p>根据本次需求有pk榜/普通排行榜，其实只要是榜单，都是普通排行榜+不同的展示形式，pk榜便是多了pk组及PK指标信息。</p>
+<img src="/2019/12/22/赛程-活动-榜单模板实现方案-一/pk组原型.png" title="pk组原型">   
+<h4 id="元数据结构"><a href="#元数据结构" class="headerlink" title="元数据结构"></a>元数据结构</h4><p>榜单是本次项目的承载核心，主要包括基本信息、指标等元数据。</p>
+<p>榜单基本信息表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `ranking_list` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;榜单id&apos;,  </span><br><span class="line">  `biz_type` smallint(6) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务类型&apos;,</span><br><span class="line">  `biz_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;业务名称&apos;,</span><br><span class="line">  `name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;榜单名称&apos;,</span><br><span class="line">  `rank_type` smallint(6) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;0:列表榜单,1:PK榜&apos;,</span><br><span class="line">  `start_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;开始时间&apos;,</span><br><span class="line">  `end_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;结束时间&apos;,</span><br><span class="line">  `opt_type` bit(10)  NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;数值操作类型，低位第一位表示是否需要自动淘汰，第二表示是否业务结算&apos;,</span><br><span class="line">  `opt_time_type` int(2)  NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;数值按操作类型执行频率类型，0为不指定，1为每小时，2为每天，3为每周，4为每月，5为每年，6为指定时间（最小粒度小时）&apos;,</span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;状态：0-正常 1-下架 2-系统结算中 3-业务结算中&apos;,</span><br><span class="line">  `extra` varchar(1000) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;扩展参数，json格式存储，比如自动淘汰相关参数，榜单分块展示信息等&apos;,</span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;通用排行榜&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>指标信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `activity_indicator` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;指标id&apos;,</span><br><span class="line">  `biz_type` smallint(6) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务类型&apos;,</span><br><span class="line">  `sub_biz_type` smallint(6) NOT NULL DEFAULT 0 COMMENT &apos;业务子类型，用来区分具体的指标类型&apos;</span><br><span class="line">  `biz_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;业务名称&apos;,</span><br><span class="line">  `item_id` bigint(20) NOT NULL COMMENT &apos;元素id，如榜单id&apos;,  </span><br><span class="line">  `name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;指标名称&apos;,</span><br><span class="line">  `prefix_unit_name` varchar(20) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;前置指标单位&apos;,</span><br><span class="line">  `suffix_unit_name` varchar(20) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;后置置指标单位&apos;,</span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;状态：0-正常 1-下架&apos;,  </span><br><span class="line">  `seq` smallint(3) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;序号&apos;,  </span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `idx_item` (`item_id`) USING BTREE,</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;通用活动指标&apos;;</span><br></pre></td></tr></table></figure>
+<p>指标来源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `activity_indicator_source` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;来源id&apos;,</span><br><span class="line">  `indicator_id` bigint(20) NOT NULL COMMENT &apos;记录id&apos;,</span><br><span class="line">  `source_type` int(10)  NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;指标来源类型，1表示xxx，2表示xxx，3表示xxx&apos;,  </span><br><span class="line">  `extra` varchar(500) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;扩展参数，json格式存储，比如来源的计算规则&apos;,</span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;状态：0-正常 1-下架&apos;,  </span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  INDEX `idx_indicator_id_source_type`(`indicator_id`, `source_type`) USING BTREE</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;通用活动指标来源&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>PK分组元信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `ranking_list_pk_group_info` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;分组id&apos;,   </span><br><span class="line">  `biz_type` smallint(6) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务类型&apos;,</span><br><span class="line">  `biz_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;业务名称&apos;,  </span><br><span class="line">  `item_id` bigint(20) NOT NULL COMMENT &apos;元素id，如榜单id&apos;,  </span><br><span class="line">  `name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;小组名称&apos;,</span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;状态：0-正常 1-下架&apos;,  </span><br><span class="line">  `seq` smallint(3) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;序号&apos;,  </span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  INDEX `idx_item_id`(`item_id`) USING BTREE</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;排行pk分组元信息&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>PK分组成员信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `ranking_list_pk_group_member_info` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;小组成员信息记录id&apos;,   </span><br><span class="line">  `group_id` bigint(20) NOT NULL COMMENT &apos;分组id&apos;,  </span><br><span class="line">  `target_id` bigint(20) NOT NULL COMMENT &apos;对象id&apos;,        </span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;状态：0-正常 1-下架&apos;,  </span><br><span class="line">  `seq` smallint(3) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;序号&apos;,  </span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  INDEX `idx_group_id_target_id`(`group_id`, `target_id`) USING BTREE</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;pk分组成员信息&apos;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象池"><a href="#对象池" class="headerlink" title="对象池"></a>对象池</h3><p>榜单从参与者角度来说分为无限及有限两种需求场景，本次需求主要为有限场景。其实很多业务会用到关联对象这个概念，比如本次的活动榜单参与者，流量入口的指定者等等。  </p>
+<p>表设计<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `common_target_pool` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;记录id&apos;,</span><br><span class="line">  `biz_type` smallint(6) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务类型&apos;,</span><br><span class="line">  `biz_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;业务名称&apos;,</span><br><span class="line">  `item_id` bigint(20) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务元素id&apos;,</span><br><span class="line">  `target_type` smallint(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务目标类型&apos;,</span><br><span class="line">  `target_id` bigint(20) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;目标id&apos;,</span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;状态：0-正常 1-下架&apos;,</span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `idx_biz_item` (`biz_type`,`item_id`) USING BTREE,</span><br><span class="line">  KEY `idx_biz_target` (`biz_type`,`target_id`) USING BTREE</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;通用目标关联池&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>对象池作为通用模块读多写少，缓存层按CAP（cache aside pattern）来设计。<br>根据数据量大小做对应的分表策略，分表策略及实践另外文章再谈。  </p>
+<h3 id="数值服务"><a href="#数值服务" class="headerlink" title="数值服务"></a>数值服务</h3><p>榜单最基本的功能之一就是数值累加，刚好我们接下来也有积分相关的需求，所以也趁着这次抽象出来。数值服务的职能提供数值增加/减少/排序服务，是一个写多/读多的服务。</p>
+<p>表设计<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `common_value_pool` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;记录id&apos;,</span><br><span class="line">  `biz_type` smallint(6) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务类型&apos;,</span><br><span class="line">  `biz_sub_type` smallint(6) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务子类型&apos;,</span><br><span class="line">  `biz_name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;业务名称&apos;,</span><br><span class="line">  `item_id` bigint(20) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务元素id&apos;,</span><br><span class="line">  `target_type` smallint(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;业务目标类型&apos;,</span><br><span class="line">  `target_id` bigint(20) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;目标id&apos;,</span><br><span class="line">  `target_value` bigint(20) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;目标值&apos;,</span><br><span class="line">  `seq` int(11) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;排序&apos;,</span><br><span class="line">  `opt_start_time` datetime  NOT NULL DEFAULT &apos;2019-01-01&apos; COMMENT &apos;数值可操作开始时间&apos;,</span><br><span class="line">  `opt_end_time` datetime  NOT NULL DEFAULT &apos;2119-01-01&apos; COMMENT &apos;数值可操作结束时间&apos;,</span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;状态：0-正常 1-下架&apos;,</span><br><span class="line">  `action_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;行为时间&apos;,</span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `idx_biz_item` (`biz_type`,`item_id`) USING BTREE,</span><br><span class="line">  KEY `idx_biz_target` (`biz_type`,`target_id`) USING BTREE</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;通用数值池&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>数值服务读取数据方面也是使用缓存CAP设计，难度主要是在写方面，重点如下:  </p>
+<ul>
+<li>由于是面向通用服务开发，所以使用消息异步写的方法，使用有界线程池限定服务支撑量，超过服务支撑量的请求丢到待处理请求池，如果待处理请求池写入失败，丢回队列重新排队，风险是有可能会造成消息堆积  </li>
+<li>幂等控制。接口预留业务传入会话id，以会话id为维度进行控制</li>
+<li>数值变更安全问题使用原始值加版本号乐观锁设计。数值加减涉及先读后写，在写入前需要对比原始值，避免ABA问题，使用版本号。</li>
+<li>为保证数值安全在并发高的时候有比较大的机率会出现操作失败，而对于业务来说，不应该让业务处理并发失败的结果，返回处理中状态，记录并发失败数据，使用定时补偿策略。  </li>
+</ul>
+<h3 id="活动"><a href="#活动" class="headerlink" title="活动"></a>活动</h3><p>活动本身没什么，除了基本属性就是预留模块的概念，本次主要是榜单和奖金池(对应榜单的总数加和)。</p>
+<p>活动模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `activity_module_info` (</span><br><span class="line">  `id` bigint(20) NOT NULL COMMENT &apos;记录id&apos;,  </span><br><span class="line">  `acivity_id` bigint(20) NOT NULL DEFAULT 0 COMMENT &apos;活动id&apos;,  </span><br><span class="line">  `module_group` smallint(2) NOT NULL DEFAULT 0 COMMENT &apos;模块组&apos;,  </span><br><span class="line">  `module_type` smallint(2) NOT NULL DEFAULT 0 COMMENT &apos;模块类型，1为榜单&apos;,  </span><br><span class="line">  `module_seq` smallint(2) NOT NULL DEFAULT 0 COMMENT &apos;模块排序&apos;,</span><br><span class="line">  `target_id` bigint(20) NOT NULL DEFAULT 0 COMMENT &apos;关联对象id，当type为1，为榜单id&apos;,  </span><br><span class="line">  `target_seq` smallint(2) NOT NULL DEFAULT 0 COMMENT &apos;关联对象排序&apos;,  </span><br><span class="line">  `status` smallint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;状态：0-正常 1-下架&apos;,</span><br><span class="line">  `extra` varchar(1000) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;扩展参数，json格式存储&apos;,</span><br><span class="line">  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最后更新时间&apos;,</span><br><span class="line">  `last_operator_id` bigint(20) NOT NULL COMMENT &apos;最后更新人id&apos;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;活动模块信息&apos;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="人工干预"><a href="#人工干预" class="headerlink" title="人工干预"></a>人工干预</h3><p>做榜单很常见的就会有人工干预的需求，比如榜单初始值等，或者“运营手段”策略支持也有，这里我们抽象了人工干预的常用属性，目标值/平均数/次数/频率/总时长 进行控制。基本上对数值的干预用以上属性能够覆盖许多需求了。  </p>
+<h2 id="模块交互"><a href="#模块交互" class="headerlink" title="模块交互"></a>模块交互</h2><p>简单的模块如下<br><img src="/2019/12/22/赛程-活动-榜单模板实现方案-一/服务层次.jpg" title="服务层次">  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次服务己上线，稳定运行。本次主要是针对服务端进行设计优化，前端还未接入，还是有很大一部分定向开发，在下次活动需求来之时，将后台及前端进行接入和服务端进行完善。</p>
+
         </div>
-        <div class="content-inner is-flex flex-wrap justify-space-between">
+        <div class="post-reply">
             
-                <a class="tags-item" href="tags/qcon/" title="qcon" rel="1">
-                    qcon
-                </a>
-            
-                <a class="tags-item" href="tags/zookeeper/" title="zookeeper" rel="1">
-                    zookeeper
-                </a>
-            
-                <a class="tags-item" href="tags/分布式/" title="分布式" rel="2">
-                    分布式
-                </a>
-            
-                <a class="tags-item" href="tags/队列/" title="队列" rel="1">
-                    队列
-                </a>
-            
-                <a class="tags-item" href="tags/java基础/" title="java基础" rel="4">
-                    java基础
-                </a>
-            
-                <a class="tags-item" href="tags/JVM/" title="JVM" rel="4">
-                    JVM
-                </a>
-            
-                <a class="tags-item" href="tags/内存/" title="内存" rel="3">
-                    内存
-                </a>
-            
-                <a class="tags-item" href="tags/mybatis/" title="mybatis" rel="1">
-                    mybatis
-                </a>
-            
-                <a class="tags-item" href="tags/动态解析/" title="动态解析" rel="1">
-                    动态解析
-                </a>
-            
-                <a class="tags-item" href="tags/实时流/" title="实时流" rel="1">
-                    实时流
-                </a>
-            
-                <a class="tags-item" href="tags/spring/" title="spring" rel="1">
-                    spring
-                </a>
-            
-                <a class="tags-item" href="tags/kafka/" title="kafka" rel="1">
-                    kafka
-                </a>
-            
-                <a class="tags-item" href="tags/架构/" title="架构" rel="5">
-                    架构
-                </a>
-            
-                <a class="tags-item" href="tags/serviceless/" title="serviceless" rel="1">
-                    serviceless
-                </a>
-            
-                <a class="tags-item" href="tags/数据平台/" title="数据平台" rel="3">
-                    数据平台
-                </a>
-            
-                <a class="tags-item" href="tags/JAVA基础/" title="JAVA基础" rel="2">
-                    JAVA基础
-                </a>
-            
-                <a class="tags-item" href="tags/优化/" title="优化" rel="1">
-                    优化
-                </a>
-            
-                <a class="tags-item" href="tags/设计模式/" title="设计模式" rel="1">
-                    设计模式
-                </a>
-            
-                <a class="tags-item" href="tags/ETL/" title="ETL" rel="1">
-                    ETL
-                </a>
-            
-                <a class="tags-item" href="tags/并发编程/" title="并发编程" rel="1">
-                    并发编程
-                </a>
-            
-                <a class="tags-item" href="tags/数据分析/" title="数据分析" rel="1">
-                    数据分析
-                </a>
-            
-                <a class="tags-item" href="tags/商业化/" title="商业化" rel="1">
-                    商业化
-                </a>
             
         </div>
     </div>
-    <div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Categories</strong>
-        </div>
-        <div class="content-inner">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
-        </div>
-    </div>
-    <div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Archives</strong>
-        </div>
-        <div class="content-inner">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-</aside>
-            
-        </div>
-    </div>
-</div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+
+<!-- for code block highlight --> 
+<!-- theme.block_highlight -->
+<!-- we do not guarantee the char sequences spell right, usr himself do it -->
+<link rel="stylesheet" href="/css/highlight_rainbow.css">
+<script src="/js/highlight.min.js"></script>
+<script type="text/javascript"> hljs.initHighlightingOnLoad();</script>
 
       </div>
   </div>

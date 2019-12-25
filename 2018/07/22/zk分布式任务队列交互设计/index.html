@@ -93,7 +93,7 @@ $(function() {
   <title>zk分布式任务队列交互设计 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="项目地址：https://github.com/super-sean/task-pipeline  背景近来公司业务上越来越多的跨进程比较耗时计算的场景出现，想用异步通信来解决长时间资源占用及等待问题，而基于多方的探讨，不考虑采用mina和netty这种异步通信的框架，最后决定使用zookeeper来实现 目的异步进行耗时较长的复杂计算请求，可随时获取请求执行进度 实现思路 将这种请求的发起者当作">
-<meta name="keywords" content="分布式,zookeeper,队列">
+<meta name="keywords" content="zookeeper,分布式,队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zk分布式任务队列交互设计">
 <meta property="og:url" content="https://super-sean.github.io/2018/07/22/zk分布式任务队列交互设计/index.html">
@@ -224,9 +224,9 @@ $(function() {
             
                 <div>
                     
-                         <a class="tag is-post-tag" href="/tags/分布式/">分布式</a>
-                    
                          <a class="tag is-post-tag" href="/tags/zookeeper/">zookeeper</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/分布式/">分布式</a>
                     
                          <a class="tag is-post-tag" href="/tags/队列/">队列</a>
                     
