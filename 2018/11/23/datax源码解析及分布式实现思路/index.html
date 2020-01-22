@@ -281,6 +281,21 @@ $(function() {
 <link rel="stylesheet" href="/css/highlight_rainbow.css">
 <script src="/js/highlight.min.js"></script>
 <script type="text/javascript"> hljs.initHighlightingOnLoad();</script>
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: location.href,
+  owner: 'super-sean',  //改你自己的名字
+  repo: 'Comments',  //专门储存评论一个GitHub仓库
+  oauth: {
+    client_id: 'a710709ad5c2feffe903', //改为你自己的，下同
+    client_secret: 'a90e59cd60d2b5843eaf1f6cbcea05ae9a79b22c', 
+  },
+})
+gitment.render('comment-container')
+</script>
 
       </div>
   </div>
@@ -302,14 +317,13 @@ $(function() {
         <!--请您保留作者署名, 主题制作来之不易-->
         Theme by <a href="https://github.com/haojen">Haojen Ma</a>
         <br>
-        Copyright © Sean 2019
+        Copyright © Sean 2020
         <br>
         Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       </div>
     </div>
   </div>
 </footer>
-
 <script src="/js/search_core.js"></script>
 <script src="/js/script.js"></script>
 
