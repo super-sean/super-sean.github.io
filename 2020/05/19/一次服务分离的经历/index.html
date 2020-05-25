@@ -90,15 +90,27 @@ $(function() {
 </script>
 
   
-  <title>Archives | Sean&#39;s Blog</title>
+  <title>一次服务分离的经历 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="https://super-sean.github.io/archives/index.html">
+  <meta name="description" content="自从那次的迭代做完后（抽象优化交易服务的那个项目），公司刚好有个比较大型的服务分离项目需要支持，刚好业务上没那么忙，爱折腾的我义无反顾就加入了。一搞就搞了一个月有多，作为这个项目的一线执行角色回过头来总结一下自己所学习到的内容。 背景 一家公司旗下经常会有多个APP的情况，除去中台、基础服务等，一般业务服务在理想的情况下都应该是根据APP服务分离的，但是往往公司在全新子业务的验证上想要快，在技术上">
+<meta name="keywords" content="架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一次服务分离的经历">
+<meta property="og:url" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
+<meta property="og:description" content="自从那次的迭代做完后（抽象优化交易服务的那个项目），公司刚好有个比较大型的服务分离项目需要支持，刚好业务上没那么忙，爱折腾的我义无反顾就加入了。一搞就搞了一个月有多，作为这个项目的一线执行角色回过头来总结一下自己所学习到的内容。 背景 一家公司旗下经常会有多个APP的情况，除去中台、基础服务等，一般业务服务在理想的情况下都应该是根据APP服务分离的，但是往往公司在全新子业务的验证上想要快，在技术上">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/3.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/5.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/4.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/6.png">
+<meta property="og:updated_time" content="2020-05-25T12:13:32.647Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
+<meta name="twitter:title" content="一次服务分离的经历">
+<meta name="twitter:description" content="自从那次的迭代做完后（抽象优化交易服务的那个项目），公司刚好有个比较大型的服务分离项目需要支持，刚好业务上没那么忙，爱折腾的我义无反顾就加入了。一搞就搞了一个月有多，作为这个项目的一线执行角色回过头来总结一下自己所学习到的内容。 背景 一家公司旗下经常会有多个APP的情况，除去中台、基础服务等，一般业务服务在理想的情况下都应该是根据APP服务分离的，但是往往公司在全新子业务的验证上想要快，在技术上">
+<meta name="twitter:image" content="https://super-sean.github.io/2020/05/19/一次服务分离的经历/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -160,795 +172,173 @@ $(function() {
 
   <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
       <div class="main-inner-content">
-          <style>
-    .post-hover:hover {
-        box-shadow: inset 0 0 100px #000;
-        transition: box-shadow .2s;
-    }
+          <!--博文页面-->
 
-    .sub-post-container .post-hover:hover h3 {
-        text-decoration: underline gray;
-    }
-
-
-    .primary-item-main {
-        height: 330px;
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
         background-size: cover;
+        background-color: lightsteelblue;
     }
 
-    .primary-container .title,
-    .primary-container .sub-title,
-    .primary-container .post-content-text,
-    .primary-container .date {
-        color: #fff;
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
     }
 
-    .post-content-text {
-        color: #f1f1f1!important;
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
     }
 
-    .primary-container .post-hover {
-        background: black;
+    .flow-chart {
+        text-align: center;
     }
 
-    .content-bg-mask {
-        background: rgba(0,0,0,.4);
+    img[alt="post-cover"] {
+        display: none;
     }
-
 </style>
-
-<span style="display:none" id="/index" class="leancloud_visitors"   data-flag-title="首页"> </span>
-<div style="background: #f5f8f9;">
-    <div id="main-container" class="container" style="padding-top: 20px;">
-        <div class="is-flex main-content justify-center">
-            <section class="column is-9">
-                
-<div class="primary-container content-box is-flex-desktop clear-padding bottom-line" style="margin-bottom: 25px;">
-    <div class="column  is-7-desktop">
-        <a href="/2020/05/19/一次服务分离的经历/">
-            <div class="full-height post-hover"
-                 style="
-                         background-image: url('/2020/05/19/一次服务分离的经历/1.png');
-                         height: 350px;
-                         background-size: cover;
-                         background-repeat: no-repeat;
-                         ">
-                    <div class=" is-flex flex-column center content has-text-centered full-height has-padding content-bg-mask">
-                        <h1 class="title text-shadow" style="margin-bottom: 15px;">
-                            一次服务分离的经历
-                        </h1>
-                        <div>
-                        
-                            `
-                                <span class="tag is-post-tag">架构</span>
-                            
-                        
-                        </div>
-                        <p class="post-content-text is-marginless has-padding text-shadow">
-                            自从那次的迭代做完后（抽象优化交易服务的那个项目），公司刚好有个比较大型的服务分离项目需要支持，刚好业务上没那么忙，爱折腾的我义无反顾就加入了。一搞就搞了一个月有多，作为这个项目的一线执行角色回过头来总结一下自己所学习到的内容。
-背景
-..
-                        </p>
-                        <p class="date text-shadow">2020-05-19</p>
-                        <button class="button is-info is-small">Read More</button>
-                    </div>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+<span style="display:none" id="/2020/05/19/一次服务分离的经历/" class="leancloud_visitors"   data-flag-title="一次服务分离的经历"> </span>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>一次服务分离的经历</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://wt.sinaimg.cn/thumb300/6962f50egw1f4g40ndwlsj20ku0rsq8l.jpg?tags=%5B%5D">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Sean</span>
+                <span class="post-date sub-title">at: 2020-05-19</span>
             </div>
-        </a>
-    </div>
-    <div class="column is-5 is-hidden-touch" style="padding-left: 0;">
-        <div class="full-height is-flex flex-column justify-space-between" style="min-height: 350px;">
             
-                
-<a class="post-hover" href="/2020/03/31/通用交易服务架构设计/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2020/03/31/通用交易服务架构设计/商品管理.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                通用交易服务架构设计
-            </h3>
-            
-            
-            <span class="tag is-post-tag">架构</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                自从年前写了商业化、serverless和活动通用模板设计，又是几个月没写文章了，对不起自己。
-..
-            </p>
-            <p class="date text-shadow is-marginless">2020-03-31</p>
-        </div>
-    </div>
-</a>
-            
-            
-                
-<a class="post-hover" href="/2019/12/22/赛程-活动-榜单模板实现方案-一/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2019/12/22/赛程-活动-榜单模板实现方案-一/实体属性抽象.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                赛程-活动-榜单模板实现方案(一)
-            </h3>
-            
-            
-            <span class="tag is-post-tag">架构</span>
-            
-            <span class="tag is-post-tag">商业化</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                前言继商业化产品架构及技术规划后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。..
-            </p>
-            <p class="date text-shadow is-marginless">2019-12-22</p>
-        </div>
-    </div>
-</a>
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/架构/">架构</a>
+                    
+                </div>
             
         </div>
-    </div>
-    <div class="column is-12 is-hidden-desktop">
-        
-        
-<a class="post-hover" href="/2020/03/31/通用交易服务架构设计/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2020/03/31/通用交易服务架构设计/商品管理.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                通用交易服务架构设计
-            </h3>
-            
-            
-            <span class="tag is-post-tag">架构</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                自从年前写了商业化、serverless和活动通用模板设计，又是几个月没写文章了，对不起自己。
-..
-            </p>
-            <p class="date text-shadow is-marginless">2020-03-31</p>
-        </div>
-    </div>
-</a>
-        
-        
-        
-<a class="post-hover" href="/2019/12/22/赛程-活动-榜单模板实现方案-一/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2019/12/22/赛程-活动-榜单模板实现方案-一/实体属性抽象.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                赛程-活动-榜单模板实现方案(一)
-            </h3>
-            
-            
-            <span class="tag is-post-tag">架构</span>
-            
-            <span class="tag is-post-tag">商业化</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                前言继商业化产品架构及技术规划后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。..
-            </p>
-            <p class="date text-shadow is-marginless">2019-12-22</p>
-        </div>
-    </div>
-</a>
-        
-    </div>
-</div>
+        <div class="content" style="overflow: auto">
+            <p>自从那次的迭代做完后（抽象优化交易服务的那个项目），公司刚好有个比较大型的服务分离项目需要支持，刚好业务上没那么忙，爱折腾的我义无反顾就加入了。一搞就搞了一个月有多，作为这个项目的一线执行角色回过头来总结一下自己所学习到的内容。</p>
+<h1><span id="背景">背景</span></h1>
+<p>一家公司旗下经常会有多个APP的情况，除去中台、基础服务等，一般业务服务在理想的情况下都应该是根据APP服务分离的，但是往往公司在全新子业务的验证上想要快，在技术上可能会做出一些让步，比如两个团队共用项目，一些两个app都能用的功能就共用，需要区分的业务的时候在代码里面硬编码逻辑分支。刚好这次接触的项目是这种情况，涉及的规模比较大，有80个左右服务需要处理及一些旧服务处理，总的来说超过百个相关服务。</p>
+<img src="/2020/05/19/一次服务分离的经历/1.png">
+<p>主业务就是核心业务应用APP，子业务就是独立子APP，接入器可以简单理解为对外网关服务（我们公司用的长链，自研接入层）。两个环境通信通过自研内部网关服务。<br>
+这样的架构会存在以下问题:</p>
+<ul>
+<li>服务质量问题，整条链路某个环节一出问题便互相两个app，不管是哪方出的问题。</li>
+<li>业务发展相互制约，多个团队多个需求难免会有冲突的时候，在迭代过程需要考虑的成本较大。</li>
+<li>代码膨胀问题，由于两边的业务特性不同，会有很多硬编码的情况存在。</li>
+</ul>
+<h1><span id="渐进式还是一刀切">渐进式还是一刀切？</span></h1>
+<p>其实一般来说，从稳健推进的角度来说，可能会很多人想选择渐进式迁移，但是我们这个项目最终决策者选择了一刀切，经过了解，主要理由有如下：</p>
+<ul>
+<li>业务一边快速发展，一边迁移的话基本很难操作，有可能会分离的不干净  ，返工机率可能也会比较大。</li>
+<li>时间线会被拉得很长，而来自团队内外的压力，要求着得快速根本的解决存在的问题。</li>
+</ul>
+<h1><span id="解决方案">解决方案</span></h1>
+<img src="/2020/05/19/一次服务分离的经历/2.png">
+<h2><span id="三个环境">三个环境</span></h2>
+<p>可以看到增加多一个全新的子业务环境，这样做的目的主要是减少迁移工作对正在进行的子业务迭代的影响，迁移工作可以独立的进行，不影响子业务正常迭代。</p>
+<h2><span id="独立环境相关工作">独立环境相关工作</span></h2>
+<ul>
+<li>独立外部网关及协议梳理和web入口域名梳理</li>
+<li>fork业务项目代码并按规则修改项目名</li>
+<li>新项目代码改造
+<ul>
+<li>接口服务限定名改造，上游调用者改造（cat）</li>
+<li>消息消费链路改造,生产者及消费者(grafana)</li>
+<li>修改相关启动脚本</li>
+<li>移除会对主业务有影响的但是对子业务无用的相关模块，比如quartz定时任务</li>
+</ul>
+</li>
+<li>配置分离（apollo配置中心）</li>
+<li>存储分离 （统一修改数据源相关元数据）
+<ul>
+<li>redis</li>
+<li>mysql</li>
+<li>memcached</li>
+</ul>
+</li>
+<li>xxl-job任务迁移</li>
+<li>主业务服务调用子业务服务调用链的清理（cat）</li>
+</ul>
+<h1><span id="推进过程核心问题">推进过程核心问题</span></h1>
+<h2><span id="测试环境问题">测试环境问题</span></h2>
+<p>按环境来讲，我们推进的节奏是 预发-&gt; 线上-&gt;开发。直接使用预发环境进行子业务的测试回归，主要是因为我们公司的开发环境是自研的一套持续集成的管理平台，对接有一定成本，在相关的压力下，最终选择了这样的节奏。</p>
+<h2><span id="上线前子业务是否要将旧环境停服">上线前子业务是否要将旧环境停服</span></h2>
+<p>为了避免对数据层的影响以及避免消息重复消费问题，决定还是得把旧环境的服务都停掉</p>
+<h2><span id="存储层操作节奏">存储层操作节奏</span></h2>
+<ul>
+<li>存储第一次同步（将旧环境相应服务的相关存储同步一份到新的存储层）</li>
+<li>断开同步</li>
+<li>进行新环境预发测试及线上测试</li>
+<li>将新环境预发及线上服务全部关停</li>
+<li>清除所有数据重新同步</li>
+<li>同步完成之后，在新环境未正式上线前保持增量同步</li>
+<li>新环境正式上线后断开增量同步</li>
+</ul>
+<h2><span id="基础服务配合问题">基础服务配合问题</span></h2>
+<p>关于基础服务调用业务相关接口的情况，在预发环境测试过程没有大的问题，可当我们需要在线上回归测试时，这个时候得要基础服务上线才能测，可基础服务上线生产环境的流量是不能调用新环境的服务。使用了流量开关加白名单的方式来处理，基础服务及业务服务双方都针对性的加上。<br>
+测试阶段开关打开，只放行测试流量到新环境，其它流量都走原来的通道。</p>
+<img src="/2020/05/19/一次服务分离的经历/3.png">
+<p>上线阶段开关关闭，基础服务区分主/子业务流量，子业务流量全部走新环境。</p>
+<img src="/2020/05/19/一次服务分离的经历/5.png">
+<p>开关详细逻辑如下:</p>
+<img src="/2020/05/19/一次服务分离的经历/4.png">
+<h2><span id="主业务服务对子业务旧环境的调用链处理">主业务服务对子业务旧环境的调用链处理</span></h2>
+<h3><span id="梳理">梳理</span></h3>
+<p>由于我们公司rpc框架是基于dubbo做的二次开发，跨环境调用都是通过内部网关服务，有日志可追踪，可以看到调用provider的全限定名，然后通过cat二次开发的cross功能进行上游排查，再通过机器ip所属环境及代码定位判断是否有区分业务流量调用，没有的需要补上。</p>
+<h3><span id="移除">移除</span></h3>
+<p>主业务对子业务服务的依赖链路，能去掉得尽量去掉，必要时候业务需要做出一定的牺牲。</p>
+<h3><span id="保留及改造">保留及改造</span></h3>
+<p>去不掉的调用，存在两个问题</p>
+<h4><span id="调整环境访问顺序">调整环境访问顺序</span></h4>
+<p>主业务环境对子业务服务的请求，假设子业务服务不改服务限定名的情况下，会在子业务新旧环境乱窜，所以需要处理环境调用优先级问题。所幸，我们公司对基于dubbo封装的rpc框架上支持这样的特性，针对项目级别的可配置。其实主要是利用了dubbo provider的前缀来与网关访问的环境绑定。大体流程如下：</p>
+<img src="/2020/05/19/一次服务分离的经历/6.png">
+<h4><span id="停服的兼容处理">停服的兼容处理</span></h4>
+<p>子业务旧环境上线时需要停服，针对无法移除的大流量接口需要添加流量屏蔽开关，并在停服前打开，上线完成后关闭。</p>
+<h2><span id="消息通信改造">消息通信改造</span></h2>
+<p>我们公司业务上大多用的kafka进行消息通信，在迁移的项目中，我们需要去梳理使用到的内外部流程的topic，内部流程的topic一律改名字重新开通，外部流程topic（旧环境的服务也一样会监听）修改group，一样加开关及白名单进行测试避免重复消费，涉及基础服务的也是改topic，区分逻辑处理，也是加开关和白名单进行消费，具体见 基础服务配合问题 的流程。</p>
+<h1><span id="补充">补充</span></h1>
+<h2><span id="把不确定项尽早确定">把不确定项尽早确定</span></h2>
+<p>在开始的阶段，其实项目负责人是给不出具体的计划的，直到我们梳理出跨环境调用链，kafka消息改造，需要迁移的存储列表、涉及的网关协议及域名列表等才能确定最终的计划。当然这些事项每一项单独拎出来都是需要一定的时间去梳理的。团队的兄弟们确实也给力。</p>
+<h2><span id="繁杂的跟进事项">繁杂的跟进事项</span></h2>
+<p>事情很多，而且涉及人员很多，基本上我们做的每个环节都在一个在线文档进行统一的备注跟进，每个tab是单独一个文档，每个文档基本上都有很多内容，但是梳理清楚，分清楚负责人，大家做起事情来都有条不紊。</p>
+<h2><span id="减少变化的风险">减少变化的风险</span></h2>
+<p>前期工作做得比较充分，其实在过程紧急的变化项并不多，基本上项目进度都比较健康。</p>
+<h2><span id="注重细节">注重细节</span></h2>
+<p>比较佩服项目负责人的一点是，把计划细节都梳理很清晰。比如说我们因为要停服，是凌晨上线的，需要通宵，那么他会安排前一天休息，上完线后的排班人员，另外给通宵的成员争取一天调休，整体上线前后的细节考虑得很周到。</p>
+<h1><span id="arthas">Arthas</span></h1>
+<p>我在这个项目中推动了项目成员使用arthas，也算是第一次在项目中比较频繁及较深入的使用解决问题，效果很不错，最近打算学习一下arthas源码，后面再出写一个arthas的源码解读。</p>
 
-                    
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2020/03/31/通用交易服务架构设计/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2020/03/31/通用交易服务架构设计/商品管理.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>通用交易服务架构设计</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                        </p>
-                                        <p>
-                                            自从年前写了商业化、serverless和活动通用模板设计，又是几个月没写文章了，对不起自己。
-刚好年后一复工就来一个比较大的项目，忙到3月下旬才算是竣工。btw，活动通用模板被坑了应该是没后续了，
-后来经过了解，是有现成服务可对接的，之前听产品说不适合就没多加了解，还是万事留个心，多了解一下。
-背景
-在开始做商业化需求实现时，发现APP内有不少其它交易..
-                                        </p>
-                                        <p>2020-03-31</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/12/22/赛程-活动-榜单模板实现方案-一/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/12/22/赛程-活动-榜单模板实现方案-一/实体属性抽象.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>赛程-活动-榜单模板实现方案(一)</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                                <span class="tag is-post-tag">商业化</span>
-                                            
-                                        </p>
-                                        <p>
-                                            前言继商业化产品架构及技术规划后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。由于身在业务部门，不可能本末倒置，在业务能够按计划发展的同时进行技术沉淀是最好的方向。个人的思路是很多事情都不是一蹴而就，模块先划分好，每个模块贴合业务迭代进行技术迭代。  
-背景其实无论商业化还是普通平台都比较大机率会有赛程/活动/榜单的运营需求，以往本人所..
-                                        </p>
-                                        <p>2019-12-22</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/10/20/商业化产品规划与服务架构思考/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/10/20/商业化产品规划与服务架构思考/busi_product_module.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>商业化产品规划与服务架构思考</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景近来有幸负责了公司自己部门一个商业化小组的研发事项，结合自己的工作经验对产品将来走向和服务架构规划梳理自己的见解，希望可以让小组目标一致，高效地进行积累进行沉淀。  
-业务理解及规划按个人愚见商业化前期主要分为几个核心模块，GMV短期快速增长/基础设施搭建/用户消费习惯培养/渠道引流变现能力，每个模块并非独立，而是相互交叉相互依赖。
-
-GMV短期快速..
-                                        </p>
-                                        <p>2019-10-20</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/09/16/一种serverless的实现方案/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/09/16/一种serverless的实现方案/vod_serviceless.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>一种serverless的实现方案</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                                <span class="tag is-post-tag">serviceless</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景自从上次参加qcon开发者大会，一直在思考serviceless的可执行方案，一路上也在公司推进中，虽然进度有点慢，没办法，业务太忙了。。。  
-架构总览  
-服务模块网关需要实现配置化扩展及热更新接口服务，主要需要支持数据的curd场景。抽象的说其实只有2种场景，就是数据的查询和变更。    
-抽象交互场景，制定一套接口使用规范  
-查询查询一般分..
-                                        </p>
-                                        <p>2019-09-16</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/07/14/Qcon广州站大会个人纪要/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/07/14/Qcon广州站大会个人纪要/p1.jpeg')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Qcon广州站</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">qcon</span>
-                                            
-                                        </p>
-                                        <p>
-                                            大会ppt下载地址
-&ensp; &ensp;&ensp; &ensp;今年5月27号在举行的qcon全球开发者大会广州站，在下有幸，公司安排参加，就着大会的内容，个人闲聊一下看法。（工作比较忙，导致拖了一个半月才回过头来聊这次大会）  
- 
- 
-Service Mesh&ensp; &ensp;&ensp; &ensp;qcon的大会安排是有不同卖场同..
-                                        </p>
-                                        <p>2019-07-14</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/07/06/一次App首页代码优化纪要/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/07/06/一次App首页代码优化纪要/WechatIMG167.jpeg')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>一次App首页代码优化纪要</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">JAVA基础</span>
-                                            
-                                                <span class="tag is-post-tag">优化</span>
-                                            
-                                                <span class="tag is-post-tag">设计模式</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景最近在负责公司APP首页性能优化相关项目，就着原来的技术方案及代码进行了重构，原来接口中存在的问题如下：  
-
-代码问题，瀑布式编码，导致单个类的代码很容易膨胀，最大体积的类已经快接近2000行代码，还是之前有优化过的。  
-代码问题，方法参数问题，方法参数没有封装，有一些通用方法的参数已经有十几个，不容易进行扩展，维护成本比较高。
-性能问题，由于涉..
-                                        </p>
-                                        <p>2019-07-06</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/05/19/GC问题解决的那些套路/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/05/19/GC问题解决的那些套路/crawler_old_GC_cause.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>GC问题解决的那些套路</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">java基础</span>
-                                            
-                                                <span class="tag is-post-tag">JVM</span>
-                                            
-                                                <span class="tag is-post-tag">内存</span>
-                                            
-                                        </p>
-                                        <p>
-                                            利器介绍&ensp; &ensp;&ensp; &ensp; gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io  
-简单问题GC异常&ensp; &ensp;&ensp; &ensp;主要是GC日志中有明确标明异常类型的情况，如&ensp; &ens..
-                                        </p>
-                                        <p>2019-05-19</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/05/15/基于solr服务提供通用配置化接口服务/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/05/15/基于solr服务提供通用配置化接口服务/architecture.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>基于solr服务提供通用配置化接口服务</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                                <span class="tag is-post-tag">数据平台</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景&ensp; &ensp;&ensp; &ensp;公司内部有基于solr搜索平台服务，在做需求的过程中，对接了搜索平台，发现可以将搜索平台的交互抽象并使用配置化的方式进行数据请求，这样一来，可以通过配置化的方式达到数据查询需求的快速实现，提高开发效率，于是进行了技术方案的设计与评估。  
-技术方案架构  
-时序图  
-类图  
-配置模板  
-项目落..
-                                        </p>
-                                        <p>2019-05-15</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/05/04/long-gc案例分析/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/05/04/long-gc案例分析/crawler_old_cms_stage_avg.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>long-gc案例分析</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">java基础</span>
-                                            
-                                                <span class="tag is-post-tag">JVM</span>
-                                            
-                                                <span class="tag is-post-tag">内存</span>
-                                            
-                                        </p>
-                                        <p>
-                                            long gc优化&ensp; &ensp;&ensp; &ensp;近来发现负责研发的项目总是会收到long-gc的告警，比如：  
-12345678910major GC: - 2 (No GC) start: 2019-05-06 06:18:47.678, end: 2019-05-06 06:18:53.125 [Par Survivor Sp..
-                                        </p>
-                                        <p>2019-05-04</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/02/09/创业团队那些事/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>创业团队那些事</h3>
-                                        
-                                        <p>
-                                            
-                                        </p>
-                                        <p>
-                                            &ensp; &ensp;&ensp; &ensp;近来由于忙着换工作和春节生活杂事安排很久没更新博客，原本想着年前写一篇docker或者spring cloud gateway的相关文章也是被搁下了。昨天送走了春节最后一波来访的亲戚，今天终于有时间可以写写东西。&ensp; &ensp;&ensp; &ensp;自从有换工作的念头后，其实就很想写一下自..
-                                        </p>
-                                        <p>2019-02-09</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/11/23/datax源码解析及分布式实现思路/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/11/23/datax源码解析及分布式实现思路/1.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>datax源码解析及分布式实现思路</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">分布式</span>
-                                            
-                                                <span class="tag is-post-tag">数据平台</span>
-                                            
-                                                <span class="tag is-post-tag">ETL</span>
-                                            
-                                        </p>
-                                        <p>
-                                            &ensp; &ensp;&ensp; &ensp;相信很多人接触datax都会去了解它的分布式执行模式，很“幸运”，阿里开源出来的是阉割版，默认只支持单机模式，研发团队对外基本也不回应分布式相关的问题。故此，想让datax支持分布式功能，只能自己下些功夫。&ensp; &ensp;&ensp; &ensp;在github上也有人做了分布式的支持项目，如..
-                                        </p>
-                                        <p>2018-11-23</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/10/18/并发编程/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/10/18/并发编程/JAVA并发编程.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>并发编程</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">JVM</span>
-                                            
-                                                <span class="tag is-post-tag">JAVA基础</span>
-                                            
-                                                <span class="tag is-post-tag">并发编程</span>
-                                            
-                                        </p>
-                                        <p>
-                                            &ensp; &ensp;&ensp; &ensp;并发编程是java的基础知识，但是也论深度，工作这些年与很多开发打过交道，有些人工作几年了也没有系统的认识，如果是做业务为主的开发，如果自己没有意识主动学习，往往就是基本使用、用封装好的工具或框架而不加思索。  
-就着以前学习过的《JAVA并发编程》的知识整理了并发编程的基本知识点
-
-                                        </p>
-                                        <p>2018-10-18</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/10/07/JAVA动态编译-解析文本的简易方法/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>JAVA动态编译/解析文本的一种简易方法</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">java基础</span>
-                                            
-                                                <span class="tag is-post-tag">mybatis</span>
-                                            
-                                                <span class="tag is-post-tag">动态解析</span>
-                                            
-                                        </p>
-                                        <p>
-                                            &ensp; &ensp; 追着国庆假期的尾巴，更新一下博客，讲一下项目上之前遇到的文本动态编译/解析的问题，虽然比较简单，但是感觉适合场景还是挺多的。&ensp; &ensp; 团队自研BI系统，在数据源选择及查询的实现使用桥接模式，针对不同的数据源采用不同的查询方式，而目前我们平台支持的数据源的查询可以通过构建不同的文本请求体进行查询，例如mysql..
-                                        </p>
-                                        <p>2018-10-07</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/08/19/个人基于大数据平台的设计与思考/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/08/19/个人基于大数据平台的设计与思考/data-architecture1.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>个人基于大数据平台的设计与思考</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                                <span class="tag is-post-tag">数据平台</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景介绍&ensp; &ensp; 本人是在一家TOB电商平台的创业公司就职，目前负责整个数据部门的架构与业务跟进。之前从事过YY与唯品会的web开发工作，也有了解到一些大数据架构相关的设计。&ensp; &ensp; 目前数据部门的技术架构发展大体方向已经确定得差不多，于是在此梳理一下设计思路、历程与将要实现的内容。
-一开始都是坑&ensp; &ens..
-                                        </p>
-                                        <p>2018-08-19</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/08/14/天然苏打水市场的了解与思考/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>天然苏打水市场的了解与分析</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">数据分析</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景近来有个朋友找到我说拿到某品牌的天然苏打水广东省省级代理，问我得怎样开展工作及市场上的情况是怎么样的。12产品定价15元一支品牌方给出了一年一千万件，即八千万支的销量目标。
-  table td {text-align:center}  table thead td {background:#73B1E0;color:#FFF;}  table th..
-                                        </p>
-                                        <p>2018-08-14</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/08/11/spring-cloud-stream-基于kafka的使用简析/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>spring cloud stream 基于kafka的使用简析</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">实时流</span>
-                                            
-                                                <span class="tag is-post-tag">spring</span>
-                                            
-                                                <span class="tag is-post-tag">kafka</span>
-                                            
-                                        </p>
-                                        <p>
-                                            流式数据故名思义，即数据像开了小河里的流水般不停流动，除非水源出现问题，否则没有结束时间。流式数据在行业内已经有非常多针对不同应用量级的成熟方案，这里就不加以详述。本次主要介绍spring cloud stream 基于kafka对流式数据的基本应用。而使用spring cloud stream之前，可以先理解一下spring cloud对数据流程的几个..
-                                        </p>
-                                        <p>2018-08-11</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/07/23/内存与JVM/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/07/23/内存与JVM/内存与JVM.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>内存与JVM</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">java基础</span>
-                                            
-                                                <span class="tag is-post-tag">JVM</span>
-                                            
-                                                <span class="tag is-post-tag">内存</span>
-                                            
-                                        </p>
-                                        <p>
-                                            自己一边看书一边实践一边整理下来的知识思维导向图，个人感觉能够掌握自动内存管理机制、高效并发并加以应用，理解虚拟机执行子系统、程序编译与代码优化，才可以说熟悉JVM。
-
-                                        </p>
-                                        <p>2018-07-23</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/07/22/zk分布式任务队列交互设计/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2018/07/22/zk分布式任务队列交互设计/zk_path设计.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>zk分布式任务队列交互设计</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">zookeeper</span>
-                                            
-                                                <span class="tag is-post-tag">分布式</span>
-                                            
-                                                <span class="tag is-post-tag">队列</span>
-                                            
-                                        </p>
-                                        <p>
-                                            项目地址：https://github.com/super-sean/task-pipeline 
-背景近来公司业务上越来越多的跨进程比较耗时计算的场景出现，想用异步通信来解决长时间资源占用及等待问题，而基于多方的探讨，不考虑采用mina和netty这种异步通信的框架，最后决定使用zookeeper来实现
-目的异步进行耗时较长的复杂计算请求，可随时获取请..
-                                        </p>
-                                        <p>2018-07-22</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                <!--翻頁-->
-                <nav class="pagination is-flex" style="justify-content: flex-end">
-                    
-                </nav>
-            </section>
+        </div>
+        <div class="post-reply">
+            
             
         </div>
     </div>
-</div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
 
       </div>
   </div>
