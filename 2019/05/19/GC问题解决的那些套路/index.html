@@ -92,19 +92,19 @@ $(function() {
   
   <title>GC问题解决的那些套路 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="利器介绍&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp; gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io   简单问题GC异常&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;主要是GC日志中有明确标明异常类型的情况，如&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;针对每种异常情">
+  <meta name="description" content="利器介绍        gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io 简单问题 GC异常       主要是GC日志中有明确标明异常类型的情况，如          针对每种异常情况，某度和某歌都有很多资料带你飞，一般都由内存泄露及不合理的内存分配导致。OOM不同情况及解决方法 合理的内存">
 <meta name="keywords" content="java基础,JVM,内存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GC问题解决的那些套路">
 <meta property="og:url" content="https://super-sean.github.io/2019/05/19/GC问题解决的那些套路/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="利器介绍&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp; gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io   简单问题GC异常&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;主要是GC日志中有明确标明异常类型的情况，如&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;针对每种异常情">
+<meta property="og:description" content="利器介绍        gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io 简单问题 GC异常       主要是GC日志中有明确标明异常类型的情况，如          针对每种异常情况，某度和某歌都有很多资料带你飞，一般都由内存泄露及不合理的内存分配导致。OOM不同情况及解决方法 合理的内存">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://super-sean.github.io/2019/05/19/GC问题解决的那些套路/crawler_old_GC_cause.png">
-<meta property="og:updated_time" content="2019-05-19T13:31:32.994Z">
+<meta property="og:updated_time" content="2020-05-31T15:26:51.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GC问题解决的那些套路">
-<meta name="twitter:description" content="利器介绍&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp; gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io   简单问题GC异常&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;主要是GC日志中有明确标明异常类型的情况，如&amp;ensp; &amp;ensp;&amp;ensp; &amp;ensp;针对每种异常情">
+<meta name="twitter:description" content="利器介绍        gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io 简单问题 GC异常       主要是GC日志中有明确标明异常类型的情况，如          针对每种异常情况，某度和某歌都有很多资料带你飞，一般都由内存泄露及不合理的内存分配导致。OOM不同情况及解决方法 合理的内存">
 <meta name="twitter:image" content="https://super-sean.github.io/2019/05/19/GC问题解决的那些套路/crawler_old_GC_cause.png">
   
     <link rel="alternate" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
@@ -229,120 +229,161 @@ $(function() {
             
         </div>
         <div class="content" style="overflow: auto">
-            <h3 id="利器介绍"><a href="#利器介绍" class="headerlink" title="利器介绍"></a>利器介绍</h3><p>&ensp; &ensp;&ensp; &ensp; <a href="https://gceasy.io/" target="_blank" rel="noopener">gceasy</a> 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io  </p>
-<h3 id="简单问题"><a href="#简单问题" class="headerlink" title="简单问题"></a>简单问题</h3><h4 id="GC异常"><a href="#GC异常" class="headerlink" title="GC异常"></a>GC异常</h4><p>&ensp; &ensp;&ensp; &ensp;主要是GC日志中有明确标明异常类型的情况，如<br><img src="/2019/05/19/GC问题解决的那些套路/crawler_old_GC_cause.png" title="cause_old"><br>&ensp; &ensp;&ensp; &ensp;针对每种异常情况，某度和某歌都有很多资料带你飞，一般都由内存泄露及不合理的内存分配导致。<a href="https://tier1app.files.wordpress.com/2014/12/outofmemoryerror2.pdf" target="_blank" rel="noopener">OOM不同情况及解决方法</a> </p>
-<h4 id="合理的内存分配及降低GC频次"><a href="#合理的内存分配及降低GC频次" class="headerlink" title="合理的内存分配及降低GC频次"></a>合理的内存分配及降低GC频次</h4><p>&ensp; &ensp;&ensp; &ensp;针对mirror gc,major gc,full gc的频次管理，只要不是内存泄露引起，一般可以通过调整内存大小来解决，而合理的内存分配，在不考虑代码优化的情况下，需要进行一版参数配置之后观察GC情况之后，结合各个区域的回收机制可以调整改善。如果初期不知道怎么进行参数配置，根据应用所需，分配堆内存2-4G，新生代/老年代以1:2的比例配置。如果需要调整新生代的内存分配情况，记得默认情况下是eden:s0:s1为8:1:1<br>这种问题要求对垃圾回收器的策略及jvm堆内存模型比较清楚  </p>
-<h3 id="进阶问题"><a href="#进阶问题" class="headerlink" title="进阶问题"></a>进阶问题</h3><h4 id="调整某个阶段时长"><a href="#调整某个阶段时长" class="headerlink" title="调整某个阶段时长"></a>调整某个阶段时长</h4><p>&ensp; &ensp;&ensp; &ensp;并非所有GC阶段都可以直接配置时长，像parnew gc的单次时长无法直接控制，像这种情况一般可以通过内存大小调整，gc线程数的配置来间接改善，总时长可以通过频次来间接改善。  </p>
-<p>&ensp; &ensp;&ensp; &ensp;而有直接时长配置的参数，通过日志观察，不断进行调整，调整的套路基本为  </p>
+            <h3><span id="利器介绍">利器介绍</span></h3>
+<p>       <a href="https://gceasy.io/" target="_blank" rel="noopener">gceasy</a> 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，<a href="http://xn--blog-ux0g.gceasy.io" target="_blank" rel="noopener">即blog.gceasy.io</a></p>
+<h3><span id="简单问题">简单问题</span></h3>
+<h4><span id="gc异常">GC异常</span></h4>
+<p>      主要是GC日志中有明确标明异常类型的情况，如</p>
+<img src="/2019/05/19/GC问题解决的那些套路/crawler_old_GC_cause.png" title="cause_old">  
+<p>      针对每种异常情况，某度和某歌都有很多资料带你飞，一般都由内存泄露及不合理的内存分配导致。<a href="https://tier1app.files.wordpress.com/2014/12/outofmemoryerror2.pdf" target="_blank" rel="noopener">OOM不同情况及解决方法</a></p>
+<h4><span id="合理的内存分配及降低gc频次">合理的内存分配及降低GC频次</span></h4>
+<p>      针对mirror gc,major gc,full gc的频次管理，只要不是内存泄露引起，一般可以通过调整内存大小来解决，而合理的内存分配，在不考虑代码优化的情况下，需要进行一版参数配置之后观察GC情况之后，结合各个区域的回收机制可以调整改善。如果初期不知道怎么进行参数配置，根据应用所需，分配堆内存2-4G，新生代/老年代以1:2的比例配置。如果需要调整新生代的内存分配情况，记得默认情况下是eden:s0:s1为8:1:1<br>
+这种问题要求对垃圾回收器的策略及jvm堆内存模型比较清楚</p>
+<h3><span id="进阶问题">进阶问题</span></h3>
+<h4><span id="调整某个阶段时长">调整某个阶段时长</span></h4>
+<p>      并非所有GC阶段都可以直接配置时长，像parnew gc的单次时长无法直接控制，像这种情况一般可以通过内存大小调整，gc线程数的配置来间接改善，总时长可以通过频次来间接改善。</p>
+<p>      而有直接时长配置的参数，通过日志观察，不断进行调整，调整的套路基本为</p>
 <ul>
-<li>观察原来的情况，取一个合理值进行配置观察  </li>
-<li>观察想调整的阶段情况及其它阶段，看是否会影响其它阶段的时长，比如减少preclean时长可能会影响remark的时长  </li>
+<li>观察原来的情况，取一个合理值进行配置观察</li>
+<li>观察想调整的阶段情况及其它阶段，看是否会影响其它阶段的时长，比如减少preclean时长可能会影响remark的时长</li>
 <li>是否有策略可以解决影响到的阶段，比如影响了remark时长，那就配合major gc 前进行一次mirror gc，但有可能会影响总的mirror次数及时长</li>
-<li>跳转步骤1<br>这种问题要求对垃圾回收器具体的执行内容及步骤要比较清晰，清楚知道垃圾回收器在做什么操作以及会带来什么影响  ，了解安全点的概念及日志分析  </li>
+<li>跳转步骤1<br>
+这种问题要求对垃圾回收器具体的执行内容及步骤要比较清晰，清楚知道垃圾回收器在做什么操作以及会带来什么影响  ，了解安全点的概念及日志分析</li>
 </ul>
-<h4 id="基于GC日志时间参数进行调整"><a href="#基于GC日志时间参数进行调整" class="headerlink" title="基于GC日志时间参数进行调整"></a>基于GC日志时间参数进行调整</h4><p>&ensp; &ensp;&ensp; &ensp;主要是针对 user,sys,real这三个值进行调整  </p>
-<h5 id="user时间长导致real比较长"><a href="#user时间长导致real比较长" class="headerlink" title="user时间长导致real比较长"></a>user时间长导致real比较长</h5><p>这种情况好处理，说明gc花费时间比较，从内存分配及并行线程数量分配角度入手  </p>
-<h5 id="sys时间长导致real比较长"><a href="#sys时间长导致real比较长" class="headerlink" title="sys时间长导致real比较长"></a>sys时间长导致real比较长</h5><p>&ensp; &ensp;&ensp; &ensp;这种情况比较复杂，大多数情况下跟业务代码无直接关系，在后面的扫盲知识里有对应的字段意义说明及<a href="https://super-sean.github.io/2019/05/04/long-gc案例分析/">排障贴</a>里面有对应的跟进情况，可以了解一下。基本思路是排除法，到最终需要strace抓进程的系统调用情况或跟进系统级别的情况如内存页，CPU，IO等  </p>
-<p>&ensp; &ensp;&ensp; &ensp;这种问题要求能够查看hotspot源码，能大概知道有什么操作，了解gc过程中单个gc操作时间的分配情况，如何进行调整及跟进，也得了解一些系统相关的知识  </p>
-<p>&ensp; &ensp;&ensp; &ensp;按公司某大神的说法，有时候只能靠玄学了，一路猜想及排除定位  </p>
-<h3 id="简易方法论"><a href="#简易方法论" class="headerlink" title="简易方法论"></a>简易方法论</h3><p>&ensp; &ensp;&ensp; &ensp;GC问题可能还有很多情况是大家没遇到过，结合以上的问题类型，基本都是以下套路去跟进解决：</p>
+<h4><span id="基于gc日志时间参数进行调整">基于GC日志时间参数进行调整</span></h4>
+<p>      主要是针对 user,sys,real这三个值进行调整</p>
+<h5><span id="user时间长导致real比较长">user时间长导致real比较长</span></h5>
+<p>这种情况好处理，说明gc花费时间比较，从内存分配及并行线程数量分配角度入手</p>
+<h5><span id="sys时间长导致real比较长">sys时间长导致real比较长</span></h5>
+<p>      这种情况比较复杂，大多数情况下跟业务代码无直接关系，在后面的扫盲知识里有对应的字段意义说明及<a href="https://super-sean.github.io/2019/05/04/long-gc%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/">排障贴</a>里面有对应的跟进情况，可以了解一下。基本思路是排除法，到最终需要strace抓进程的系统调用情况或跟进系统级别的情况如内存页，CPU，IO等。在系统各方面都正常情况下，可能Gc的时候向OS申请内存的时候导致的，启动参数加上-XX:+AlwaysPreTouch。<br>
+      如果没有提前申请好内存，gc时年轻代向老年代copy对象的时候，老年代需要临时向OS申请内存。AlwaysPreTouch意味着在Jvm启动的时候申请好heap内存，堆内的每个page在启动的时候初始化为0，避免Jvm运行过程中临时向OS申请内存。<br>
+      这种问题要求能够查看hotspot源码，能大概知道有什么操作，了解gc过程中单个gc操作时间的分配情况，如何进行调整及跟进，也得了解一些系统相关的知识</p>
+<p>      按公司某大神的说法，有时候只能靠玄学了，一路猜想及排除定位</p>
+<h3><span id="简易方法论">简易方法论</span></h3>
+<p>      GC问题可能还有很多情况是大家没遇到过，结合以上的问题类型，基本都是以下套路去跟进解决：</p>
 <ul>
-<li><p>查看GC情况</p>
+<li>
+<p>查看GC情况</p>
 </li>
-<li><p>定位问题</p>
+<li>
+<p>定位问题</p>
 </li>
-<li><p>确定目标</p>
+<li>
+<p>确定目标</p>
 </li>
 </ul>
-<p>&ensp; &ensp;&ensp; &ensp;最好是单个目标进行，不要同时调整多个内容，到头来不知道是哪个影响哪个，比如减少preclean时间，然后不增加remark时间，然后是不增加总体pause的时间，或者是减少full gc的次数，或者是减少mirror gc的次数</p>
+<p>      最好是单个目标进行，不要同时调整多个内容，到头来不知道是哪个影响哪个，比如减少preclean时间，然后不增加remark时间，然后是不增加总体pause的时间，或者是减少full gc的次数，或者是减少mirror gc的次数</p>
 <ul>
-<li><p>查询解决方案及实践</p>
+<li>
+<p>查询解决方案及实践</p>
 </li>
-<li><p>持续观察改进  </p>
-</li>
-</ul>
-<h2 id="知识扫盲"><a href="#知识扫盲" class="headerlink" title="知识扫盲"></a>知识扫盲</h2><p>&ensp; &ensp;&ensp; &ensp;基于公司GC调优会涉及到的点，整理了对应的知识  </p>
-<h3 id="GC日志时间概念"><a href="#GC日志时间概念" class="headerlink" title="GC日志时间概念"></a>GC日志时间概念</h3><ul>
-<li><p>real —— 程序从开始到结束所用的时钟时间。这个时间包括其他进程使用的时间片和进程阻塞的时间（比如等待 I/O 完成）</p>
-</li>
-<li><p>user —— 进程执行用户态代码（核心之外）所使用的时间。这是执行此进程所使用的实际 CPU 时间，其他进程和此进程阻塞的时间并不包括在内。在垃圾收集的情况下，表示 GC 线程执行所使用的 CPU 总时间</p>
-</li>
-<li><p>sys —— 进程在内核态消耗的 CPU 时间，即在内核执行系统调用或等待系统事件所使用的 CPU 时间  </p>
+<li>
+<p>持续观察改进</p>
 </li>
 </ul>
-<h3 id="安全点SafePoint概念及日志简析"><a href="#安全点SafePoint概念及日志简析" class="headerlink" title="安全点SafePoint概念及日志简析"></a>安全点SafePoint概念及日志简析</h3><p>概念</p>
+<h2><span id="知识扫盲">知识扫盲</span></h2>
+<p>      基于公司GC调优会涉及到的点，整理了对应的知识</p>
+<h3><span id="gc日志时间概念">GC日志时间概念</span></h3>
+<ul>
+<li>
+<p>real —— 程序从开始到结束所用的时钟时间。这个时间包括其他进程使用的时间片和进程阻塞的时间（比如等待 I/O 完成）</p>
+</li>
+<li>
+<p>user —— 进程执行用户态代码（核心之外）所使用的时间。这是执行此进程所使用的实际 CPU 时间，其他进程和此进程阻塞的时间并不包括在内。在垃圾收集的情况下，表示 GC 线程执行所使用的 CPU 总时间</p>
+</li>
+<li>
+<p>sys —— 进程在内核态消耗的 CPU 时间，即在内核执行系统调用或等待系统事件所使用的 CPU 时间</p>
+</li>
+</ul>
+<h3><span id="安全点safepoint概念及日志简析">安全点SafePoint概念及日志简析</span></h3>
+<p>概念</p>
 <ul>
 <li>安全点是在程序执行期间的所有GC Root已知并且所有堆对象的内容一致的点。</li>
 <li>从全局的角度来看，所有线程必须在GC运行之前在安全点阻塞。 （作为一种特殊情况，运行JNI代码的线程可以继续运行，因为它们只使用句柄。但在安全点期间，它们必须阻塞而不是加载句柄的内容。）</li>
 <li>从本地的角度来看，安全点是一个显着的点，它位于执行线程可能阻止GC的代码块中。 大多数调用点都能当做安全点。</li>
-<li>在每个安全点都存在强大的不变量永远保持true不变，而在非安全点可能会被忽视。 编译的Java代码和C / C ++代码都在安全点之间进行了优化，但跨安全点时却不那么优化。 JIT编译器在每个安全点发出GC映射。 VM中的C / C ++代码使用程式化的基于宏的约定（例如，TRAPS）来标记潜在的安全点。<br>类型</li>
+<li>在每个安全点都存在强大的不变量永远保持true不变，而在非安全点可能会被忽视。 编译的Java代码和C / C ++代码都在安全点之间进行了优化，但跨安全点时却不那么优化。 JIT编译器在每个安全点发出GC映射。 VM中的C / C ++代码使用程式化的基于宏的约定（例如，TRAPS）来标记潜在的安全点。<br>
+类型</li>
 <li>GC safepoint需要知道在那个程序位置上，调用栈、寄存器等一些重要的数据区域里什么地方包含了GC管理的指针；如果要触发一次GC，那么JVM里的所有Java线程都必须到达GC safepoint。</li>
-<li>Deoptimization safepoint需要知道在那个程序位置上，原本抽象概念上的JVM的执行状态（所有局部变量、临时变量、锁，等等）到底分配到了什么地方，是在栈帧的具体某个slot还是在某个寄存器里，之类的。  </li>
+<li>Deoptimization safepoint需要知道在那个程序位置上，原本抽象概念上的JVM的执行状态（所有局部变量、临时变量、锁，等等）到底分配到了什么地方，是在栈帧的具体某个slot还是在某个寄存器里，之类的。</li>
 </ul>
 <p>如果要执行一次deoptimization，那么需要执行deoptimization的线程要在到达deoptimization safepoint之后才可以开始deoptimize。HotSpot中，安全点位置主要在：</p>
 <ul>
 <li>方法返回之前</li>
 <li>调用某个方法之后</li>
 <li>抛出异常的位置</li>
-<li>循环的末尾<br>为什么把这些位置设置为jvm的安全点呢,主要目的就是避免程序长时间无法进入safepoint,比如JVM在做GC之前要等所有的应用线程进入到安全点后VM线程才能分派GC任务 ,如果有线程一直没有进入到安全点,就会导致GC时JVM停顿时间延长,比如写了一个超大的循环导致线程一直没有进入到安全点,GC前停顿了8秒。  </li>
+<li>循环的末尾<br>
+为什么把这些位置设置为jvm的安全点呢,主要目的就是避免程序长时间无法进入safepoint,比如JVM在做GC之前要等所有的应用线程进入到安全点后VM线程才能分派GC任务 ,如果有线程一直没有进入到安全点,就会导致GC时JVM停顿时间延长,比如写了一个超大的循环导致线程一直没有进入到安全点,GC前停顿了8秒。</li>
 </ul>
 <p>之所以只在选定的位置放置安全点是因为：</p>
 <ul>
 <li>挂在安全点的调试符号信息要占用空间。如果允许每条机器码都可以是安全点的话，需要存储的数据量会很大（当然这有办法解决，例如用delta存储和用压缩）</li>
 <li>安全点会影响优化。特别是deoptimization 安全点，会迫使JVM保留一些只有解释器可能需要的、JIT编译器认定无用的变量的值。本来JIT编译器可能可以发现某些值不需要而消除它们对应的运算，如果在安全点需要这些值的话那就只好保留了。这才是更重要的地方，所以要尽量少放置安全点</li>
-<li>像HotSpot VM这样，在安全点会生成polling代码询问VM是否要“进入安全点”，polling也有开销所以要尽量减少。  </li>
+<li>像HotSpot VM这样，在安全点会生成polling代码询问VM是否要“进入安全点”，polling也有开销所以要尽量减少。</li>
 </ul>
-<p>还有一种情况是当某个线程在执行native函数的时候。此时该线程在执行JVM管理之外的代码，不能对JVM的执行状态做任何修改，因而JVM要进入安全点不需要关心它。所以也可以把正在执行native函数的线程看作“已经进入了安全点”，或者把这种情况叫做“在safe-region里”。JVM外部要对JVM执行状态做修改必须要通过JNI。所有能修改JVM执行状态的JNI函数在入口处都有安全点检查，一旦JVM已经发出通知说此时应该已经到达安全点，就会在这些检查的地方停下来把控制权交给JVM。  </p>
-<p>日志<br>开启参数<br>-XX:+PrintGCApplicationStoppedTime -XX:+PrintGCApplicationConcurrentTime  </p>
-<p>-XX:+PrintSafepointStatistics  -XX:PrintSafepointStatisticsCount=1  </p>
-<p>-XX:+UnlockDiagnosticVMOptions -XX:-DisplayVMOutput -XX:+LogVMOutput  </p>
+<p>还有一种情况是当某个线程在执行native函数的时候。此时该线程在执行JVM管理之外的代码，不能对JVM的执行状态做任何修改，因而JVM要进入安全点不需要关心它。所以也可以把正在执行native函数的线程看作“已经进入了安全点”，或者把这种情况叫做“在safe-region里”。JVM外部要对JVM执行状态做修改必须要通过JNI。所有能修改JVM执行状态的JNI函数在入口处都有安全点检查，一旦JVM已经发出通知说此时应该已经到达安全点，就会在这些检查的地方停下来把控制权交给JVM。</p>
+<p>日志<br>
+开启参数<br>
+-XX:+PrintGCApplicationStoppedTime -XX:+PrintGCApplicationConcurrentTime</p>
+<p>-XX:+PrintSafepointStatistics  -XX:PrintSafepointStatisticsCount=1</p>
+<p>-XX:+UnlockDiagnosticVMOptions -XX:-DisplayVMOutput -XX:+LogVMOutput</p>
 <p>格式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vmop [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count</span><br><span class="line">66935.969: GenCollectForAllocation [    1782          0              0    ]      [     0     0     0     3    15    ]  0</span><br></pre></td></tr></table></figure> 
-<p>除了GC，其他触发安全点的VM Operation包括：  </p>
+<p>除了GC，其他触发安全点的VM Operation包括：</p>
 <ol>
-<li><p>Biased lock revocation 取消偏向锁</p>
+<li>
+<p>Biased lock revocation 取消偏向锁</p>
 </li>
-<li><p>Class redefinition (e.g. javaagent，AOP的代码植入)</p>
+<li>
+<p>Class redefinition (e.g. javaagent，AOP的代码植入)</p>
 </li>
-<li><p>Various debug operation (e.g. thread dump 一条或所有线程，heapduump等)  </p>
+<li>
+<p>Various debug operation (e.g. thread dump 一条或所有线程，heapduump等)</p>
 </li>
 </ol>
-<p>线程情况  </p>
+<p>线程情况</p>
 <ul>
 <li>total: 所有的java线程数</li>
 <li>initially_running: 号召进入安全点时，还是Running状态的线程数</li>
-<li>wait_to_block: 所有线程都不Running时，仍不是Block状态的线程数  </li>
+<li>wait_to_block: 所有线程都不Running时，仍不是Block状态的线程数</li>
 </ul>
-<p>时间情况  </p>
+<p>时间情况</p>
 <ul>
 <li>spin: VMOP线程使用自旋，等待所有线程都不是Running的时间</li>
 <li>block: VMOP线程基于锁，等待所有线程都是Block的时间</li>
 <li>sync: spin+block +其他，这是从开始到进入安全点的总耗时</li>
 <li>cleanup: 退出清理所用时间</li>
-<li>vmop: 真正执行VM Operation的时间  </li>
+<li>vmop: 真正执行VM Operation的时间</li>
 </ul>
-<h3 id="Full-GC"><a href="#Full-GC" class="headerlink" title="Full GC"></a>Full GC</h3><p>触发条件</p>
+<h3><span id="full-gc">Full GC</span></h3>
+<p>触发条件</p>
 <ol>
-<li><p>由System.gc调用</p>
+<li>
+<p>由System.gc调用</p>
 </li>
-<li><p>老年代空间不足</p>
+<li>
+<p>老年代空间不足</p>
 </li>
-<li><p>永久代空间不足</p>
+<li>
+<p>永久代空间不足</p>
 </li>
-<li><p>gc 担保失败<br>在发生MinorGC前,检查老年代是否有连续空间,如果有,则执行,如果没有,根据设置:-XX:-HandlePromotionFailure 指定,如果打开,那么继续检查,当前老年代最大可用连续空间大于平均历次晋升到老年代大小,如果大于,则进行MinorGC,否则进行FullGC,如果HandlePromotionFailure 不设置 直接进行FullGC.</p>
+<li>
+<p>gc 担保失败<br>
+在发生MinorGC前,检查老年代是否有连续空间,如果有,则执行,如果没有,根据设置:-XX:-HandlePromotionFailure 指定,如果打开,那么继续检查,当前老年代最大可用连续空间大于平均历次晋升到老年代大小,如果大于,则进行MinorGC,否则进行FullGC,如果HandlePromotionFailure 不设置 直接进行FullGC.</p>
 </li>
-<li><p>Cocurrent mode failure</p>
+<li>
+<p>Cocurrent mode failure</p>
 </li>
 </ol>
-<p>发生在cms的清理sweep阶段,发现有新的垃圾产生,而且老年代没有足够空间导致的  </p>
-<h3 id="parnew"><a href="#parnew" class="headerlink" title="parnew"></a>parnew</h3><p>使用的是复制算法，并行回收</p>
+<p>发生在cms的清理sweep阶段,发现有新的垃圾产生,而且老年代没有足够空间导致的</p>
+<h3><span id="parnew">parnew</span></h3>
+<p>使用的是复制算法，并行回收</p>
 <p>并行：多条垃圾回收线程并行工作，用户线程仍处于等待状态</p>
 <p>并发: 垃圾收集线程跟用户线程同时执行，不一定是并行，可能交替执行，垃圾收集程序运行在区分业务线程的另外一个CPU上</p>
 <p>serial共用配置参数</p>
 <p>-XX:SurvivorRatio</p>
 <p>-XX:PretenureSizeThreshold</p>
 <p>-XX:HandlePromotionFailure</p>
-<p>启用参数 </p>
+<p>启用参数</p>
 <p>-XX：+UseConcMarkSweepGC</p>
 <p>-XX: +UseParNewGC</p>
 <p>性能参数</p>
@@ -353,79 +394,96 @@ $(function() {
 <p>大对象直接进入老年代 PretenureSizeThreshold</p>
 <p>长期存活对象将进入老年代 -XX:MaxTenuringThreshold=15</p>
 <p>动态对象年龄判定 在Survivor空间相同年龄所有对象大小总和大于Survivor空间一半就会进入老年代</p>
-<h3 id="cms"><a href="#cms" class="headerlink" title="cms"></a>cms</h3><h4 id="gc-stage"><a href="#gc-stage" class="headerlink" title="gc stage"></a>gc stage</h4><p>　1. CMS-initial-mark 初始标记</p>
+<h3><span id="cms">cms</span></h3>
+<h4><span id="gc-stage">gc stage</span></h4>
+<p>1. CMS-initial-mark 初始标记</p>
 <p>此阶段是初始标记阶段，是stop the world阶段，因此此阶段标记的对象只是从root集最直接可达的对象</p>
-<p>　　2. CMS-concurrent-mark 并发标记</p>
+<p>2. CMS-concurrent-mark 并发标记</p>
 <p>此阶段是和应用线程并发执行的，所谓并发收集器指的就是这个，主要作用是标记可达的对象</p>
-<p>　　3. CMS-concurrent-preclean 执行预清理</p>
+<p>3. CMS-concurrent-preclean 执行预清理</p>
 <p>此阶段主要是进行一些预清理，因为标记和应用线程是并发执行的，因此会有些对象的状态在标记后会改变，此阶段正是解决这个问题</p>
-<p>　　4. CMS-concurrent-abortable-preclean 执行可中止预清理</p>
+<p>4. CMS-concurrent-abortable-preclean 执行可中止预清理</p>
 <p>加入此阶段的目的是使cms gc更加可控一些，作用也是执行一些预清理，以减少Rescan阶段造成应用暂停的时间</p>
-<p>　　5. CMS-remark 重新标记</p>
+<p>5. CMS-remark 重新标记</p>
 <p>第二个stop the world阶段了，即Rescan阶段，此阶段暂停应用线程，对对象进行重新扫描并标记，主要是标记并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象</p>
-<p>　　6. CMS-concurrent-sweep 并发清除</p>
+<p>6. CMS-concurrent-sweep 并发清除</p>
 <p>Start of sweeping of dead/non-marked objects. Sweeping is concurrent phase performed with all other threads running.</p>
-<p>　　7. CMS-concurrent-reset 并发重设状态等待下次CMS的触发</p>
+<p>7. CMS-concurrent-reset 并发重设状态等待下次CMS的触发</p>
 <p>In this phase, the CMS data structures are reinitialized so that a new cycle may begin at a later time. In this case, it took 0.127 secs.</p>
-<h4 id="线上用到的相关参数及新增参数"><a href="#线上用到的相关参数及新增参数" class="headerlink" title="线上用到的相关参数及新增参数"></a>线上用到的相关参数及新增参数</h4><p>-XX:+CMSParallelInitialMarkEnabled</p>
-<p>可以开启该阶段的并行标记，使用多个线程进行标记，减少暂停时间 </p>
+<h4><span id="线上用到的相关参数及新增参数">线上用到的相关参数及新增参数</span></h4>
+<p>-XX:+CMSParallelInitialMarkEnabled</p>
+<p>可以开启该阶段的并行标记，使用多个线程进行标记，减少暂停时间</p>
 <p>-XX:+CMSParallelRemarkEnabled</p>
-<p>同上，针对remark阶段 </p>
+<p>同上，针对remark阶段</p>
 <p>-XX:+UseCMSInitiatingOccupancyOnly</p>
 <p>指定HotSpot VM总是使用-XX:CMSInitiatingOccupancyFraction的值作为old的空间使用率限制来启动CMS垃圾回收。</p>
 <p>如果没有使用-XX:+UseCMSInitiatingOccupancyOnly，那么HotSpot VM只是利用这个值来启动第一次CMS垃圾回收，后面都是使用HotSpot VM自动计算出来的值。</p>
 <p>-XX:CMSInitiatingOccupancyFraction=80</p>
 <p>结合上面的参数使用，当老年代使用率达到百分之几的时候使用</p>
-<p>-XX:+CMSScavengeBeforeRemark </p>
+<p>-XX:+CMSScavengeBeforeRemark</p>
 <p>这个选项强制HotSpot VM在CMS GC之前执行MinorGC，在再标记步骤之前做MinorGC，可以减少再标记的工作量，目的是减少young代的对象数</p>
 <p>-XX:CMSMaxAbortablePrecleanTime：当abortable-preclean阶段执行达到这个时间时才会结束</p>
 <p>-XX:CMSScheduleRemarkEdenSizeThreshold（默认2m）：控制abortable-preclean阶段什么时候开始执行，即当eden使用达到此值时，才会开始abortable-preclean阶段</p>
 <p>-XX:CMSScheduleRemarkEdenPenetratio（默认50%）：控制abortable-preclean阶段什么时候结束执行</p>
-<p>-XX:CMSWaitDuration=5010 </p>
+<p>-XX:CMSWaitDuration=5010</p>
 <p>保证了最晚每 X 毫秒进行一次判断是否要进行CMS GC，默认2S</p>
-<p>-XX:+CMSClassUnloadingEnabled </p>
-<p>允许CMS对永久代不再使用的对象进行回收  </p>
-<h4 id="CMS碎片整理"><a href="#CMS碎片整理" class="headerlink" title="CMS碎片整理"></a>CMS碎片整理</h4><p>由于cms是基于标记-清理算法，会导致空间碎片，难以分配新的连续内存，所以要进行内存空间整理，保证可分配的连续性内存，要不然会触发full gc  </p>
+<p>-XX:+CMSClassUnloadingEnabled</p>
+<p>允许CMS对永久代不再使用的对象进行回收</p>
+<h4><span id="cms碎片整理">CMS碎片整理</span></h4>
+<p>由于cms是基于标记-清理算法，会导致空间碎片，难以分配新的连续内存，所以要进行内存空间整理，保证可分配的连续性内存，要不然会触发full gc</p>
 <p>-XX:+UseCMSCompactAtFullCollection</p>
-<p>用于在full  GC之后增加一个碎片整理过程 </p>
-<p>-XX:CMSFullGCsBeforeCompaction=0 </p>
-<p>设置执行多少次不压缩的full  GC之后，跟着来一次碎片整理过程  </p>
-<h4 id="线上其它参数"><a href="#线上其它参数" class="headerlink" title="线上其它参数"></a>线上其它参数</h4><p>-XX:LargePageSizeInBytes=128M </p>
+<p>用于在full  GC之后增加一个碎片整理过程</p>
+<p>-XX:CMSFullGCsBeforeCompaction=0</p>
+<p>设置执行多少次不压缩的full  GC之后，跟着来一次碎片整理过程</p>
+<h4><span id="线上其它参数">线上其它参数</span></h4>
+<p>-XX:LargePageSizeInBytes=128M</p>
 <p>系统内存页相关参数</p>
 <p>详细资料 <a href="https://www.cnblogs.com/bonelee/p/6207037.html" target="_blank" rel="noopener">https://www.cnblogs.com/bonelee/p/6207037.html</a></p>
 <p>-XX:+UseFastAccessorMethods</p>
 <p>设置关闭快速调用成员方法，这里表述可能不是太准确。首先说明一下什么方法叫做AccessorMethods，</p>
 <p>1必须是成员方法，静态方法不行，</p>
 <p>2返回值类型必须是引用类型或者int，其它都不算，</p>
-<p>3方法体的代码必须满足aload_0; getfield #index; areturn或ireturn这样的模式，方法名是什么都没关系，是不是get、is、has开头都不重要。 </p>
+<p>3方法体的代码必须满足aload_0; getfield #index; areturn或ireturn这样的模式，方法名是什么都没关系，是不是get、is、has开头都不重要。</p>
 <p>因为类方法方法体很简单，而且没有方法计数器，开启此设置后可以跳过对该类方法的编译。</p>
 <p>但是貌似不推荐使用，详见以下链接</p>
 <p><a href="http://cr.openjdk.java.net/~never/6385687/" target="_blank" rel="noopener">http://cr.openjdk.java.net/~never/6385687/</a></p>
-<p>-XX:SoftRefLRUPolicyMSPerMB=0 </p>
-<p>设置每兆堆空闲空间中SoftReference的存活时间，默认值是1s </p>
-<h4 id="CMS-GC-触发条件"><a href="#CMS-GC-触发条件" class="headerlink" title="CMS GC 触发条件"></a>CMS GC 触发条件</h4><ol>
-<li><p>FullGC</p>
+<p>-XX:SoftRefLRUPolicyMSPerMB=0</p>
+<p>设置每兆堆空闲空间中SoftReference的存活时间，默认值是1s</p>
+<h4><span id="cms-gc-触发条件">CMS GC 触发条件</span></h4>
+<ol>
+<li>
+<p>FullGC</p>
 </li>
-<li><p>预计完成CMS回收所需要的时间小于预计的老年代填满的时间</p>
+<li>
+<p>预计完成CMS回收所需要的时间小于预计的老年代填满的时间</p>
 </li>
-<li><p>判断老年代内存使用率是否大于初始化参数，如果为true，则触发GC，如果为false，且UseCMSInitiatingOccupancyOnly 为true，则返回false</p>
+<li>
+<p>判断老年代内存使用率是否大于初始化参数，如果为true，则触发GC，如果为false，且UseCMSInitiatingOccupancyOnly 为true，则返回false</p>
 </li>
-<li><p>判断年轻代存活的对象晋升是否可能会失败，如果失败，触发GC。</p>
+<li>
+<p>判断年轻代存活的对象晋升是否可能会失败，如果失败，触发GC。</p>
 </li>
-<li><p>如果metaSpace认为需要回收metaSpace区域，也会触发一次cms回收  </p>
+<li>
+<p>如果metaSpace认为需要回收metaSpace区域，也会触发一次cms回收</p>
 </li>
 </ol>
-<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><p>在公司进行了分享，最后给听客问了几个问题，感觉算是分享的小考核吧，如果您有幸看到这篇文章并且看到这里不妨尝试着回答下:  </p>
+<h2><span id="qampa">Q&amp;A</span></h2>
+<p>在公司进行了分享，最后给听客问了几个问题，感觉算是分享的小考核吧，如果您有幸看到这篇文章并且看到这里不妨尝试着回答下:</p>
 <ol>
-<li><p>实测新生代使用率90%左右会触发mirror gc,为什么？</p>
+<li>
+<p>实测新生代使用率90%左右会触发mirror gc,为什么？</p>
 </li>
-<li><p>为什么线上不将CMSParallelInitialMarkEnabled作为默认参数?</p>
+<li>
+<p>为什么线上不将CMSParallelInitialMarkEnabled作为默认参数?</p>
 </li>
-<li><p>mirror gc ,young gc,major gc ,full gc的区别</p>
+<li>
+<p>mirror gc ,young gc,major gc ,full gc的区别</p>
 </li>
-<li><p>结合jvm内存模型讲一下GC过程在每个区域的变化</p>
+<li>
+<p>结合jvm内存模型讲一下GC过程在每个区域的变化</p>
 </li>
-<li><p>CMSWaitDuration的值为什么要这样设置？</p>
+<li>
+<p>CMSWaitDuration的值为什么要这样设置？</p>
 </li>
 </ol>
 

@@ -90,11 +90,11 @@ $(function() {
 </script>
 
   
-  <title>Tag: JAVA基础 | Sean&#39;s Blog</title>
+  <title>Tag: java基础 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="https://super-sean.github.io/tags/JAVA基础/index.html">
+<meta property="og:url" content="https://super-sean.github.io/tags/java基础/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -177,7 +177,7 @@ $(function() {
 
 <div class="container tag-cate-wrap">
     <div class="category-title-inner content has-text-centered">
-        <h1><strong style="border-top: 2px solid; border-bottom: 2px solid;">tag·JAVA基础</strong></h1>
+        <h1><strong style="border-top: 2px solid; border-bottom: 2px solid;">tag·java基础</strong></h1>
     </div>
 
     
@@ -185,24 +185,29 @@ $(function() {
         <div class="box">
             <article class="media">
                 
-                <a href="/2019/07/06/一次App首页代码优化纪要/">
+                <a href="/2020/05/26/JVM-G1垃圾收集器/">
                     
                     <div class="media-left">
                         <figure class="image is-128x128">
-                            <img src="/2019/07/06/一次App首页代码优化纪要/WechatIMG167.jpeg" style="height: 100%; width: 100%">
+                            <img src="/2020/05/26/JVM-G1垃圾收集器/1.png" style="height: 100%; width: 100%">
                         </figure>
                     </div>
                     
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong>一次App首页代码优化纪要</strong> <small class="post-date">at: 2019-07-06</small>
+                                <strong>JVM G1垃圾收集器</strong> <small class="post-date">at: 2020-05-26</small>
                                 <br>
-                                背景最近在负责公司APP首页性能优化相关项目，就着原来的技术方案及代码进行了重构，原来接口中存在的问题如下：  
+                                背景
+最近公司在大力推动服务容器化，而默认配套的JVM 垃圾收集器是G1，故此整理一下G1相关的知识点。
+基础知识
+主要步骤
 
-代码问题，瀑布式编码，导致单个类的代码很容易膨胀，最大体积的类已经快接近2000行代码，还是之前有优化过的。  
-代码问题，方法参数问题，方法参数没有封装，有一些通用方法的参数已经有十几个，不容易进行扩展，维护成本比较高。
-性能问题，由于涉..
+初始标记(Initial Marking)
+并发标记(Concurrent Marking)
+最终标记(Final Marking)
+筛选回收(Live Data Counting and Evacuation)
+运行流程大致如..
                             </p>
                             <button class="button is-info">Read</button>
                         </div>
@@ -214,22 +219,26 @@ $(function() {
         <div class="box">
             <article class="media">
                 
-                <a href="/2018/10/18/并发编程/">
+                <a href="/2019/05/19/GC问题解决的那些套路/">
                     
                     <div class="media-left">
                         <figure class="image is-128x128">
-                            <img src="/2018/10/18/并发编程/JAVA并发编程.png" style="height: 100%; width: 100%">
+                            <img src="/2019/05/19/GC问题解决的那些套路/crawler_old_GC_cause.png" style="height: 100%; width: 100%">
                         </figure>
                     </div>
                     
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong>并发编程</strong> <small class="post-date">at: 2018-10-18</small>
+                                <strong>GC问题解决的那些套路</strong> <small class="post-date">at: 2019-05-19</small>
                                 <br>
-                                &ensp; &ensp;&ensp; &ensp;并发编程是java的基础知识，但是也论深度，工作这些年与很多开发打过交道，有些人工作几年了也没有系统的认识，如果是做业务为主的开发，如果自己没有意识主动学习，往往就是基本使用、用封装好的工具或框架而不加思索。  
-就着以前学习过的《JAVA并发编程》的知识整理了并发编程的基本知识点
-
+                                利器介绍
+       gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io
+简单问题
+GC异常
+      主要是GC日志中有明确标明异常类型的情况，如
+  
+      针对每种异常情况，某度和某歌都有很多资料带你飞，一般都由内存泄露及不合理的内存分..
                             </p>
                             <button class="button is-info">Read</button>
                         </div>
@@ -238,39 +247,45 @@ $(function() {
             </article>
         </div>
     
-</div>
-      </div>
-  </div>
-  <style>
-  #footer {
-    min-height: 10vh;
-    background: black;
-    color: #fff;
-  }
-
-  #footer a {
-    color: #e1e1e1;
-  }
-</style>
-<footer id="footer" class="has-text-centered is-flex center">
-  <div class="container has-padding">
-    <div>
-      <div>
-        <!--请您保留作者署名, 主题制作来之不易-->
-        Theme by <a href="https://github.com/haojen">Haojen Ma</a>
-        <br>
-        Copyright © Sean 2020
-        <br>
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<script src="/js/search_core.js"></script>
-<script src="/js/script.js"></script>
-
-</body>
-</html>                            <button class="button is-info">Read</button>
+        <div class="box">
+            <article class="media">
+                
+                <a href="/2019/05/04/long-gc案例分析/">
+                    
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                            <img src="/2019/05/04/long-gc案例分析/crawler_old_cms_stage_avg.png" style="height: 100%; width: 100%">
+                        </figure>
+                    </div>
+                    
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>long-gc案例分析</strong> <small class="post-date">at: 2019-05-04</small>
+                                <br>
+                                long gc优化&ensp; &ensp;&ensp; &ensp;近来发现负责研发的项目总是会收到long-gc的告警，比如：  
+12345678910major GC: - 2 (No GC) start: 2019-05-06 06:18:47.678, end: 2019-05-06 06:18:53.125 [Par Survivor Sp..
+                            </p>
+                            <button class="button is-info">Read</button>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </div>
+    
+        <div class="box">
+            <article class="media">
+                
+                <a href="/2018/10/07/JAVA动态编译-解析文本的简易方法/">
+                    
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>JAVA动态编译/解析文本的一种简易方法</strong> <small class="post-date">at: 2018-10-07</small>
+                                <br>
+                                &ensp; &ensp; 追着国庆假期的尾巴，更新一下博客，讲一下项目上之前遇到的文本动态编译/解析的问题，虽然比较简单，但是感觉适合场景还是挺多的。&ensp; &ensp; 团队自研BI系统，在数据源选择及查询的实现使用桥接模式，针对不同的数据源采用不同的查询方式，而目前我们平台支持的数据源的查询可以通过构建不同的文本请求体进行查询，例如mysql..
+                            </p>
+                            <button class="button is-info">Read</button>
                         </div>
                     </div>
                 </a>

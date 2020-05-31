@@ -185,6 +185,40 @@ $(function() {
         <div class="box">
             <article class="media">
                 
+                <a href="/2020/05/26/JVM-G1垃圾收集器/">
+                    
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                            <img src="/2020/05/26/JVM-G1垃圾收集器/1.png" style="height: 100%; width: 100%">
+                        </figure>
+                    </div>
+                    
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>JVM G1垃圾收集器</strong> <small class="post-date">at: 2020-05-26</small>
+                                <br>
+                                背景
+最近公司在大力推动服务容器化，而默认配套的JVM 垃圾收集器是G1，故此整理一下G1相关的知识点。
+基础知识
+主要步骤
+
+初始标记(Initial Marking)
+并发标记(Concurrent Marking)
+最终标记(Final Marking)
+筛选回收(Live Data Counting and Evacuation)
+运行流程大致如..
+                            </p>
+                            <button class="button is-info">Read</button>
+                        </div>
+                    </div>
+                </a>
+            </article>
+        </div>
+    
+        <div class="box">
+            <article class="media">
+                
                 <a href="/2019/05/19/GC问题解决的那些套路/">
                     
                     <div class="media-left">
@@ -198,8 +232,13 @@ $(function() {
                             <p>
                                 <strong>GC问题解决的那些套路</strong> <small class="post-date">at: 2019-05-19</small>
                                 <br>
-                                利器介绍&ensp; &ensp;&ensp; &ensp; gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io  
-简单问题GC异常&ensp; &ensp;&ensp; &ensp;主要是GC日志中有明确标明异常类型的情况，如&ensp; &ens..
+                                利器介绍
+       gceasy 是一个国外在线的gc日志分析工具，可以帮你快速定位到gc问题，并且博客内容也有一些高级的gc问题排查分析文章，即blog.gceasy.io
+简单问题
+GC异常
+      主要是GC日志中有明确标明异常类型的情况，如
+  
+      针对每种异常情况，某度和某歌都有很多资料带你飞，一般都由内存泄露及不合理的内存分..
                             </p>
                             <button class="button is-info">Read</button>
                         </div>
