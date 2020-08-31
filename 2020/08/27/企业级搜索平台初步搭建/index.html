@@ -96,29 +96,29 @@ $(function() {
 <meta name="keywords" content="分布式,实时流,ETL,搜索平台">
 <meta property="og:type" content="article">
 <meta property="og:title" content="企业级搜索平台搭建(一期)">
-<meta property="og:url" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/index.html">
+<meta property="og:url" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="背景 我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题  原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题  solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高 搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以将搜索平台独立出去，甚至是希望有公司级别的新">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/1.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/2.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image-2.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image-3.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image-4.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/dj1.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/dj2.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/cx1.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/cx2.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q1.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q2.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q4.png">
-<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q3.png">
-<meta property="og:updated_time" content="2020-08-31T07:14:36.091Z">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/image.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/image-2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/image-3.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/image-4.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/dj1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/dj2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/cx1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/cx2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/es-q1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/es-q2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/es-q4.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/es-q3.png">
+<meta property="og:updated_time" content="2020-08-31T08:08:13.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="企业级搜索平台搭建(一期)">
 <meta name="twitter:description" content="背景 我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题  原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题  solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高 搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以将搜索平台独立出去，甚至是希望有公司级别的新">
-<meta name="twitter:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/1.png">
+<meta name="twitter:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -217,7 +217,7 @@ $(function() {
     <div id="header_box" class="header-box"></div>
 </header>
 <section>
-<span style="display:none" id="/2020/08/28/企业级搜索平台初步搭建/" class="leancloud_visitors"   data-flag-title="企业级搜索平台搭建(一期)"> </span>
+<span style="display:none" id="/2020/08/27/企业级搜索平台初步搭建/" class="leancloud_visitors"   data-flag-title="企业级搜索平台搭建(一期)"> </span>
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
@@ -227,7 +227,7 @@ $(function() {
             <div class="is-flex align-center">
                 <img class="post-avatar" src="https://wt.sinaimg.cn/thumb300/6962f50egw1f4g40ndwlsj20ku0rsq8l.jpg?tags=%5B%5D">
                 <span style="padding:0 10px;"> <span class="sub-title">By</span> Sean</span>
-                <span class="post-date sub-title">at: 2020-08-28</span>
+                <span class="post-date sub-title">at: 2020-08-27</span>
             </div>
             
                 <div>
@@ -266,14 +266,14 @@ $(function() {
 <p>由于大数据部门并没有资源可以支持新搜索平台的搭建，个人主动拉通推荐部门、数据平台部门、运维部门及业务相关负责人商讨并最终推动新搜索平台的立项及落地。</p>
 <h1><span id="落地过程">落地过程</span></h1>
 <p>先说一下个人在推进项目上的思路，总体如下：</p>
-<img src="/2020/08/28/企业级搜索平台初步搭建/1.png" title="p1">
+<img src="/2020/08/27/企业级搜索平台初步搭建/1.png" title="p1">
 <p>一般来说，首次推进事情的入口有有可能是反馈问题，也有可能是直接确定目标（被安排得明明白白的情况）。正常来说在立项后比较少会阶段回退，在立项前的阶段是有比较大的回退可能性或交叉可能性。本次是从反馈问题开始，上面的背景其实也是就是反馈问题的内容。</p>
 <h2><span id="反馈问题">反馈问题</span></h2>
 <p>清晰直观的抓住要点，在反馈问题上须先获得内部认可，比如你需要比较多资源需要外部支持的情况，首先得你的上级领导认可了，才有机会推进后面的环节。本次项目的反馈内容如背景介绍一样。</p>
 <h2><span id="确定目标">确定目标</span></h2>
 <p>计划是划分多期实现完整的搜索平台功能，而第一期的目标简单直接，快速搭建，完成mysql及hive数据源对接，有管理后台，有查询代理层。</p>
 <h2><span id="初步技术方案">初步技术方案</span></h2>
-<img src="/2020/08/28/企业级搜索平台初步搭建/2.png">
+<img src="/2020/08/27/企业级搜索平台初步搭建/2.png">
 <h3><span id="source-and-processor">source and processor</span></h3>
 <p>对搜索平台来说，数据是从哪来的，常见数据来源一般两种来源，一种是某种数据源（source），一种是某种数据加工渠道处理后的数据(processor)，就目前公司情况来说，大部分业务对接的source可能有mysql/hive/kafka等，对接的processor可能有业务服务变更请求。</p>
 <h3><span id="sink">sink</span></h3>
@@ -295,19 +295,19 @@ hive数据批量同步使用公司现有调度平台，直接在hive中安装es-
 </ol>
 </li>
 </ul>
- <img src="/2020/08/28/企业级搜索平台初步搭建/image.png">
+ <img src="/2020/08/27/企业级搜索平台初步搭建/image.png">
 <pre><code> 2. 当实时进行索引时进行查询
 </code></pre>
- <img src="/2020/08/28/企业级搜索平台初步搭建/image-2.png">
+ <img src="/2020/08/27/企业级搜索平台初步搭建/image-2.png">
 <pre><code> 3. 随着数据量增加对应的查询情况
 </code></pre>
- <img src="/2020/08/28/企业级搜索平台初步搭建/image-3.png">
+ <img src="/2020/08/27/企业级搜索平台初步搭建/image-3.png">
 <ul>
 <li>社区活跃度及市场关注度。两款搜索引擎都是市场上成熟且都使用面比较广的，但是es作为更受年轻市场欢迎，各大厂都是优先选型es，如阿里、腾讯、360等。截止2019年6月，这两种产品在谷歌上的搜索趋势trend如下</li>
 </ul>
 </li>
 </ol>
-<img src="/2020/08/28/企业级搜索平台初步搭建/image-4.png">
+<img src="/2020/08/27/企业级搜索平台初步搭建/image-4.png">
 <ol start="4">
 <li>考虑现有支撑。相对运维部门的资源支撑，es的对接成本会比较低。</li>
 <li>考虑非搜索引擎解决方案。与大数据平台负责人沟通过tidb及其它数据库的支持方案，tidb在数据平台之前的技术探研下，在数据检索这方面不算特别优秀，兼容了olap和oltp的支持，但是相对来说能力都不算特别突出，其它db的话基于现有资源及经验不作展开。</li>
@@ -333,15 +333,15 @@ hive数据批量同步使用公司现有调度平台，直接在hive中安装es-
 <p>待新搜索平台能够支撑至少业务基本的数据流水线运作之后，视数据平台资源情况安排交接事项，后续更多的迭代功能由大数据平台主导推进。</p>
 <h2><span id="核心技术方案">核心技术方案</span></h2>
 <h3><span id="对接流程">对接流程</span></h3>
-<img src="/2020/08/28/企业级搜索平台初步搭建/dj1.png">
-<img src="/2020/08/28/企业级搜索平台初步搭建/dj2.png">
+<img src="/2020/08/27/企业级搜索平台初步搭建/dj1.png">
+<img src="/2020/08/27/企业级搜索平台初步搭建/dj2.png">
 <h3><span id="查询服务">查询服务</span></h3>
 <p>一期主要解决以下需求：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">普通数据检索，即 select ... from ... where ... order by ... limit n offset m</span><br><span class="line">简单数据聚合，即 select agg_func(xxx),.. from ... where ... (group by ...) having ... order by ... limit n offset m</span><br></pre></td></tr></table></figure>
 <h4><span id="主流程">主流程</span></h4>
-<img src="/2020/08/28/企业级搜索平台初步搭建/cx1.png">
+<img src="/2020/08/27/企业级搜索平台初步搭建/cx1.png">
 <h4><span id="构造查询">构造查询</span></h4>
-<img src="/2020/08/28/企业级搜索平台初步搭建/cx2.png">
+<img src="/2020/08/27/企业级搜索平台初步搭建/cx2.png">
 <h4><span id="结果预处理">结果预处理</span></h4>
 <p>主要是针对请求返回数据的处理，包括别名与格式化。格式化主要是针对指标的数值类型和日期类型进行支持，数值类型主要是支持浮点数小数位长度格式化，日期类型支持对长整型或字符串类型（普通及UTC格式）进行格式化，语法与正常日期格式一致，如yyyy-MM-dd HH:mm:ss。</p>
 <h4><span id="案例">案例</span></h4>
@@ -382,7 +382,7 @@ CPU:32核<br>
 <h5><span id="connection-error">Connection error</span></h5>
 <p>EsHadoopNoNodesLeftException: Connection error (check network and/or proxy settings)- all nodes failed;<br>
 ES初始线程线数配置是32，队列为200。看es集群的监控大盘，发现是跑满了，分配不了新的线程，导致reject了。</p>
-<img src="/2020/08/28/企业级搜索平台初步搭建/es-q1.png">  
+<img src="/2020/08/27/企业级搜索平台初步搭建/es-q1.png">  
 <ul>
 <li>线程多说明并发，说明并发处理的多，故先尝试调大hive单个map的值，调整到1G尝试map数量依然有500多个，最终调整为2G数量130多，可以接受，但是依然会触发reject。</li>
 <li>不停调整线程和队列参数重试（每跑一次至少要20-40分钟才会出现问题，过程有点痛苦），最终调整到单机500线程，5k任务数。</li>
@@ -391,15 +391,15 @@ ES初始线程线数配置是32，队列为200。看es集群的监控大盘，�
 <h5><span id="circuit_breaking_exception">circuit_breaking_exception</span></h5>
 <p>EsHadoopRemoteException: circuit_breaking_exception: [parent] Data too large, data for [&lt;http_request&gt;] would be [29457035464/27.4gb], which is larger than the limit of [29391011840/27.3gb], real usage: [29426154328/27.4gb], new bytes reserved: [30881136/29.4mb] {“index”:{&quot;_id&quot;:“99000983254644”}}<br>
 解决第一个问题之后出现了由于内存不足的情况，从监控大盘上看到</p>
-<img src="/2020/08/28/企业级搜索平台初步搭建/es-q2.png">  
+<img src="/2020/08/27/企业级搜索平台初步搭建/es-q2.png">  
 <p>居然忘记了大数量操作要先关闭refresh，罪过，再看一遍<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-indexing-speed.html" target="_blank" rel="noopener">es官方的建议</a>。。。<br>
 refresh是内存操作，关于refresh和flush在网上拿了张图，巩固下基础。。。</p>
-<img src="/2020/08/28/企业级搜索平台初步搭建/es-q4.png"> 
+<img src="/2020/08/27/企业级搜索平台初步搭建/es-q4.png"> 
 <h4><span id="too-many-requests">Too Many Requests</span></h4>
 <p>EsHadoopInvalidRequest: [HEAD] on [xxx] failed; server[192.168.50.252:9200] returned [429|Too Many Requests:]<br>
 主要是受第二点影响，关闭refresh之后就不出现了<br>
 其实第一点也受到refresh影响，refresh占用了部分的线程数，但是不多</p>
-<img src="/2020/08/28/企业级搜索平台初步搭建/es-q3.png"> 
+<img src="/2020/08/27/企业级搜索平台初步搭建/es-q3.png"> 
 <h1><span id="回顾及规划">回顾及规划</span></h1>
 <h2><span id="回顾">回顾</span></h2>
 <p>由于一期功能比较简单，只是简单满足了数据查询要求，其实还算比较顺利，但是对比大厂的搜索平台，依然还有很长的路要走。</p>
