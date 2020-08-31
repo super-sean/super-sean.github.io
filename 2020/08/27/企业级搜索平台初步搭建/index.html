@@ -114,7 +114,7 @@ $(function() {
 <meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/es-q2.png">
 <meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/es-q4.png">
 <meta property="og:image" content="https://super-sean.github.io/2020/08/27/企业级搜索平台初步搭建/es-q3.png">
-<meta property="og:updated_time" content="2020-08-31T08:08:13.420Z">
+<meta property="og:updated_time" content="2020-08-31T08:17:46.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="企业级搜索平台搭建(一期)">
 <meta name="twitter:description" content="背景 我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题  原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题  solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高 搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以将搜索平台独立出去，甚至是希望有公司级别的新">
@@ -430,7 +430,7 @@ refresh是内存操作，关于refresh和flush在网上拿了张图，巩固下�
 <p>其实这里主要是想强调应用侧的物理隔离，利用好分片及路由的特性，ES本身官方有相应的<a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.9/high-availability.html" target="_blank" rel="noopener">高可用解决方案</a>，主要是关于弹性扩容、集群备份及跨集群副本</p>
 <h1><span id="参考文档">参考文档</span></h1>
 <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html" target="_blank" rel="noopener">es官方文档</a><br>
-<a href="https://segmentfault.com/a/1190000016266836" target="_blank" rel="noopener">有赞搜索系统的架构演进</a><br>
+<a href="https://tech.youzan.com/search-tech-1/" target="_blank" rel="noopener">有赞搜索系统的架构演进</a><br>
 <a href="https://www.cnblogs.com/cuiyubo/p/11756781.html" target="_blank" rel="noopener">基于MySQL Binlog的Elasticsearch数据同步实践-马蜂窝</a><br>
 <a href="https://www.jianshu.com/p/fd9aef9b124b" target="_blank" rel="noopener">ES集群优化 之 海量时序数据处理</a><br>
 <a href="https://ezlippi.com/blog/2018/04/elasticsearch-translog.html" target="_blank" rel="noopener">Elasticsearch translog文件介绍</a><br>
