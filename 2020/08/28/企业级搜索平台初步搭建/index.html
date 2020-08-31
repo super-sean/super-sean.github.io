@@ -90,15 +90,35 @@ $(function() {
 </script>
 
   
-  <title>Tag: ETL | Sean&#39;s Blog</title>
+  <title>企业级搜索平台搭建(一期) | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="https://super-sean.github.io/tags/ETL/index.html">
+  <meta name="description" content="背景 我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题  原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题  solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高 搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以将搜索平台独立出去，甚至是希望有公司级别的新">
+<meta name="keywords" content="分布式,实时流,ETL,搜索平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="企业级搜索平台搭建(一期)">
+<meta property="og:url" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
+<meta property="og:description" content="背景 我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题  原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题  solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高 搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以将搜索平台独立出去，甚至是希望有公司级别的新">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image-2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image-3.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/image-4.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/dj1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/dj2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/cx1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/cx2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q1.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q2.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q4.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/es-q3.png">
+<meta property="og:updated_time" content="2020-08-31T07:14:36.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
+<meta name="twitter:title" content="企业级搜索平台搭建(一期)">
+<meta name="twitter:description" content="背景 我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题  原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题  solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高 搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以将搜索平台独立出去，甚至是希望有公司级别的新">
+<meta name="twitter:image" content="https://super-sean.github.io/2020/08/28/企业级搜索平台初步搭建/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -160,85 +180,279 @@ $(function() {
 
   <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
       <div class="main-inner-content">
-          <style>
-    .container.tag-cate-wrap {
-        min-height: 93vh;
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
     }
 
-    .category-title-inner {
-        padding-top: 50px;
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
     }
 
-    strong {
-        text-transform: capitalize;
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
     }
 </style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+<span style="display:none" id="/2020/08/28/企业级搜索平台初步搭建/" class="leancloud_visitors"   data-flag-title="企业级搜索平台搭建(一期)"> </span>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>企业级搜索平台搭建(一期)</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://wt.sinaimg.cn/thumb300/6962f50egw1f4g40ndwlsj20ku0rsq8l.jpg?tags=%5B%5D">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Sean</span>
+                <span class="post-date sub-title">at: 2020-08-28</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/分布式/">分布式</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/实时流/">实时流</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/ETL/">ETL</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/搜索平台/">搜索平台</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h1><span id="背景">背景</span></h1>
+<p>我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题</p>
+<ol>
+<li>原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题
+<ul>
+<li>solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高</li>
+<li>搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以将搜索平台独立出去，甚至是希望有公司级别的新搜索平台可供搜索平台使用</li>
+</ul>
+</li>
+<li>对业务部门来说，缺少实时性支持的搜索服务，搜索平台在中大型企业发展过程承担着重要的角色与职能
+<ul>
+<li>可以为业务分片数据（分表分库）检索及简单统计提供高性能服务</li>
+<li>可以充当业务与大数据平台、智能平台三者进行数据共享的桥梁</li>
+<li>可以为业务提供CQRS统一解决方案提供支撑，甚至非持久性业务数据需求可以直接对接</li>
+</ul>
+</li>
+<li>对大数据平台来说，搜索平台是其规划中但未实现的架构板块之一</li>
+<li>对运维部门来说，现有搜索引擎服务，原生的管理工具不够完善，且希望可以结合业务创造更多价值</li>
+</ol>
+<p>由于大数据部门并没有资源可以支持新搜索平台的搭建，个人主动拉通推荐部门、数据平台部门、运维部门及业务相关负责人商讨并最终推动新搜索平台的立项及落地。</p>
+<h1><span id="落地过程">落地过程</span></h1>
+<p>先说一下个人在推进项目上的思路，总体如下：</p>
+<img src="/2020/08/28/企业级搜索平台初步搭建/1.png" title="p1">
+<p>一般来说，首次推进事情的入口有有可能是反馈问题，也有可能是直接确定目标（被安排得明明白白的情况）。正常来说在立项后比较少会阶段回退，在立项前的阶段是有比较大的回退可能性或交叉可能性。本次是从反馈问题开始，上面的背景其实也是就是反馈问题的内容。</p>
+<h2><span id="反馈问题">反馈问题</span></h2>
+<p>清晰直观的抓住要点，在反馈问题上须先获得内部认可，比如你需要比较多资源需要外部支持的情况，首先得你的上级领导认可了，才有机会推进后面的环节。本次项目的反馈内容如背景介绍一样。</p>
+<h2><span id="确定目标">确定目标</span></h2>
+<p>计划是划分多期实现完整的搜索平台功能，而第一期的目标简单直接，快速搭建，完成mysql及hive数据源对接，有管理后台，有查询代理层。</p>
+<h2><span id="初步技术方案">初步技术方案</span></h2>
+<img src="/2020/08/28/企业级搜索平台初步搭建/2.png">
+<h3><span id="source-and-processor">source and processor</span></h3>
+<p>对搜索平台来说，数据是从哪来的，常见数据来源一般两种来源，一种是某种数据源（source），一种是某种数据加工渠道处理后的数据(processor)，就目前公司情况来说，大部分业务对接的source可能有mysql/hive/kafka等，对接的processor可能有业务服务变更请求。</p>
+<h3><span id="sink">sink</span></h3>
+<p>同步的数据需要有对应的角色进行落地(sink)。正常来说，从source或者是processor都是有相应的数据同步工具（自带或第三方）可以将数据直接落地到存储层，我们还需要在这中间支持权限管理、监控告警、流量控制以及搜索引擎升级或变更等需求。<br>
+数量同步初始方案简单为通过现有工具进行数据来源的对接，减少启动成本。后续待大数据平台flink上线后，可转为直接使用flink，flink其实是包含了source/processor/sink为一体的，这里暂时先放在sink这一层。<br>
+mysql增量数量同步方案初步定为使用canal Sync es adapter，因为dba目前在使用canal。全量数据同步方案旧搜索平台用的sqoop，这里根据运维的elk组件推荐了logstash-input-jdbc，具体看运维同事选择哪种。<br>
+hive数据批量同步使用公司现有调度平台，直接在hive中安装es-hadoop jar包，使用外部表配置。</p>
+<h3><span id="store-and-search">store and search</span></h3>
+<p>数据存储搜索层，使用es 7.x</p>
+<h4><span id="为什么要用es-为什么不是solr或者其它">为什么要用es ? 为什么不是solr或者其它?</span></h4>
+<ol>
+<li>基于业务需求特性，目前大部分业务对单表数据查询的场景非常多，少量简单聚合查询场景，极少数复杂聚合查询场景。</li>
+<li>基于既有经验推荐，推荐部门的搜索平台原来的负责人表示solr在使用存在的一些问题，包括分区备份失败后需要手动触发恢复等。也表示推荐使用es。</li>
+<li>基于搜索引擎间的比较 Solr es Hermes Sphinx Nutch LGTE，从数据量规模、oltp场景支撑及公司研发人员技术栈特性出发，直接就筛选剩下solr与es，进而参考es与solr的对比资料
+<ul>
+<li>性能及特性，solr不太适合频繁变更数据，更适合落地不变的数据
+<ol>
+<li>单纯对已有数据进行搜索时</li>
+</ol>
+</li>
+</ul>
+ <img src="/2020/08/28/企业级搜索平台初步搭建/image.png">
+<pre><code> 2. 当实时进行索引时进行查询
+</code></pre>
+ <img src="/2020/08/28/企业级搜索平台初步搭建/image-2.png">
+<pre><code> 3. 随着数据量增加对应的查询情况
+</code></pre>
+ <img src="/2020/08/28/企业级搜索平台初步搭建/image-3.png">
+<ul>
+<li>社区活跃度及市场关注度。两款搜索引擎都是市场上成熟且都使用面比较广的，但是es作为更受年轻市场欢迎，各大厂都是优先选型es，如阿里、腾讯、360等。截止2019年6月，这两种产品在谷歌上的搜索趋势trend如下</li>
+</ul>
+</li>
+</ol>
+<img src="/2020/08/28/企业级搜索平台初步搭建/image-4.png">
+<ol start="4">
+<li>考虑现有支撑。相对运维部门的资源支撑，es的对接成本会比较低。</li>
+<li>考虑非搜索引擎解决方案。与大数据平台负责人沟通过tidb及其它数据库的支持方案，tidb在数据平台之前的技术探研下，在数据检索这方面不算特别优秀，兼容了olap和oltp的支持，但是相对来说能力都不算特别突出，其它db的话基于现有资源及经验不作展开。</li>
+</ol>
+<h4><span id="是否一定要用es">是否一定要用es?</span></h4>
+<p>可以看到层次划分，在数据存储搜索层往前架了类似代理这样的角色，为数据存储搜索层本身的升级及扩展预留空间，es只是作为搜索平台第一阶段的解决方案，以后可以接入更多其它技术。</p>
+<h3><span id="service">service</span></h3>
+<p>服务层主要包括两个方面，一方面是管理服务，一方面查询服务。</p>
+<h4><span id="manager">manager</span></h4>
+<p>独立的管理服务，基本功能包括 业务及数据集合(如es的index)的映射关系、基本信息和权限的管理，关联数据同步任务，审核流程及数据查询页面。高级功能包括监控告警功能，流控等。</p>
+<h4><span id="query-service">query-service</span></h4>
+<ol>
+<li>查询服务对外应该提供一套标准化查询规范，使用方不应感知到存储及搜索层具体使用的是什么技术。</li>
+<li>查询服务服务质量情况需要有监控大盘，可通过cat打点对接grafana实现。</li>
+<li>查询服务应支持对数据集合粒度进行流控，确保服务质量。</li>
+</ol>
+<h3><span id="职能边界问题">职能边界问题</span></h3>
+<h4><span id="运维部门">运维部门</span></h4>
+<p>负责资源管理、监控告警相关功能管理以及业务对接的审批流程的最后环节</p>
+<h4><span id="业务部门">业务部门</span></h4>
+<p>主要协助初始版本搜索平台的搭建相关的研发工作，以及业务对接审批的前置环节</p>
+<h4><span id="大数据平台">大数据平台</span></h4>
+<p>待新搜索平台能够支撑至少业务基本的数据流水线运作之后，视数据平台资源情况安排交接事项，后续更多的迭代功能由大数据平台主导推进。</p>
+<h2><span id="核心技术方案">核心技术方案</span></h2>
+<h3><span id="对接流程">对接流程</span></h3>
+<img src="/2020/08/28/企业级搜索平台初步搭建/dj1.png">
+<img src="/2020/08/28/企业级搜索平台初步搭建/dj2.png">
+<h3><span id="查询服务">查询服务</span></h3>
+<p>一期主要解决以下需求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">普通数据检索，即 select ... from ... where ... order by ... limit n offset m</span><br><span class="line">简单数据聚合，即 select agg_func(xxx),.. from ... where ... (group by ...) having ... order by ... limit n offset m</span><br></pre></td></tr></table></figure>
+<h4><span id="主流程">主流程</span></h4>
+<img src="/2020/08/28/企业级搜索平台初步搭建/cx1.png">
+<h4><span id="构造查询">构造查询</span></h4>
+<img src="/2020/08/28/企业级搜索平台初步搭建/cx2.png">
+<h4><span id="结果预处理">结果预处理</span></h4>
+<p>主要是针对请求返回数据的处理，包括别名与格式化。格式化主要是针对指标的数值类型和日期类型进行支持，数值类型主要是支持浮点数小数位长度格式化，日期类型支持对长整型或字符串类型（普通及UTC格式）进行格式化，语法与正常日期格式一致，如yyyy-MM-dd HH:mm:ss。</p>
+<h4><span id="案例">案例</span></h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * select user_id,date(last_update_time) day,sum(total) total_sum,max(total) total_max,min(total) total_min,avg(total) total_avg,count(id) id_count</span><br><span class="line">	 * from `order`</span><br><span class="line">	 * group by user_id,date(last_update_time)</span><br><span class="line">	 * having sum(total) &gt; 500</span><br><span class="line">	 * @throws Exception</span><br><span class="line">	 */</span><br><span class="line">	@Test</span><br><span class="line">	public void aggFiledGroupByAndHavingSimpleConditionQueryTest() throws Exception &#123;</span><br><span class="line">		Query.Builder query = Query.newBuilder();</span><br><span class="line">		query.setDataset(&quot;vod_trade_order&quot;);</span><br><span class="line">		query.setToken(&quot;&quot;);</span><br><span class="line"></span><br><span class="line">		Field.Builder field = Field.newBuilder();</span><br><span class="line"></span><br><span class="line">		field.setName(&quot;total&quot;);</span><br><span class="line">		field.setAggregationType(AggregationType.SUM);</span><br><span class="line">		field.setAlias(&quot;total_sum&quot;);</span><br><span class="line">		query.addField(field.build());</span><br><span class="line"></span><br><span class="line">		field.setName(&quot;total&quot;);</span><br><span class="line">		field.setAggregationType(AggregationType.MAX);</span><br><span class="line">		field.setAlias(&quot;total_max&quot;);</span><br><span class="line">		query.addField(field.build());</span><br><span class="line"></span><br><span class="line">		field.setName(&quot;total&quot;);</span><br><span class="line">		field.setAggregationType(AggregationType.MIN);</span><br><span class="line">		field.setAlias(&quot;total_min&quot;);</span><br><span class="line">		query.addField(field.build());</span><br><span class="line"></span><br><span class="line">		field.setName(&quot;total&quot;);</span><br><span class="line">		field.setAggregationType(AggregationType.AVG);</span><br><span class="line">		field.setAlias(&quot;total_avg&quot;);</span><br><span class="line">		query.addField(field.build());</span><br><span class="line"></span><br><span class="line">		field.setName(&quot;id&quot;);</span><br><span class="line">		field.setAggregationType(AggregationType.COUNT);</span><br><span class="line">		field.setAlias(&quot;id_count&quot;);</span><br><span class="line">		query.addField(field.build());</span><br><span class="line"></span><br><span class="line">		AggField.Builder aggField = AggField.newBuilder();</span><br><span class="line">		field.setName(&quot;user_id&quot;);</span><br><span class="line">		field.clearAggregationType();</span><br><span class="line">		field.clearAlias();</span><br><span class="line">		aggField.setField(field.build());</span><br><span class="line">		aggField.setType(AggFieldType.Filed);</span><br><span class="line">		query.addGroupByField(aggField.build());</span><br><span class="line"></span><br><span class="line">		field.setName(&quot;last_update_time&quot;);</span><br><span class="line">		field.clearAggregationType();</span><br><span class="line">		field.setAlias(&quot;day&quot;);</span><br><span class="line">		aggField.setField(field.build());</span><br><span class="line">		aggField.setType(AggFieldType.Date_Range);</span><br><span class="line">		aggField.setDateAggUnit(DateAggUnit.Day);</span><br><span class="line">		aggField.setInterval(1);</span><br><span class="line">		query.addGroupByField(aggField.build());</span><br><span class="line"></span><br><span class="line">		field.setName(&quot;total&quot;);</span><br><span class="line">		field.clearAggregationType();</span><br><span class="line">		field.setAlias(&quot;total_sum&quot;);</span><br><span class="line">		FilterCriteria.Builder criteria = FilterCriteria.newBuilder();</span><br><span class="line">		criteria.setField(field.build());</span><br><span class="line">		criteria.setCompare(FilterCompare.GreaterEqual);</span><br><span class="line">		criteria.addFilterCritValue(&quot;500&quot;);</span><br><span class="line"></span><br><span class="line">		FilterCondition.Builder condition =FilterCondition.newBuilder();</span><br><span class="line">		condition.setCriteriaFirst(criteria.build());</span><br><span class="line"></span><br><span class="line">		query.setHavingCondition(condition);</span><br><span class="line">		Result&lt;ResponseQuery&gt; result = service.query(query.build());</span><br><span class="line">		printResult(result);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="注意点">注意点</span></h4>
+<p>1 聚合查询不返回命中总数，这跟大部分搜索引擎的性能考虑相关，如有需要，根据具体业务场景需要另外查询总数。<br>
+2 分页必须带有排序，分页不支持跳页，由于搜索引擎限制及性能考虑，统一使用滚动分页after的方式，需要业务自管理前一页的游标。</p>
+<h2><span id="资源计划">资源计划</span></h2>
+<p>根据技术方案进行资源评估，预计两周完成并上线。</p>
+<h3><span id="人员">人员</span></h3>
+<p>开发、运维人员及大数据平台人员相关资源支持</p>
+<h3><span id="硬件">硬件</span></h3>
+<p>使用现有机器（额外采购需要1个月左右时间）<br>
+一期资源申请机器3台，以下为单台配置<br>
+CPU:32核<br>
+内存:64G<br>
+硬盘: 每台机器两块960G ssd盘  做raid1<br>
+网卡：万兆（考虑数据副本移动情况）</p>
+<h2><span id="寻求认可">寻求认可</span></h2>
+<p>拿着相应的技术方案及资源计划进行沟通</p>
+<h3><span id="内部">内部</span></h3>
+<p>部门及小组leader 沟通确认</p>
+<h3><span id="外部">外部</span></h3>
+<p>各依赖部门及小组leader 沟通确认</p>
+<h2><span id="立项及项目执行">立项及项目执行</span></h2>
+<h3><span id="正式的立项邮件">正式的立项邮件</span></h3>
+<p>项目的正式启动需要仪式感引起项目组成员及干系人的感知及严肃对待。</p>
+<h3><span id="项目执行">项目执行</span></h3>
+<p>每天日报，每周周报，同步进度、问题及风险。</p>
+<h3><span id="项目上线">项目上线</span></h3>
+<p>最终项目顺利上线，并在生产环境回归验证通过</p>
+<h2><span id="业务试点">业务试点</span></h2>
+<p>在线上找了mysql + 实时数据 和 hive + 批量同步的业务场景对接。</p>
+<h3><span id="对接过程中出现过的问题">对接过程中出现过的问题</span></h3>
+<h4><span id="大数据量同步问题">大数据量同步问题</span></h4>
+<h5><span id="规模">规模</span></h5>
+<p>数据量 全量 2.3亿+数据，大小为800G左右，增量80w左右。数据存放在hive</p>
+<h5><span id="connection-error">Connection error</span></h5>
+<p>EsHadoopNoNodesLeftException: Connection error (check network and/or proxy settings)- all nodes failed;<br>
+ES初始线程线数配置是32，队列为200。看es集群的监控大盘，发现是跑满了，分配不了新的线程，导致reject了。</p>
+<img src="/2020/08/28/企业级搜索平台初步搭建/es-q1.png">  
+<ul>
+<li>线程多说明并发，说明并发处理的多，故先尝试调大hive单个map的值，调整到1G尝试map数量依然有500多个，最终调整为2G数量130多，可以接受，但是依然会触发reject。</li>
+<li>不停调整线程和队列参数重试（每跑一次至少要20-40分钟才会出现问题，过程有点痛苦），最终调整到单机500线程，5k任务数。</li>
+<li>经过上面两步从监控上已经没有reject的情况了，但是hive依然报这个错，所以估计是客户端超时导致，加长hive外部表连接http超时时间为10分钟，至此不报connection error。</li>
+</ul>
+<h5><span id="circuit_breaking_exception">circuit_breaking_exception</span></h5>
+<p>EsHadoopRemoteException: circuit_breaking_exception: [parent] Data too large, data for [&lt;http_request&gt;] would be [29457035464/27.4gb], which is larger than the limit of [29391011840/27.3gb], real usage: [29426154328/27.4gb], new bytes reserved: [30881136/29.4mb] {“index”:{&quot;_id&quot;:“99000983254644”}}<br>
+解决第一个问题之后出现了由于内存不足的情况，从监控大盘上看到</p>
+<img src="/2020/08/28/企业级搜索平台初步搭建/es-q2.png">  
+<p>居然忘记了大数量操作要先关闭refresh，罪过，再看一遍<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-indexing-speed.html" target="_blank" rel="noopener">es官方的建议</a>。。。<br>
+refresh是内存操作，关于refresh和flush在网上拿了张图，巩固下基础。。。</p>
+<img src="/2020/08/28/企业级搜索平台初步搭建/es-q4.png"> 
+<h4><span id="too-many-requests">Too Many Requests</span></h4>
+<p>EsHadoopInvalidRequest: [HEAD] on [xxx] failed; server[192.168.50.252:9200] returned [429|Too Many Requests:]<br>
+主要是受第二点影响，关闭refresh之后就不出现了<br>
+其实第一点也受到refresh影响，refresh占用了部分的线程数，但是不多</p>
+<img src="/2020/08/28/企业级搜索平台初步搭建/es-q3.png"> 
+<h1><span id="回顾及规划">回顾及规划</span></h1>
+<h2><span id="回顾">回顾</span></h2>
+<p>由于一期功能比较简单，只是简单满足了数据查询要求，其实还算比较顺利，但是对比大厂的搜索平台，依然还有很长的路要走。</p>
+<h2><span id="规划">规划</span></h2>
+<h3><span id="功能">功能</span></h3>
+<h4><span id="高级搜索">高级搜索</span></h4>
+<p>目前只是实现了普通的bool查询及聚合查询场景，随着业务发展，需要支持function_score之类专业性较强的高级查询</p>
+<h4><span id="接口配置化">接口配置化</span></h4>
+<p>使用类似sqlBuilder的方法提供api给业务使用，从代码优雅性及效率上来说依然是有很大提升空间。可通过将查询结构体配置化的方式来解决。</p>
+<h4><span id="flink接入">flink接入</span></h4>
+<p>目前公司的flink刚好在试行阶段，初步与大数据平台负责人沟通过，可进行对接实验。</p>
+<h3><span id="性能">性能</span></h3>
+<h4><span id="分片与副本">分片与副本</span></h4>
+<p>缺乏分片与副本的科学定制理论。<br>
+分片数官方建议单分片10-20亿条，20GB 到 40GB存储大小为最佳，但是事实上在业务真实情况及资源限制方面不是简单的一概而论，假设写入的qps比较高，需要适当提高分片数，但是分片太多会给es主节点带来更高的负载。<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/avoid-oversharding.html" target="_blank" rel="noopener">避免过度分片</a></p>
+<h4><span id="es数据写入">ES数据写入</span></h4>
+<h5><span id="性能提升">性能提升</span></h5>
+<p>目前数据同步分为各个渠道各自写入，没有统一的代理，对es的写请求缺乏全局控制的能力，es在无规划写的性能上是存在较大风险的。<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-disk-usage.html" target="_blank" rel="noopener">官方推荐提升索引速度的方法</a></p>
+<h5><span id="磁盘利用率">磁盘利用率</span></h5>
+<p>数据写入时对占用物理空间的把控目前也是没有考虑的，<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-disk-usage.html" target="_blank" rel="noopener">官方推荐提升磁盘利用率的方法</a></p>
+<h4><span id="es数据读取">ES数据读取</span></h4>
+<h5><span id="性能提升">性能提升</span></h5>
+<p>目前对于查询的语法使用是比较简单的，还未有性能优化相关的考虑点。<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-search-speed.html" target="_blank" rel="noopener">官方推荐提升查询速度的方法</a><br>
+在流控方面接入了公司在用的阿里的sentinel，但是目前控制粒度还比较粗</p>
+<h4><span id="其它">其它</span></h4>
+<p>像缓存、预热器、路由、查询偏好等相关方面的应用</p>
+<h3><span id="高可用">高可用</span></h3>
+<p>其实这里主要是想强调应用侧的物理隔离，利用好分片及路由的特性，ES本身官方有相应的<a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.9/high-availability.html" target="_blank" rel="noopener">高可用解决方案</a>，主要是关于弹性扩容、集群备份及跨集群副本</p>
+<h1><span id="参考文档">参考文档</span></h1>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html" target="_blank" rel="noopener">es官方文档</a><br>
+<a href="https://segmentfault.com/a/1190000016266836" target="_blank" rel="noopener">有赞搜索系统的架构演进</a><br>
+<a href="https://www.cnblogs.com/cuiyubo/p/11756781.html" target="_blank" rel="noopener">基于MySQL Binlog的Elasticsearch数据同步实践-马蜂窝</a><br>
+<a href="https://www.jianshu.com/p/fd9aef9b124b" target="_blank" rel="noopener">ES集群优化 之 海量时序数据处理</a><br>
+<a href="https://ezlippi.com/blog/2018/04/elasticsearch-translog.html" target="_blank" rel="noopener">Elasticsearch translog文件介绍</a><br>
+还有一些零碎的文档没及时保留引用来源，请见谅。。。</p>
 
-
-<div class="container tag-cate-wrap">
-    <div class="category-title-inner content has-text-centered">
-        <h1><strong style="border-top: 2px solid; border-bottom: 2px solid;">tag·ETL</strong></h1>
+        </div>
+        <div class="post-reply">
+            
+            
+        </div>
     </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
 
-    
-    
-        <div class="box">
-            <article class="media">
-                
-                <a href="/2020/08/28/企业级搜索平台初步搭建/">
-                    
-                    <div class="media-left">
-                        <figure class="image is-128x128">
-                            <img src="/2020/08/28/企业级搜索平台初步搭建/1.png" style="height: 100%; width: 100%">
-                        </figure>
-                    </div>
-                    
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>企业级搜索平台搭建(一期)</strong> <small class="post-date">at: 2020-08-28</small>
-                                <br>
-                                背景
-我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
 
-原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题
-
-solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高
-搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以..
-                            </p>
-                            <button class="button is-info">Read</button>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        </div>
-    
-        <div class="box">
-            <article class="media">
-                
-                <a href="/2018/11/23/datax源码解析及分布式实现思路/">
-                    
-                    <div class="media-left">
-                        <figure class="image is-128x128">
-                            <img src="/2018/11/23/datax源码解析及分布式实现思路/1.png" style="height: 100%; width: 100%">
-                        </figure>
-                    </div>
-                    
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>datax源码解析及分布式实现思路</strong> <small class="post-date">at: 2018-11-23</small>
-                                <br>
-                                &ensp; &ensp;&ensp; &ensp;相信很多人接触datax都会去了解它的分布式执行模式，很“幸运”，阿里开源出来的是阉割版，默认只支持单机模式，研发团队对外基本也不回应分布式相关的问题。故此，想让datax支持分布式功能，只能自己下些功夫。&ensp; &ensp;&ensp; &ensp;在github上也有人做了分布式的支持项目，如..
-                            </p>
-                            <button class="button is-info">Read</button>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        </div>
-    
-</div>
       </div>
   </div>
   <style>
