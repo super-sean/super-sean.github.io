@@ -90,15 +90,34 @@ $(function() {
 </script>
 
   
-  <title>Sean&#39;s Blog</title>
+  <title>一线研发进化-该如何理解研发效能 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="https://super-sean.github.io/index.html">
+  <meta name="description" content="前语 作为研发人员往往需要与多种角色打交道，产品、项管、运维等等，而与每个角色打交道的过程你是否清楚你处于需求/项目/研发里的哪个环节，不同角色做出的决策是否合理，不合理的时候怎么沟通；个人、团队、小组和部门及至公司的负荷和产出如何，是否健康高效，要从哪些点入手改善。 没有对应的理论支撑的话，更多只能凭经验说话，而经验不一定就是最科学了，需要结合理论进行实践。咱们今天就来探讨一下一线研发该如何理解">
+<meta name="keywords" content="项目管理,效能,流程规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一线研发进化-该如何理解研发效能">
+<meta property="og:url" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
+<meta property="og:description" content="前语 作为研发人员往往需要与多种角色打交道，产品、项管、运维等等，而与每个角色打交道的过程你是否清楚你处于需求/项目/研发里的哪个环节，不同角色做出的决策是否合理，不合理的时候怎么沟通；个人、团队、小组和部门及至公司的负荷和产出如何，是否健康高效，要从哪些点入手改善。 没有对应的理论支撑的话，更多只能凭经验说话，而经验不一定就是最科学了，需要结合理论进行实践。咱们今天就来探讨一下一线研发该如何理解">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/Scrum-workflow.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/Kanban-workflow.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/Lean-workflow.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/XP-feedback.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/关键度量指标.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/研发效能度量分析模型.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/价值流交付模型.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/交付价值流的度量.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/交付价值流的实践指导原则.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/DevOps.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/devops工具链网络.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/研发效能三大模型.png">
+<meta property="og:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/度量分析实例.png">
+<meta property="og:updated_time" content="2020-09-12T03:50:46.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
+<meta name="twitter:title" content="一线研发进化-该如何理解研发效能">
+<meta name="twitter:description" content="前语 作为研发人员往往需要与多种角色打交道，产品、项管、运维等等，而与每个角色打交道的过程你是否清楚你处于需求/项目/研发里的哪个环节，不同角色做出的决策是否合理，不合理的时候怎么沟通；个人、团队、小组和部门及至公司的负荷和产出如何，是否健康高效，要从哪些点入手改善。 没有对应的理论支撑的话，更多只能凭经验说话，而经验不一定就是最科学了，需要结合理论进行实践。咱们今天就来探讨一下一线研发该如何理解">
+<meta name="twitter:image" content="https://super-sean.github.io/2020/09/09/一线研发该如何理解研发效能/Scrum-workflow.png">
   
     <link rel="alternate" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -160,789 +179,411 @@ $(function() {
 
   <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
       <div class="main-inner-content">
-          <style>
-    .post-hover:hover {
-        box-shadow: inset 0 0 100px #000;
-        transition: box-shadow .2s;
-    }
+          <!--博文页面-->
 
-    .sub-post-container .post-hover:hover h3 {
-        text-decoration: underline gray;
-    }
-
-
-    .primary-item-main {
-        height: 330px;
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
         background-size: cover;
+        background-color: lightsteelblue;
     }
 
-    .primary-container .title,
-    .primary-container .sub-title,
-    .primary-container .post-content-text,
-    .primary-container .date {
-        color: #fff;
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
     }
 
-    .post-content-text {
-        color: #f1f1f1!important;
-    }
-
-    .primary-container .post-hover {
-        background: black;
-    }
-
-    .content-bg-mask {
-        background: rgba(0,0,0,.4);
-    }
-
-</style>
-
-<span style="display:none" id="/index" class="leancloud_visitors"   data-flag-title="首页"> </span>
-<div style="background: #f5f8f9;">
-    <div id="main-container" class="container" style="padding-top: 20px;">
-        <div class="is-flex main-content justify-center">
-            <section class="column is-9">
-                
-<div class="primary-container content-box is-flex-desktop clear-padding bottom-line" style="margin-bottom: 25px;">
-    <div class="column  is-7-desktop">
-        <a href="/2020/09/09/一线研发该如何理解研发效能/">
-            <div class="full-height post-hover"
-                 style="
-                         background-image: url('/2020/09/09/一线研发该如何理解研发效能/Scrum-workflow.png');
-                         height: 350px;
-                         background-size: cover;
-                         background-repeat: no-repeat;
-                         ">
-                    <div class=" is-flex flex-column center content has-text-centered full-height has-padding content-bg-mask">
-                        <h1 class="title text-shadow" style="margin-bottom: 15px;">
-                            一线研发进化-该如何理解研发效能
-                        </h1>
-                        <div>
-                        
-                            `
-                                <span class="tag is-post-tag">项目管理</span>
-                            `
-                                <span class="tag is-post-tag">效能</span>
-                            `
-                                <span class="tag is-post-tag">流程规范</span>
-                            
-                        
-                        </div>
-                        <p class="post-content-text is-marginless has-padding text-shadow">
-                            前语
-作为研发人员往往需要与多种角色打交道，产品、项管、运维等等，而与每个角色打交道的过程你是否清楚你处于需求/项目/研发里的哪个环节，不同角色做出的决策是否合理，不合理的时候怎么沟通；个人、团队、小组和部门及至公司的负荷和产出如何，是..
-                        </p>
-                        <p class="date text-shadow">2020-09-09</p>
-                        <button class="button is-info is-small">Read More</button>
-                    </div>
-            </div>
-        </a>
-    </div>
-    <div class="column is-5 is-hidden-touch" style="padding-left: 0;">
-        <div class="full-height is-flex flex-column justify-space-between" style="min-height: 350px;">
-            
-                
-<a class="post-hover" href="/2020/08/27/企业级搜索平台初步搭建/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2020/08/27/企业级搜索平台初步搭建/1.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                企业级搜索平台搭建(一期)
-            </h3>
-            
-            
-            <span class="tag is-post-tag">分布式</span>
-            
-            <span class="tag is-post-tag">实时流</span>
-            
-            <span class="tag is-post-tag">ETL</span>
-            
-            <span class="tag is-post-tag">搜索平台</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                背景
-我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题
-
-原推荐平台原有一..
-            </p>
-            <p class="date text-shadow is-marginless">2020-08-27</p>
-        </div>
-    </div>
-</a>
-            
-            
-                
-<a class="post-hover" href="/2020/08/14/GIAC深圳站/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2020/08/14/GIAC深圳站/1.jpg')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                GIAC深圳站
-            </h3>
-            
-            
-            <span class="tag is-post-tag">互联网大会</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                今年8月份，又有幸申请到参加GIAC互联网大会，一年参加一次互联网大会，这次现场参加架构演进、中..
-            </p>
-            <p class="date text-shadow is-marginless">2020-08-14</p>
-        </div>
-    </div>
-</a>
-            
-        </div>
-    </div>
-    <div class="column is-12 is-hidden-desktop">
-        
-        
-<a class="post-hover" href="/2020/08/27/企业级搜索平台初步搭建/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2020/08/27/企业级搜索平台初步搭建/1.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                企业级搜索平台搭建(一期)
-            </h3>
-            
-            
-            <span class="tag is-post-tag">分布式</span>
-            
-            <span class="tag is-post-tag">实时流</span>
-            
-            <span class="tag is-post-tag">ETL</span>
-            
-            <span class="tag is-post-tag">搜索平台</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                背景
-我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题
-
-原推荐平台原有一..
-            </p>
-            <p class="date text-shadow is-marginless">2020-08-27</p>
-        </div>
-    </div>
-</a>
-        
-        
-        
-<a class="post-hover" href="/2020/08/14/GIAC深圳站/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('/2020/08/14/GIAC深圳站/1.jpg')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                GIAC深圳站
-            </h3>
-            
-            
-            <span class="tag is-post-tag">互联网大会</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                今年8月份，又有幸申请到参加GIAC互联网大会，一年参加一次互联网大会，这次现场参加架构演进、中..
-            </p>
-            <p class="date text-shadow is-marginless">2020-08-14</p>
-        </div>
-    </div>
-</a>
-        
-    </div>
-</div>
-
-                    
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2020/08/27/企业级搜索平台初步搭建/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2020/08/27/企业级搜索平台初步搭建/1.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>企业级搜索平台搭建(一期)</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">分布式</span>
-                                            
-                                                <span class="tag is-post-tag">实时流</span>
-                                            
-                                                <span class="tag is-post-tag">ETL</span>
-                                            
-                                                <span class="tag is-post-tag">搜索平台</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景
-我们公司的推荐部门本来已经有一个功能比较完整的搜索平台，但是有以下问题
-
-原推荐平台原有一套基于solr搭建的搜索平台，虽然也比较完善，但是有以下问题
-
-solr对聚合分析能力和聚合分析api易用性的支持相对没那么好，solr集群大了之后机器成本、运维成本相对也比较高
-搜索平台非推荐核心项目，主要目的是服务内部，顺带服务业务，目前推荐平台更希望可以..
-                                        </p>
-                                        <p>2020-08-27</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2020/08/14/GIAC深圳站/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2020/08/14/GIAC深圳站/1.jpg')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>GIAC深圳站</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">互联网大会</span>
-                                            
-                                        </p>
-                                        <p>
-                                            今年8月份，又有幸申请到参加GIAC互联网大会，一年参加一次互联网大会，这次现场参加架构演进、中台建设、devops专场，了解市场主流技术方向，概念理论和通用解决方案挺好的，也能了解到大厂的动向，挺好的。话不多说，献上大会所有PPT材料和个人拍的图片。
-ppt下载地址 密码: m7il
-
-门头照是肯定要照的
- 
-准备开始，人超多，这次场地稍微小了一些，热..
-                                        </p>
-                                        <p>2020-08-14</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2020/05/26/JVM-G1垃圾收集器/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2020/05/26/JVM-G1垃圾收集器/1.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>JVM G1垃圾收集器</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">java基础</span>
-                                            
-                                                <span class="tag is-post-tag">JVM</span>
-                                            
-                                                <span class="tag is-post-tag">内存</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景
-最近公司在大力推动服务容器化，而默认配套的JVM 垃圾收集器是G1，故此整理一下G1相关的知识点。
-基础知识
-主要步骤
-
-初始标记(Initial Marking)
-并发标记(Concurrent Marking)
-最终标记(Final Marking)
-筛选回收(Live Data Counting and Evacuation)
-运行流程大致如..
-                                        </p>
-                                        <p>2020-05-26</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2020/05/19/一次服务分离的经历/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2020/05/19/一次服务分离的经历/1.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>一次服务分离的经历</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                        </p>
-                                        <p>
-                                            自从那次的迭代做完后（抽象优化交易服务的那个项目），公司刚好有个比较大型的服务分离项目需要支持，刚好业务上没那么忙，爱折腾的我义无反顾就加入了。一搞就搞了一个月有多，作为这个项目的一线执行角色回过头来总结一下自己所学习到的内容。
-背景
-一家公司旗下经常会有多个APP的情况，除去中台、基础服务等，一般业务服务在理想的情况下都应该是根据APP服务分离的，但是..
-                                        </p>
-                                        <p>2020-05-19</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2020/03/31/通用交易服务架构设计/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2020/03/31/通用交易服务架构设计/商品管理.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>通用交易服务架构设计</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                        </p>
-                                        <p>
-                                            自从年前写了商业化、serverless和活动通用模板设计，又是几个月没写文章了，对不起自己。
-刚好年后一复工就来一个比较大的项目，忙到3月下旬才算是竣工。btw，活动通用模板被坑了应该是没后续了，
-后来经过了解，是有现成服务可对接的，之前听产品说不适合就没多加了解，还是万事留个心，多了解一下。
-背景
-在开始做商业化需求实现时，发现APP内有不少其它交易..
-                                        </p>
-                                        <p>2020-03-31</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/12/22/赛程-活动-榜单模板实现方案-一/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/12/22/赛程-活动-榜单模板实现方案-一/实体属性抽象.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>赛程-活动-榜单模板实现方案(一)</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                                <span class="tag is-post-tag">商业化</span>
-                                            
-                                        </p>
-                                        <p>
-                                            前言继商业化产品架构及技术规划后续，与团队及部门各方大佬探讨都得到高度认可，接下来便是如何落地。由于身在业务部门，不可能本末倒置，在业务能够按计划发展的同时进行技术沉淀是最好的方向。个人的思路是很多事情都不是一蹴而就，模块先划分好，每个模块贴合业务迭代进行技术迭代。  
-背景其实无论商业化还是普通平台都比较大机率会有赛程/活动/榜单的运营需求，以往本人所..
-                                        </p>
-                                        <p>2019-12-22</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/10/20/商业化产品规划与服务架构思考/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/10/20/商业化产品规划与服务架构思考/busi_product_module.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>商业化产品规划与服务架构思考</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景近来有幸负责了公司自己部门一个商业化小组的研发事项，结合自己的工作经验对产品将来走向和服务架构规划梳理自己的见解，希望可以让小组目标一致，高效地进行积累进行沉淀。  
-业务理解及规划按个人愚见商业化前期主要分为几个核心模块，GMV短期快速增长/基础设施搭建/用户消费习惯培养/渠道引流变现能力，每个模块并非独立，而是相互交叉相互依赖。
-
-GMV短期快速..
-                                        </p>
-                                        <p>2019-10-20</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/09/16/一种serverless的实现方案/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/09/16/一种serverless的实现方案/vod_serviceless.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>一种serverless的实现方案</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">架构</span>
-                                            
-                                                <span class="tag is-post-tag">serviceless</span>
-                                            
-                                        </p>
-                                        <p>
-                                            背景自从上次参加qcon开发者大会，一直在思考serviceless的可执行方案，一路上也在公司推进中，虽然进度有点慢，没办法，业务太忙了。。。  
-架构总览  
-服务模块网关需要实现配置化扩展及热更新接口服务，主要需要支持数据的curd场景。抽象的说其实只有2种场景，就是数据的查询和变更。    
-抽象交互场景，制定一套接口使用规范  
-查询查询一般分..
-                                        </p>
-                                        <p>2019-09-16</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2019/07/14/Qcon广州站大会个人纪要/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('/2019/07/14/Qcon广州站大会个人纪要/p1.jpeg')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Qcon广州站</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">互联网大会</span>
-                                            
-                                        </p>
-                                        <p>
-                                            大会ppt下载地址
-      今年5月27号在举行的qcon全球开发者大会广州站，在下有幸，公司安排参加，就着大会的内容，个人闲聊一下看法。（工作比较忙，导致拖了一个半月才回过头来聊这次大会）
- 
- 
-Service Mesh
-      qcon的大会安排是有不同卖场同时进行，自己优先选择了后端相关的微服务实战及高可用高性能架构专场参加。
-有幸见到a..
-                                        </p>
-                                        <p>2019-07-14</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                <!--翻頁-->
-                <nav class="pagination is-flex" style="justify-content: flex-end">
-                    
-                        
-                        
-                            <a class="pagination-next" href="/page/2/">Next page</a>
-                        
-                    
-                </nav>
-            </section>
-            
-                <style>
-    /*user info start*/
-    .user-info {
-        padding: 15px 0 0;
-    }
-
-    .user-info .avatar {
-        width: 155px;
-        height: 155px;
+    .post-avatar {
+        height: 30px;
+        width: 30px;
         border-radius: 50%;
     }
 
-    .sns-container {
-        flex-wrap: wrap;
-    }
-
-    .sns-container a{
-        color: black;
-    }
-    /*user info end*/
-
-    /*Tag start*/
-    #tag_cloud .tags-item{
-        display: inline-block;
-        color: #000;
-        border: 1px solid gray;
-
-        margin: 4px 2px;
-        padding: 0 4px;
-        border-radius: 6px;
-    }
-    /*Tag end*/
-
-    /*Site box start*/
-    .site-box {
-        height: 60px;
-    }
-    /*Site box end*/
-
-    .category-list-item,
-    .archive-list-item {
-        display: flex;
-        margin-bottom: 4px;
-        justify-content: space-between;
-    }
-    .category-list-link,
-    .archive-list-link {
-        color: black;
-    }
-
-    .category-list-count,
-    .archive-list-count {
-        width: 32px;
+    .flow-chart {
         text-align: center;
-        border-radius: 4px;
-        color: #fff;
-        background-color: gray;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
     }
 </style>
-<aside class="column is-hidden-touch is-3" style="max-width: 280px; min-width: 230px">
-    <div class="content-box user-info">
-        <div class="has-padding">
-            <header class="has-text-centered">
-                <img class="avatar" src="https://wt.sinaimg.cn/thumb300/6962f50egw1f4g40ndwlsj20ku0rsq8l.jpg?tags=%5B%5D">
-            </header>
-            <section class="has-text-centered">
-                <h3><strong>Sean</strong></h3>
-                <p class="sub-title">今天加油，明天加油</p>
-                
-                <p class="is-flex center" style=" color: gray">
-                    <i class="fa fa-map-marker" style="padding: 5px"></i>
-                    Earth
-                </p>
-                
-            </section>
-        </div>
-        <div class="top-line">
-            <ul class="sns-container justify-center is-flex has-padding">
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://github.com/Sean">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                    </a>
-                </li>
-                
-
-                
-            </ul>
-        </div>
-    </div>
-    <div class="content-box">
-        <!--post数量和tag category 数量-->
-        <div class="site-box is-flex">
-            <div class="flex-1 is-flex flex-column center full-height right-line">
-                <strong>23</strong>
-                <p>Posts</p>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+<span style="display:none" id="/2020/09/09/一线研发该如何理解研发效能/" class="leancloud_visitors"   data-flag-title="一线研发进化-该如何理解研发效能"> </span>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>一线研发进化-该如何理解研发效能</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://wt.sinaimg.cn/thumb300/6962f50egw1f4g40ndwlsj20ku0rsq8l.jpg?tags=%5B%5D">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> Sean</span>
+                <span class="post-date sub-title">at: 2020-09-09</span>
             </div>
-            <div class="flex-1 is-flex flex-column center full-height">
-                <strong>27</strong>
-                <p>Tags</p>
-            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/项目管理/">项目管理</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/效能/">效能</a>
+                    
+                         <a class="tag is-post-tag" href="/tags/流程规范/">流程规范</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <h1><span id="前语">前语</span></h1>
+<p>作为研发人员往往需要与多种角色打交道，产品、项管、运维等等，而与每个角色打交道的过程你是否清楚你处于需求/项目/研发里的哪个环节，不同角色做出的决策是否合理，不合理的时候怎么沟通；个人、团队、小组和部门及至公司的负荷和产出如何，是否健康高效，要从哪些点入手改善。<br>
+没有对应的理论支撑的话，更多只能凭经验说话，而经验不一定就是最科学了，需要结合理论进行实践。咱们今天就来探讨一下一线研发该如何理解研发效能。</p>
+<h1><span id="开发模式">开发模式</span></h1>
+<p>进入主题前，我们得先自我思考一下，在理解流程前，我们先得清楚我们现在用的是什么开发模式？敏捷开发？敏捷的哪一种框架？scrum?可能大多数人能回答上的是敏捷，scrum，日常迭代的大体执行流程就没了。其实现在大多数敏捷团队会结合实际情况往往用到不只一种敏捷框架。从网上扒了些资料，了解下敏捷相关的框架介绍，具体详见<a href="https://dzone.com/articles/agile-framework-comparison-scrum-vs-kanban-vs-lean" target="_blank" rel="noopener">链接</a>，<a href="https://zhuanlan.zhihu.com/p/31289397" target="_blank" rel="noopener">知乎翻译</a>。 非敏捷的开发模式请自行查找资料了。</p>
+<h2><span id="敏捷开发思想">敏捷开发思想</span></h2>
+<p>敏捷开发的四句宣言：</p>
+<ul>
+<li>
+<p>个体与交互 胜过过程与工具</p>
+</li>
+<li>
+<p>可以工作的软件 胜过面面俱到的文挡</p>
+</li>
+<li>
+<p>客户协作 胜过合同谈判</p>
+</li>
+<li>
+<p>响应变化 胜过遵循计划</p>
+</li>
+</ul>
+<h2><span id="scrum">SCRUM</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/Scrum-workflow.png" title="scrum">
+<h3><span id="核心领域定义人工品">核心领域定义（人工品）</span></h3>
+<p>人工品是指信息传播体，用于贯穿整个流程</p>
+<ol>
+<li>
+<p>User Story。一小部分功能是，团队将在一个被称为Sprint的时间段内工作。通常的格式是：作为[用户角色]，希望[系统做这个和那个]，以便[交付这样和这样的商业价值]。它必须有一个“完成的定义”，用来确定故事是否已经正确执行。</p>
+</li>
+<li>
+<p>Task。它可以与用户故事相关或不相关。例如，设置新的开发环境或研究CPU内存问题是与用户故事无关的任务。</p>
+</li>
+<li>
+<p>Backlog。用户故事和未来Sprint任务的列表。</p>
+</li>
+<li>
+<p>Sprint backlog。从Backlog的当前Sprint中挑选用户故事和任务列表(又名“工作项目”)。</p>
+</li>
+<li>
+<p>Product increment。在Sprint结束时交付的一种潜在可交付功能块。</p>
+</li>
+<li>
+<p>Extensions。像Burndown Chart、Velocity等的报告，用于跟踪团队的进展。</p>
+</li>
+</ol>
+<h3><span id="参与角色">参与角色</span></h3>
+<ol>
+<li>
+<p>开发团队。包括开发人员、QA工程师、UI/UX设计师、业务分析师以及其他需要的人员。Scrum团队通常有3到9名成员。当9个人还不够时，团队就一分为二了。</p>
+</li>
+<li>
+<p>Scrum Master。主持每日Scrum会议、策划/更新/回顾会议，并帮助团队成员解决沟通问题。Scrum Master不是团队成员，所以他们可以同时与多个团队合作。</p>
+</li>
+<li>
+<p>产品所有者。利益相关者的代表，将Scrum团队的愿景(作为用户故事的基础)传达给Scrum团队，在每个Sprint结束时优先考虑用户故事，并接受或拒绝他们。</p>
+</li>
+</ol>
+<h3><span id="倡导的价值观">倡导的价值观</span></h3>
+<ol>
+<li>
+<p>承诺(在Sprint中实现目标)。</p>
+</li>
+<li>
+<p>勇气(做您认为正确的事)。</p>
+</li>
+<li>
+<p>重点(在当前Sprint中的工作项目)。</p>
+</li>
+<li>
+<p>开放(关于面临的任何挑战)。</p>
+</li>
+<li>
+<p>尊重(相信其他人的能力)。</p>
+</li>
+</ol>
+<h2><span id="看板kanban">看板(kanban)</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/Kanban-workflow.png" title="kanban">
+<p>Kanban框架是由丰田工程师Taiichi Ohno发明的。在20世纪40年代后期，丰田代表们观察到超市是如何根据货架上的货物重新进货。这促使丰田建立了一个供应体系，生产计划将由实际消耗驱动。</p>
+<p>Kanban的关键思想之一是避免产生过剩。Kanban通过使用Kanban卡和Kanban板来可视化资源在生产周期中的移动。这使每个人都能够最大程度地了解流程，并帮助管理人员实时解决盈余/短缺问题。</p>
+<p>Kanban系统还引入了“pull”与“push”的概念，工人可以根据自己的能力进行工作，而不是在传送带上或在待办事项列表形式中工作。</p>
+<p>在软件工程中，Kanban意味着一次可以进行的工作量是有限的。换句话说，Kanban上的“进行中”栏内可以拥有卡片是有上限的，这样做是为了增加焦点并减少上下文切换。</p>
+<p>Kanban开发的另一个方面是，活动始终与客户需求紧密相关，并与客户保持持续的沟通。除非在经济上有利于客户，否则什么都不会产生。</p>
+<h3><span id="原则">原则</span></h3>
+<ol>
+<li>
+<p>专注—减少多任务;</p>
+</li>
+<li>
+<p>减少浪费;</p>
+</li>
+<li>
+<p>客户的需求放在第一位(即他们的业务需求-ROI);</p>
+</li>
+</ol>
+<h3><span id="实践">实践</span></h3>
+<ol>
+<li>
+<p>可视化;</p>
+</li>
+<li>
+<p>限制工作进展;</p>
+</li>
+<li>
+<p>流程管理(可以通过管理队列或限制工作来完成);</p>
+</li>
+<li>
+<p>明确政策;</p>
+</li>
+<li>
+<p>使用反馈循环;</p>
+</li>
+<li>
+<p>实验演变;</p>
+</li>
+</ol>
+<p>Kanban和Scrum的关键区别在于：Kanban是连续的，而Scrum是迭代的。Kanban更适合在Sprint期间有大量计划外工作(支持问题;紧急修复;紧急功能请求)的团队。通过这种方式，团队可以随时重新排序任务，不再需要等待Sprint结束。</p>
+<h2><span id="精益lean">精益(Lean)</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/Lean-workflow.png" title="Lean">
+<p>Lean开发者，Mary Poppendieck在她的事业生涯中取得了巨大的成功，她带领她与Tom Poppendieck共同编写了Lean软件。因为Lean大量借用了Kanban，两种方法之间有许多相似之处。</p>
+<p>就像Kanban一样，Lean尽量避免浪费，最大限度地为客户带来价值。与Kanban不同的是，Lean有一些关于工程实践的规定(例如TDD)。与此同时，Lean对交付时间的要求不那么严格，团队可能随时准备部署。</p>
+<h3><span id="精益与看板的对比">精益与看板的对比</span></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">精益</th>
+<th style="text-align:left">看板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">原则</td>
+<td style="text-align:left">1. Eliminate waste 根除浪费. <br>2. Amplify learning 增强学习. <br>3. Decide as late as possible 尽量延迟决策. <br>4. Deliver as fast as possible 尽快交付. <br>5. Empower the team 授权团队. <br> 6. Build integrity in 嵌入完整性. <br> 7. See the whole 着眼整体.</td>
+<td style="text-align:left">1. Focus - reduce multitasking 专注-减少并行任务. <br> 2.Decrease waste. 减少浪费 <br> 3.Customer needs come first (i.e. their business needs - ROI). 用户需求第一</td>
+</tr>
+<tr>
+<td style="text-align:left">实践</td>
+<td style="text-align:left">1.Seeing waste 关注浪费.<br>2.Value stream mapping 价值流图. <br>3.Set-based development 基于集合的开发.<br>4.Pull systems 拉动系统.<br>5.Queuing theory 排队论.<br>6.Motivation 动机.<br>7.Measurements 度量.<br>8.TDD 测试驱动开发(also pertains to Toyota’s stop-the-line philosophy of uprooting flaws early on).</td>
+<td style="text-align:left">1.Visualization 可视化.<br>2.Limiting work in progress 限制进行中的任务数量.<br>3.Flow management 流管理(two major ways to do it: managing queues and limiting work in process).<br>4.Making policies explicit 明确政策.<br>5.Using feedback loops 使用反馈循环.<br>6.Experimental evolution 实验进化.</td>
+</tr>
+</tbody>
+</table>
+<h2><span id="极限编程xp">极限编程(XP)</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/XP-feedback.png" title="XP-feedback">
+<p>极限编程始于Kent Beck的一个实验，他的想法是把编程实践做到极致，看看会发生什么。例如，代码审查代替代码检查。后来，随着越来越多的公司开始采用这种方法，例如日常集成测试等，某些严格的规则开始被忽略。</p>
+<p>与传统的观念相反，XP不只是简单的平等配对编程，XP还提供了一个流程管理算法。</p>
+<p>需要注意的另一点是，理想情况下，所有的XP操作都应该一起使用，否则他们将无法正常工作。</p>
+<p>XP的管理方面受到了一些项目经理批评。例如，持续存在的客户被认为是压力的来源。另外，没有任何要求和设计系统可能是无效的。</p>
+<h3><span id="xp与scrum的价值观对比">XP与SCRUM的价值观对比</span></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">XP</th>
+<th style="text-align:left">CCRUM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1. Communication</td>
+<td style="text-align:left">1. Openness</td>
+</tr>
+<tr>
+<td style="text-align:left">2. Simplicity</td>
+<td style="text-align:left">2. Focus</td>
+</tr>
+<tr>
+<td style="text-align:left">3. Feedback</td>
+<td style="text-align:left">3. Commitment</td>
+</tr>
+<tr>
+<td style="text-align:left">4. Courage</td>
+<td style="text-align:left">4. Courage</td>
+</tr>
+<tr>
+<td style="text-align:left">5. Respect</td>
+<td style="text-align:left">5. Respect</td>
+</tr>
+</tbody>
+</table>
+<p>就像Kanban和Lean，XP也很注重浪费问题。</p>
+<h3><span id="实践">实践</span></h3>
+<ol>
+<li>
+<p>计划游戏;</p>
+</li>
+<li>
+<p>测试驱动开发(“先写单元测试”);</p>
+</li>
+<li>
+<p>配对编程;</p>
+</li>
+<li>
+<p>团队(客户/程序的实际用户可用于反馈);</p>
+</li>
+<li>
+<p>持续集成;</p>
+</li>
+<li>
+<p>重构设计改进;</p>
+</li>
+<li>
+<p>小版本;</p>
+</li>
+<li>
+<p>编码标准;</p>
+</li>
+<li>
+<p>集体代码所有权;</p>
+</li>
+<li>
+<p>设计简单;</p>
+</li>
+<li>
+<p>系统隐喻(以程序员、客户和其他人理解的方式命名事物);</p>
+</li>
+<li>
+<p>可持续性。</p>
+</li>
+</ol>
+<h2><span id="反思">反思</span></h2>
+<p>结合以上的敏捷框架的介绍，重新再回答自己的团队用到了哪些框架？我自己的话感觉团队的开发模式其实涉及多个框架的原则与实践方法，从流程的角度来看大主体还是scrum，用户故事、任务拆分估时，每日站会，结果交付，过程使用燃尽图等工具来跟进迭代。一线研发角度会涉及到极限编程的某些实践，测试驱动开发，配对编程，持续集成，重构设计改进，小版本，编码标准等，从产品和管理层面会涉及精益相关的原则及实践，比较关注团队价值流的某个部分以及度量。</p>
+<h1><span id="研发效能度量分析">研发效能度量分析</span></h1>
+<h2><span id="已有指标感知">已有指标感知</span></h2>
+<p>如何判断自己的工作有没有做好，往往个人所在的团队或公司已经有提供给大家需要关注的指标，任务拆分和工时评估合理，燃尽情况健康，研发延误率,测试bug率，发布故障情况，生产故障数量及修复效率等等。大家有没有想过其实每个指标的制定是否合理，它的目的是什么，它其实是在解决哪个环节的问题，团队的情况是否只关注这些就可以了。</p>
+<h2><span id="关键度量指标">关键度量指标</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/关键度量指标.png" title="关键度量指标">
+<h2><span id="抽象化模型的认知">抽象化模型的认知</span></h2>
+<p>其实指标的存在只是帮人去定义或感知某个方面的情况，而针对研发效能，有这样的度量分析模型。</p>
+<img src="/2020/09/09/一线研发该如何理解研发效能/研发效能度量分析模型.png" title="研发效能度量分析模型">
+<p>在工作中我们很容易就只关注到自己所负责的环节以及相关指标，但是往往我们得面向组织负责，不是说处理好自己的事情就可以了（不喜勿喷）。可以将大家平时接触的指标划分一下到对应的模块中，看下有没有歧义的地方。<br>
+<strong>端到端交付价值流中，以结果指标为牵引，通过全局研发效能的提升促进组织效能提升</strong></p>
+<h1><span id="价值流">价值流</span></h1>
+<p>我们有纵向的大体认知了，那我们尝试从横向和纵向更深入的理解。</p>
+<h2><span id="交付模型介绍">交付模型介绍</span></h2>
+<p>价值流交付模型如下：</p>
+<img src="/2020/09/09/一线研发该如何理解研发效能/价值流交付模型.png" title="价值流交付模型">
+<p>三个核心概念的情况可以大体看出不同层级或团队的大体情况：</p>
+<ul>
+<li>在制品</li>
+<li>流负载</li>
+<li>流效率</li>
+</ul>
+<h2><span id="交付价值流的度量">交付价值流的度量</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/交付价值流的度量.png" title="交付价值流的度量">
+<p>完整的度量体系，相关的指标非常多，但是往往介于团队发展情况只会用到其中一小部分的指标进行度量。在这里不作详细介绍，大家可以自行查找指标定义。我们只需要在有需要的时候进行查阅回顾，什么时候有需要-发现体系不完善或者有冲突时。</p>
+<h2><span id="如何进行分析">如何进行分析</span></h2>
+<p>交付价值流的实践指导原则为如下</p>
+<img src="/2020/09/09/一线研发该如何理解研发效能/交付价值流的实践指导原则.png" title="交付价值流的实践指导原则">
+<p>按时间好理解吧，按空间是指按某个范围对象，比如部分、团队，又或者按阶段。</p>
+<h1><span id="devops工具链网络">devops工具链网络</span></h1>
+<h2><span id="什么是devops">什么是devops</span></h2>
+<p>来一波官方的术语</p>
+<blockquote>
+<p>DevOps（Development 和 Operations 的组合词）是一种重视“软件开发人员（Dev）”和“IT 运维技术人员（Ops）”之间沟通合作的文化、运动或惯例。透过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。</p>
+</blockquote>
+<img src="/2020/09/09/一线研发该如何理解研发效能/DevOps.png" title="DevOps">
+<p><a href="https://baike.baidu.com/item/devops/2613029?fr=aladdin" target="_blank" rel="noopener">详细介绍</a><br>
+简单理解devops的使命，我们前面介绍的开发模式，解决了产品到研发之间的墙（隔阂），devops的目的是推倒研发（我理解是包括研发在内所有前置流程）到运维层的墙。</p>
+<h2><span id="devops工具链网络">devops工具链网络</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/devops工具链网络.png" title="devops工具链网络">
+<h1><span id="研发效能核心模型">研发效能核心模型</span></h1>
+<h2><span id="三大模型">三大模型</span></h2>
+<p>综合前面讲的内容，其实主要是介绍研发效能的三大模型。</p>
+<img src="/2020/09/09/一线研发该如何理解研发效能/研发效能三大模型.png" title="研发效能三大模型">
+<p>devops并不是每个公司都有能力建设，但是即使公司并有推进devops相关的事情，通过另外两个模型的指导，我们一样可以更全面地看清现有的状况及思考问题解决方案。</p>
+<h2><span id="度量分析实例">度量分析实例</span></h2>
+<img src="/2020/09/09/一线研发该如何理解研发效能/度量分析实例.png" title="度量分析实例">
+<p>按照上面的涉及的知识，利用团队现有数据尝试进行一下分析吧。</p>
+<h1><span id="避免错误实践">避免错误实践</span></h1>
+<p>市面上所存在的关于研发效能的知识都是主要是建议指导，并没有说一定得这样用才是正确的，每个团队都有自己的实际情况，根据理论进行调整，避免生搬硬套。</p>
+<h2><span id="错误的度量评估">错误的度量评估</span></h2>
+<p><strong>过程指标可认为敏捷转型是成功的，但业务结果却不是这样</strong><br>
+企业级的敏捷工具没有被开发人员真正接受，他们更喜欢简单的以开发为中心的工具<br>
+在迭代末尾，工作已经完成后，开发后补一个用户故事<br>
+敏捷工具变成了文档记录工具，而不是流动和反馈机制</p>
+<p><strong>看起来所有正确的活动都在发生，但开发者饱受构建和部署的折磨</strong><br>
+增加新功能很困难<br>
+构建和部署，下游的分离和低效意味着进展非常缓慢<br>
+技术债务：2010年symbian系统构建异常缓慢，整整48小时</p>
+<p><strong>狭隘的、以活动为导向的敏捷观是数字化转型失败的根本原因之一</strong><br>
+应该度量结果而不是过程<br>
+端到端价值流的局部优化对结果的改进效果很小，因为没有解决瓶颈</p>
+<h2><span id="度量的原则">度量的原则</span></h2>
+<h3><span id="结果指标gt过程指标">结果指标&gt;过程指标</span></h3>
+<p>以终为始，通过结果指标评估结果，通过过程指标指导改进</p>
+<h3><span id="全局指标gt局部指标">全局指标&gt;局部指标</span></h3>
+<p>过度局部优化可能导致全局劣化，只聚焦在易于度量的局部指标上，全以牺牲组织更好地提升全局目标为代价</p>
+<h3><span id="定量指标gt定性指标">定量指标&gt;定性指标</span></h3>
+<p>尽量使用量化指标客观评价，并通过系统自动采集，降低对团队的干扰，但也不排除部分综合评价的定性指标</p>
+<h3><span id="团队指标gt个人指标">团队指标&gt;个人指标</span></h3>
+<p>指标设定需要促进团队协作，共同努力达到组织目标，不能因相互冲突的指标而破坏团队配合，制造出更多的部门墙</p>
+<h3><span id="指导性可牵引行动">指导性，可牵引行动</span></h3>
+<p>指标设定为目标服务，指标的数值和趋势可牵引团队改进，比如适当敲定缺陷类指标可以促进质量内建能力的建设</p>
+<h3><span id="全面性可相互制约">全面性，可相互制约</span></h3>
+<p>需求周期 vs 缺陷数量<br>
+需求吞吐量 vs 需要规模<br>
+研发周期 vs 技术债务</p>
+<h3><span id="动态性按阶段调整">动态性，按阶段调整</span></h3>
+<p>随着团队能力的提升，指标也需要随之进行适当调整，从而促进团队持续改进</p>
+<h2><span id="经验总结">经验总结</span></h2>
+<h3><span id="通过自动化降低度量带来的额外成本">通过自动化降低度量带来的额外成本</span></h3>
+<p>想要让度量可靠，流程规范性必不可少，可是调整流程规范往往不是一件容易的事情。度量是有成本的，不是免费的。</p>
+<h3><span id="避免平均值陷阱">避免平均值陷阱</span></h3>
+<p>除了总体的指标的健康，需要周期性的关注下钻数据，避免只是表象健康，而组织结构某个环节已经存在比较大的问题。</p>
+<h1><span id="结束语">结束语</span></h1>
+<p>本文章很多内容主要来自GIAC devops专场 张乐老师的 《敏捷和 DevOps 时代的研发效能度量实践》分享，个人只是学习提炼加以资料整理，这个分享的资料没有公开，靠当场拍照和后期画图补充资料。</p>
+<h2><span id="对于研发效能度量的感受">对于研发效能度量的感受</span></h2>
+<p>研发效能的度量，追求的是选择合适的比选择全面的来得实在，从nokia的失败实践经验，以及近几年大厂的实践可以看得出来。推进devops并不是一件容易的事情，主要是因为除去技术本身，需要额外关心的事情太多了。作为一线研发，可能很多事情并不会跟我们直接有关联，但却在暗中影响着我们做事的节奏，我们可以将自己负责的环节做得很完善，但是你会发现，只要你的上下游有问题，你所负责的环节依然会受影响。所以我们需要更全面以及更体系化的去看待问题及沟通解决问题。</p>
+<h2><span id="抛开剂量讲成效都是耍流氓">抛开剂量讲成效都是耍流氓</span></h2>
+<p>研发效能相关的理论知识我们有一定的认知了，那自己的公司或者团队到底要不要推行devops呢。答案是量力而行，很虚，但是没办法。</p>
+<h3><span id="是否能对现有团队带来高价值">是否能对现有团队带来高价值</span></h3>
+<p>如果你是一个规模在10人以下的研发团队，基本可以说不用考虑。如果你的团队是上百人上千人，可以再继续往下考虑。</p>
+<h3><span id="是否具备相应的基础">是否具备相应的基础</span></h3>
+<p>组织的流程规范及软硬件的工具基础，决定启动的成本</p>
+<h3><span id="是否有独立驱动资源">是否有独立驱动资源</span></h3>
+<p>devops的事情不是兼职做可以完成的，必须是有单独的组织进行管理推进，推进事项本身也是一个项目。</p>
+<h2><span id="趣事">趣事</span></h2>
+<p>在GIAC的devops专场中一共有4场分享，除了上面提到张乐老师的 《敏捷和 DevOps 时代的研发效能度量实践》分享，还有以下内容：</p>
+<ul>
+<li>腾讯-刘章雄-腾讯研发的DevOps实践-脱敏</li>
+<li>招行-陈展文 马海卿-招行面向看板的精益转型之路</li>
+<li>oppo-朱科-OPPO研发效能度量实践<br>
+招行用了4-5年左右的时间，从物理看板验证实践理论，才转为电子看板，服务于研发中心几千号研发人员。<br>
+oppo也是比较中规中矩地进行了一些关于度量与实践的分享。<br>
+腾讯的分享很清新脱俗，讲师一上来就打其他老师的脸，讲不要太关注指标，而是要善于发现问题和解决问题，对于devops的实践也是与众不同，将使用者视为研发属性用户，以支持上传自定义插件的方式来进行各个团队的定制化需求。我想国内大概也只能像腾讯这样的规模和基因的公司才能这样做了。</li>
+</ul>
+
+        </div>
+        <div class="post-reply">
+            
+            
         </div>
     </div>
-    <div id='tag_cloud' class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Tags</strong>
-        </div>
-        <div class="content-inner is-flex flex-wrap justify-space-between">
-            
-                <a class="tags-item" href="tags/qcon/" title="qcon" rel="0">
-                    qcon
-                </a>
-            
-                <a class="tags-item" href="tags/zookeeper/" title="zookeeper" rel="1">
-                    zookeeper
-                </a>
-            
-                <a class="tags-item" href="tags/分布式/" title="分布式" rel="3">
-                    分布式
-                </a>
-            
-                <a class="tags-item" href="tags/队列/" title="队列" rel="1">
-                    队列
-                </a>
-            
-                <a class="tags-item" href="tags/java基础/" title="java基础" rel="5">
-                    java基础
-                </a>
-            
-                <a class="tags-item" href="tags/JVM/" title="JVM" rel="5">
-                    JVM
-                </a>
-            
-                <a class="tags-item" href="tags/内存/" title="内存" rel="4">
-                    内存
-                </a>
-            
-                <a class="tags-item" href="tags/mybatis/" title="mybatis" rel="1">
-                    mybatis
-                </a>
-            
-                <a class="tags-item" href="tags/动态解析/" title="动态解析" rel="1">
-                    动态解析
-                </a>
-            
-                <a class="tags-item" href="tags/实时流/" title="实时流" rel="2">
-                    实时流
-                </a>
-            
-                <a class="tags-item" href="tags/spring/" title="spring" rel="1">
-                    spring
-                </a>
-            
-                <a class="tags-item" href="tags/kafka/" title="kafka" rel="1">
-                    kafka
-                </a>
-            
-                <a class="tags-item" href="tags/架构/" title="架构" rel="7">
-                    架构
-                </a>
-            
-                <a class="tags-item" href="tags/serviceless/" title="serviceless" rel="1">
-                    serviceless
-                </a>
-            
-                <a class="tags-item" href="tags/数据平台/" title="数据平台" rel="3">
-                    数据平台
-                </a>
-            
-                <a class="tags-item" href="tags/JAVA基础/" title="JAVA基础" rel="2">
-                    JAVA基础
-                </a>
-            
-                <a class="tags-item" href="tags/优化/" title="优化" rel="1">
-                    优化
-                </a>
-            
-                <a class="tags-item" href="tags/设计模式/" title="设计模式" rel="1">
-                    设计模式
-                </a>
-            
-                <a class="tags-item" href="tags/ETL/" title="ETL" rel="2">
-                    ETL
-                </a>
-            
-                <a class="tags-item" href="tags/并发编程/" title="并发编程" rel="1">
-                    并发编程
-                </a>
-            
-                <a class="tags-item" href="tags/数据分析/" title="数据分析" rel="1">
-                    数据分析
-                </a>
-            
-                <a class="tags-item" href="tags/商业化/" title="商业化" rel="1">
-                    商业化
-                </a>
-            
-                <a class="tags-item" href="tags/互联网大会/" title="互联网大会" rel="2">
-                    互联网大会
-                </a>
-            
-                <a class="tags-item" href="tags/搜索平台/" title="搜索平台" rel="1">
-                    搜索平台
-                </a>
-            
-                <a class="tags-item" href="tags/项目管理/" title="项目管理" rel="1">
-                    项目管理
-                </a>
-            
-                <a class="tags-item" href="tags/效能/" title="效能" rel="1">
-                    效能
-                </a>
-            
-                <a class="tags-item" href="tags/流程规范/" title="流程规范" rel="1">
-                    流程规范
-                </a>
-            
-        </div>
-    </div>
-    <div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Categories</strong>
-        </div>
-        <div class="content-inner">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/大数据/">大数据</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/研发效能/">研发效能</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">4</span></li></ul>
-        </div>
-    </div>
-    <div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Archives</strong>
-        </div>
-        <div class="content-inner">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-</aside>
-            
-        </div>
-    </div>
-</div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
 
       </div>
   </div>
